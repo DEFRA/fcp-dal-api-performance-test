@@ -1,4 +1,4 @@
-# cdp-perf-test-suite-template
+# fcp-dal-api-performance-test
 
 A JMeter based test runner for the CDP Platform.
 
