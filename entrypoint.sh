@@ -19,7 +19,8 @@ REPORTFILE=${NOW}-perftest-${TEST_SCENARIO}-report.csv
 LOGFILE=${JM_LOGS}/perftest-${TEST_SCENARIO}.log
 
 # Run the test suite
-jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -Jdal_tenant_id ="${TENANT_ID}" -Jdal_scope ="${DAL_SCOPE}" -Jtenant_uid ="${TENANT_UID}" -Jtenant_pw ="${TENANT_PW}"
+jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" \
+  -Jdal_tenant_id ="${TENANT_ID}" -Jdal_scope ="${DAL_SCOPE}" -Jtenant_uid ="${TENANT_UID}" -Jtenant_pw ="${TENANT_PW}"
 test_exit_code=$?
 
 # Publish the results into S3 so they can be displayed in the CDP Portal
