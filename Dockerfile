@@ -1,5 +1,7 @@
 FROM defradigital/cdp-perf-test-docker:latest
 
+RUN apk add --no-cache jq
+
 WORKDIR /opt/perftest
 
 COPY scenarios/ ./scenarios/
