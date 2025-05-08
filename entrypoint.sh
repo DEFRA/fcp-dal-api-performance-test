@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 echo "run_id: $RUN_ID in $ENVIRONMENT"
 
 NOW=$(date +"%Y%m%d-%H%M%S")
