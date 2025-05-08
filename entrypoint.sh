@@ -2,8 +2,6 @@
 
 echo "run_id: $RUN_ID in $ENVIRONMENT"
 
-env
-
 NOW=$(date +"%Y%m%d-%H%M%S")
 
 if [ -z "${JM_HOME}" ]; then
