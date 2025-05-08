@@ -25,6 +25,7 @@ set -eu # fast-fail if the necessary env vars do not exist!!
 auth_url=https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token
 client_auth=`echo -n "${CLIENT_ID}:${CLIENT_SECRET}" | base64  | tr -d '\n'`
 auth_token=`curl -s \
+  --connect-timeout 5 \
   -x ${HTTP_PROXY} \
   -L ${auth_url} \
   -H "Authorization: Basic ${client_auth}" \
@@ -39,7 +40,7 @@ if [ -z "${auth_token}" ] ; then
 fi
 
 # Run the test suite
-jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -jauthToken="${auth_token}"
+jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}"
 test_exit_code=$?
 
 # Publish the results into S3 so they can be displayed in the CDP Portal
