@@ -79,7 +79,7 @@
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">scope</stringProp>
-                <stringProp name="Header.value">${dal_scope}</stringProp>
+                <stringProp name="Header.value">${__P(dal_scope)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
