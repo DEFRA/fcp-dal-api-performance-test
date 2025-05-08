@@ -46,7 +46,7 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get authentication token request">
           <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.path">/${dal_tenant_id}/oauth2/v2.0/token</stringProp>
+          <stringProp name="HTTPSampler.path">/${__P(dal_tenant_id)}/oauth2/v2.0/token</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
