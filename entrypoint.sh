@@ -2,6 +2,8 @@
 
 echo "run_id: $RUN_ID in $ENVIRONMENT"
 
+env
+
 NOW=$(date +"%Y%m%d-%H%M%S")
 
 if [ -z "${JM_HOME}" ]; then
@@ -23,6 +25,7 @@ set -eu # fast-fail if the necessary env vars do not exist!!
 auth_url=https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token
 client_auth=`echo -n "${CLIENT_ID}:${CLIENT_SECRET}" | base64  | tr -d '\n'`
 auth_token=`curl -s \
+  -x ${HTTP_PROXY} \
   -L ${auth_url} \
   -H "Authorization: Basic ${client_auth}" \
   -H 'content-type: application/x-www-form-urlencoded' \
