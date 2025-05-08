@@ -22,7 +22,7 @@ LOGFILE=${JM_LOGS}/perftest-${TEST_SCENARIO}.log
 
 # Run the test suite
 jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" \
-  -Jdal_tenant_id="${TENANT_ID}" -Jdal_scope="${CLIENT_SCOPE}" -Jclient_auth=`echo -n "${CLIENT_ID}:${CLIENT_SECRET}" | base64`
+  -Jdal_tenant_id="${TENANT_ID}" -Jdal_scope="${CLIENT_SCOPE}" -Jclient_auth=`echo -n "${CLIENT_ID}:${CLIENT_SECRET}" | base64 -w 0`
 test_exit_code=$?
 
 # Publish the results into S3 so they can be displayed in the CDP Portal
