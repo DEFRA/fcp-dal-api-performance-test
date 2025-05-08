@@ -18,9 +18,25 @@ SCENARIOFILE=${JM_SCENARIOS}/${TEST_SCENARIO}.jmx
 REPORTFILE=${NOW}-perftest-${TEST_SCENARIO}-report.csv
 LOGFILE=${JM_LOGS}/perftest-${TEST_SCENARIO}.log
 
+# Get an auth token
+set -eu # fast-fail if the necessary env vars do not exist!!
+auth_url=https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token
+client_auth=`echo -n "${CLIENT_ID}:${CLIENT_SECRET}" | base64  | tr -d '\n'`
+auth_token=`curl -s \
+  -L ${auth_url} \
+  -H "Authorization: Basic ${client_auth}" \
+  -H 'content-type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' \
+  --data "scope=${CLIENT_SCOPE}" \
+| jq -r '.access_token'`
+set +eu
+if [ -z "${auth_token}" ] ; then
+  echo ERROR! Exiting because an auth token could not be retrieved
+  exit 2
+fi
+
 # Run the test suite
-jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" \
-  -Jdal_tenant_id="${TENANT_ID}" -Jdal_scope="${CLIENT_SCOPE}" -Jclient_auth=`echo -n "${CLIENT_ID}:${CLIENT_SECRET}" | base64  | tr -d '\n'`
+jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -jauthToken="${auth_token}"
 test_exit_code=$?
 
 # Publish the results into S3 so they can be displayed in the CDP Portal
