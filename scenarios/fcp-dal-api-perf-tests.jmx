@@ -6,7 +6,6 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
     </TestPlan>
     <hashTree>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test data - CSV Data Set Config">
@@ -21,7 +20,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test parameters - CSV Data Set Config" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test parameters - CSV Data Set Config">
         <stringProp name="filename">jmeter.config.testparameters.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -33,74 +32,6 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Get Auth Token Thread Group">
-        <intProp name="ThreadGroup.num_threads">1</intProp>
-        <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">1</stringProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get authentication token request">
-          <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
-          <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.path">/${__P(dal_tenant_id)}/oauth2/v2.0/token</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="grant_type" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">client_credentials</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">grant_type</stringProp>
-              </elementProp>
-              <elementProp name="scope" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">${__P(dal_scope)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">scope</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">content-type</stringProp>
-                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Basic ${__P(client_auth)}</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-            <stringProp name="JSONPostProcessor.referenceNames">auth_token</stringProp>
-            <stringProp name="JSONPostProcessor.jsonPathExprs">$.access_token</stringProp>
-            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-          </JSONPostProcessor>
-          <hashTree/>
-          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
-            <stringProp name="BeanShellAssertion.query">${__setProperty(authToken,${auth_token})}</stringProp>
-            <stringProp name="BeanShellAssertion.filename"></stringProp>
-            <stringProp name="BeanShellAssertion.parameters"></stringProp>
-            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
-          </BeanShellAssertion>
-          <hashTree/>
-        </hashTree>
-      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Performance Tests" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
@@ -112,12 +43,12 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">0</intProp>
           <stringProp name="throughput">${requestratepm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Health" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Health">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/health</stringProp>
@@ -152,7 +83,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessSimple" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessSimple">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -182,11 +113,11 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__property(authToken)}</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -254,11 +185,11 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__property(authToken)}</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -329,11 +260,11 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__property(authToken)}</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -412,11 +343,11 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__property(authToken)}</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -491,11 +422,11 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__property(authToken)}</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -568,11 +499,11 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__property(authToken)}</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -610,7 +541,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerPermissions" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerPermissions">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -647,11 +578,11 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__property(authToken)}</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -725,11 +656,11 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__property(authToken)}</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
