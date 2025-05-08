@@ -322,8 +322,7 @@
 			role
 		}
 	}
-}
-</stringProp>
+}</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
