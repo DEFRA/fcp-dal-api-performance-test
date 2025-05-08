@@ -124,13 +124,13 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Customer($crn: ID!) {\n  customer(crn: $crn) {\n    crn\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Customer($crn: ID!) {\n  customer(crn: $crn) {\n    crn\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Query</stringProp>
+          <stringProp name="GraphQLHTTPSampler.operationName">Customer</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query Customer($crn: ID!) {
   customer(crn: $crn) {
     crn
