@@ -19,19 +19,19 @@ REPORTFILE=${NOW}-perftest-${TEST_SCENARIO}-report.csv
 LOGFILE=${JM_LOGS}/perftest-${TEST_SCENARIO}.log
 
 # Get an auth token
-set -eu # fast-fail if the necessary env vars do not exist!!
-auth_url=https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token
-client_auth=`echo -n "${CLIENT_ID}:${CLIENT_SECRET}" | base64  | tr -d '\n'`
+auth_url=https://login.microsoftonline.com/${TENANT_ID:?required secret not set!}/oauth2/v2.0/token
+client_auth=`echo -n "${CLIENT_ID:?required secret not set!}:${CLIENT_SECRET:?required secret not set!}" | base64  | tr -d '\n'`
 auth_token=`curl -s \
   --connect-timeout 5 \
-  -x ${HTTP_PROXY} \
+  -x ${HTTP_PROXY:?required env var not set!} \
   -L ${auth_url} \
   -H "Authorization: Basic ${client_auth}" \
   -H 'content-type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials' \
-  --data "scope=${CLIENT_SCOPE}" \
+  --data "scope=${CLIENT_SCOPE:?required secret not set!}" \
 | jq -r '.access_token'`
-set +eu
+
+# fast-fail when no token available!
 if [ -z "${auth_token}" ] ; then
   echo ERROR! Exiting because an auth token could not be retrieved
   exit 2
