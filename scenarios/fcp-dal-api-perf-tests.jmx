@@ -21,7 +21,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test parameters - CSV Data Set Config" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test parameters - CSV Data Set Config">
         <stringProp name="filename">jmeter.config.testparameters.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -51,7 +51,7 @@
           <stringProp name="throughput">${requestratepm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Health" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Health">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/health</stringProp>
@@ -64,7 +64,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessSimple" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessSimple">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -94,7 +94,7 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -112,7 +112,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerSimple" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerSimple">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -142,7 +142,7 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -160,7 +160,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomers" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomers">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -211,7 +211,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-QueryCustomerBusinesses" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-QueryCustomerBusinesses">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -224,7 +224,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Query ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tbusinesses {\n\t\t\tname\n\t\t}\n\t\tcrn\n\t\tpersonId\n\t\tinfo {\n\t\t\tname {\n\t\t\t\tfirst\n\t\t\t     last\t\t\t\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Query ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tbusinesses {\n\t\t\tname\n\t\t}\n\t\tcrn\n\t\tpersonId\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -238,12 +238,6 @@
 		}
 		crn
 		personId
-		info {
-			name {
-				first
-			     last			
-			}
-		}
 	}
 }
 </stringProp>
@@ -252,7 +246,7 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -270,7 +264,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-AuthenticateQuestions" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-AuthenticateQuestions">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -283,13 +277,13 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tauthenticationQuestions {\n\t\t\tisFound\n\t\t\tupdatedAt\n\t\t\tmemorableDate\n\t\t\tmemorableEvent\n\t\t\tmemorableLocation\n\t\t}    \n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tauthenticationQuestions {\n\t\t\tisFound\n\t\t\tupdatedAt\n\t\t\tmemorableDate\n\t\t\tmemorableEvent\n\t\t\tmemorableLocation\n\t\t}    \n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Query</stringProp>
+          <stringProp name="GraphQLHTTPSampler.operationName">Customer</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query Customer ($crn: ID!) {
 	customer(crn: $crn) {
 		crn
@@ -325,7 +319,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerBusinesses" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerBusinesses">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -338,13 +332,13 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusinesses {\n\t\t\tsbi\n\t\t\tname\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusinesses {\n\t\t\tsbi\n\t\t\tname\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Query</stringProp>
+          <stringProp name="GraphQLHTTPSampler.operationName">Customer</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query Customer ($crn: ID!) {
 	customer(crn: $crn) {
 		personId
@@ -378,7 +372,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerPermissions" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerPermissions">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -391,13 +385,13 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Query</stringProp>
+          <stringProp name="GraphQLHTTPSampler.operationName">Customer</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query Customer ($crn: ID!, $sbi: ID!) {
 	customer(crn: $crn) {
 		crn
@@ -433,7 +427,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomerPermissions" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomerPermissions">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -446,13 +440,13 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query BusinessCustomer ($sbi: ID!, $crn: ID!) {\n\tbusiness(sbi: $sbi) {\n\t\tcustomer(crn: $crn) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessCustomer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query BusinessCustomer ($sbi: ID!, $crn: ID!) {\n\tbusiness(sbi: $sbi) {\n\t\tcustomer(crn: $crn) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Query</stringProp>
+          <stringProp name="GraphQLHTTPSampler.operationName">BusinessCustomer</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query BusinessCustomer ($sbi: ID!, $crn: ID!) {
 	business(sbi: $sbi) {
 		customer(crn: $crn) {
