@@ -481,6 +481,65 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessMessages">
+          <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/graphql</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessMessages&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query BusinessMessages($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\tmessages {\n\t\t\t\tid\n\t\t\t\tsubject\n\t\t\t\tdate\n\t\t\t\tbody\n\t\t\t\tread\n\t\t\t\tdeleted\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="GraphQLHTTPSampler.operationName">BusinessMessages</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query BusinessMessages($crn: ID!, $sbi: ID!) {
+	customer(crn: $crn) {
+		personId
+		crn
+		business(sbi: $sbi) {
+			messages {
+				id
+				subject
+				date
+				body
+				read
+				deleted
+			}
+		}
+	}
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Email</stringProp>
+                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
         <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
           <stringProp name="JSON_PATH">$.error</stringProp>
           <stringProp name="EXPECTED_VALUE"></stringProp>
