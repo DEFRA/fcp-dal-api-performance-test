@@ -47,7 +47,7 @@
       </ThreadGroup>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
-          <intProp name="calcMode">0</intProp>
+          <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${requestratepm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
