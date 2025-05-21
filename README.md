@@ -1,9 +1,34 @@
 # fcp-dal-api-performance-test
 
-A JMeter based test runner for the CDP Platform.
+A JMeter based Consolidated View test runner for the CDP Platform.
 
 - [Licence](#licence)
   - [About the licence](#about-the-licence)
+
+## About the Consolidated View Tests
+
+### Authentication
+
+In the entrypoint.sh file, a call is made to microsoftonline.com to extract an authentication token for use in the test calls to Consolidated View. It is saved in an script variable "auth_token" which is then converted to an environment variable "authToken" when JMeter itself is started in the same file.
+
+In the tests themselves, this environment variable is then referenced in the JMeter header components with Name=Authorization and Value=Bearer {token).
+
+### Validation
+
+Validation for each of the test calls is currently quite simple. Each call is subject to a response assertion that it receives a 200 response code. Each call is also subject to a JSON assertion to ensure there is NOT an "error" block in the response.
+
+### Load profiling
+
+JMeter offers a number of ways to model the load placed on the system under test..
+1. We have used a "Constant Throughput timer" which restricts the load to a value set in one of the CSV files and set as the environment variable "requestratepm".
+2. In the main ThreadGroup of the test, we have set each thread to have a time limit of 10 minutes. Each thread created will repeat until this time limit is reached.
+
+### CSV files and data
+
+We make use of three CSV files in the tests which are read at the start of the test using two "CSV Data Set Config" JMeter items.
+1. jmeter.config.testparameters.csv - this stores the aforementioned "requestratepm" (request rate per minute for the test)
+2. jmeter.config.testdata.csv - this stores individual test data that is needed to make the tests run correctly (e.g. SBI and CRN numbers)
+3. jmeter.config.pairedtestdata.csv - this stores test data where each row of data needs to align to a particular organisation and person. If there is no association between the data in a given row, errors may be seen in the tests.
 
 ## Build
 
