@@ -6,11 +6,22 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
     </TestPlan>
     <hashTree>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test data - CSV Data Set Config">
         <stringProp name="filename">jmeter.config.testdata.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames"></stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Paired test data - CSV Data Set Config">
+        <stringProp name="filename">jmeter.config.pairedtestdata.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
@@ -142,7 +153,7 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -246,7 +257,7 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -385,7 +396,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -404,7 +415,7 @@
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -440,7 +451,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessCustomer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query BusinessCustomer ($sbi: ID!, $crn: ID!) {\n\tbusiness(sbi: $sbi) {\n\t\tcustomer(crn: $crn) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessCustomer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;},&quot;query&quot;:&quot;query BusinessCustomer ($sbi: ID!, $crn: ID!) {\n\tbusiness(sbi: $sbi) {\n\t\tcustomer(crn: $crn) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -458,7 +469,7 @@
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -494,7 +505,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessMessages&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query BusinessMessages($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\tmessages {\n\t\t\t\tid\n\t\t\t\tsubject\n\t\t\t\tdate\n\t\t\t\tbody\n\t\t\t\tread\n\t\t\t\tdeleted\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessMessages&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;},&quot;query&quot;:&quot;query BusinessMessages($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\tmessages {\n\t\t\t\tid\n\t\t\t\tsubject\n\t\t\t\tdate\n\t\t\t\tbody\n\t\t\t\tread\n\t\t\t\tdeleted\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -517,12 +528,12 @@
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
