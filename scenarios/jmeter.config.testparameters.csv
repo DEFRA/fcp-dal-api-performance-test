@@ -1,2 +1,2 @@
-testtimeseconds,testrampupseconds,testnumberofthreads,requestratepm
-600,120,6,110
+test-time-seconds,test-ramp-up-seconds,test-number-of-threads
+600,120,6
