@@ -15,7 +15,7 @@ In the tests themselves, this environment variable is then referenced in the JMe
 
 ### Validation
 
-Validation for each of the test calls is currently quite simple. Each call is subject to a response assertion that it receives a 200 response code. Each call is also subject to a JSON assertion to ensure there is NOT an "error" block in the response.
+Validation for each of the test calls is currently quite simple. Each call is subject to a response assertion that it receives a 200 response code. Each call is also subject to a JSON assertion to ensure there is NOT an `error` property in the response object.
 
 ### Load profiling
 
