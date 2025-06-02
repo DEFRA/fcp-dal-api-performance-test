@@ -11,7 +11,7 @@ A JMeter based Consolidated View test runner for the CDP Platform.
 
 In the entrypoint.sh file, a call is made to microsoftonline.com to extract an authentication token for use in the test calls to Consolidated View. It is saved in an script variable "auth_token" which is then converted to an environment variable "authToken" when JMeter itself is started in the same file.
 
-In the tests themselves, this environment variable is then referenced in the JMeter header components with Name=Authorization and Value=Bearer {token).
+In the tests themselves, this environment variable is then referenced in the JMeter header components with `Name=Authorization` and `Value=Bearer {token}`.
 
 ### Validation
 
