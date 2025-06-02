@@ -19,7 +19,7 @@ Validation for each of the test calls is currently quite simple. Each call is su
 
 ### Load profiling
 
-JMeter offers a number of ways to model the load placed on the system under test..
+JMeter offers a number of ways to model the load placed on the system under test:
 1. We have used a "Constant Throughput timer" which restricts the load to a value set in one of the CSV files and set as the environment variable "xxx-rrpm" (where xxx is the test name).
 2. In the main ThreadGroup of the test, we have set each thread to have a time limit of 10 minutes. Each thread created will repeat until this time limit is reached.
 
