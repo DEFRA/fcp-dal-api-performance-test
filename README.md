@@ -26,10 +26,10 @@ JMeter offers a number of ways to model the load placed on the system under test
 ### CSV files and data
 
 We make use of four CSV files in the tests which are read at the start of the test using two "CSV Data Set Config" JMeter items.
-1. jmeter.config.testparameters.csv - this stores the aforementioned "requestratepm" (request rate per minute for the test) as well as "testrampupseconds", "testnumberofthreads" and "requestratepm"
-2. jmeter.config.testdata.csv - this stores individual test data that is needed to make the tests run correctly (e.g. SBI and CRN numbers)
-3. jmeter.config.pairedtestdata.csv - this stores test data where each row of data needs to align to a particular organisation and person. If there is no association between the data in a given row, errors may be seen in the tests.
-4. jmeter.config.testmodel.csv - this stores the request rate per minute (rrpm) for each of the tests. Using this, we can control the rate of each request type and model a load that is more realistic. The value needs to be referenced in the "Constant Throughput timer" for each type of thread.
+1. `jmeter.config.testparameters.csv` - this stores the aforementioned `requestratepm` (request rate per minute for the test) as well as `testrampupseconds`, `testnumberofthreads` and `requestratepm`
+2. `jmeter.config.testdata.csv` - this stores individual test data that is needed to make the tests run correctly (e.g. SBI and CRN numbers)
+3. `jmeter.config.pairedtestdata.csv` - this stores test data where each row of data needs to align to a particular organisation and person. If there is no association between the data in a given row, errors may be seen in the tests.
+4. `jmeter.config.testmodel.csv` - this stores the request rate per minute (**rrpm**) for each of the tests. Using this, we can control the rate of each request type and model a load that is more realistic. The value needs to be referenced in the "Constant Throughput timer" for each type of thread.
 
 ## Build
 
