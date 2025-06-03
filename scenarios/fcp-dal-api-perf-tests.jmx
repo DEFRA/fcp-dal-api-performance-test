@@ -21,6 +21,18 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Paired test data - CSV Data Set Config">
+        <stringProp name="filename">jmeter.config.pairedtestdata.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames"></stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test parameters - CSV Data Set Config">
         <stringProp name="filename">jmeter.config.testparameters.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
@@ -33,10 +45,22 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Performance Tests">
-        <intProp name="ThreadGroup.num_threads">6</intProp>
-        <intProp name="ThreadGroup.ramp_time">120</intProp>
-        <longProp name="ThreadGroup.duration">600</longProp>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test model - CSV Data Set Config">
+        <stringProp name="filename">jmeter.config.testmodel.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames"></stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Health">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds}</stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -48,7 +72,7 @@
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${requestratepm}</stringProp>
+          <stringProp name="throughput">${health-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Health">
@@ -63,6 +87,25 @@
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
         </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessSimple">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${business-simple-rrpm}</stringProp>
+        </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessSimple">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
@@ -112,7 +155,26 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerSimple">
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerSimple">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${customer-simple-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerSimple" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -142,7 +204,7 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -160,7 +222,26 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomers">
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomers">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${business-customer-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomers" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -211,7 +292,26 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-QueryCustomerBusinesses">
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - QueryCustomerBusinesses">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${query-customer-businesses-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-QueryCustomerBusinesses" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -246,7 +346,7 @@
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -264,7 +364,26 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-AuthenticateQuestions">
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - AuthenticateQuestions">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${authenticate-questions-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-AuthenticateQuestions" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -319,7 +438,26 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerBusinesses">
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerBusinesses">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${customer-businesses-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerBusinesses" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -372,7 +510,26 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerPermissions">
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerPermissions">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${customer-permissions-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerPermissions" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -385,7 +542,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -404,7 +561,7 @@
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -427,7 +584,26 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomerPermissions">
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomerPermissions">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${business-customer-permissions-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomerPermissions" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -440,7 +616,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessCustomer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query BusinessCustomer ($sbi: ID!, $crn: ID!) {\n\tbusiness(sbi: $sbi) {\n\t\tcustomer(crn: $crn) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessCustomer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;},&quot;query&quot;:&quot;query BusinessCustomer ($sbi: ID!, $crn: ID!) {\n\tbusiness(sbi: $sbi) {\n\t\tcustomer(crn: $crn) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -458,7 +634,7 @@
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -481,7 +657,26 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessMessages">
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessMessages">
+        <stringProp name="ThreadGroup.num_threads">${test-number-of-threads} </stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${test-ramp-up-seconds} </stringProp>
+        <stringProp name="ThreadGroup.duration">${test-time-seconds}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${business-messages-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessMessages" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -494,7 +689,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessMessages&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query BusinessMessages($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\tmessages {\n\t\t\t\tid\n\t\t\t\tsubject\n\t\t\t\tdate\n\t\t\t\tbody\n\t\t\t\tread\n\t\t\t\tdeleted\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessMessages&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;},&quot;query&quot;:&quot;query BusinessMessages($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\tmessages {\n\t\t\t\tid\n\t\t\t\tsubject\n\t\t\t\tdate\n\t\t\t\tbody\n\t\t\t\tread\n\t\t\t\tdeleted\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -517,12 +712,12 @@
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;,&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -540,16 +735,16 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
-          <stringProp name="JSON_PATH">$.error</stringProp>
-          <stringProp name="EXPECTED_VALUE"></stringProp>
-          <boolProp name="JSONVALIDATION">false</boolProp>
-          <boolProp name="EXPECT_NULL">false</boolProp>
-          <boolProp name="INVERT">true</boolProp>
-          <boolProp name="ISREGEX">false</boolProp>
-        </JSONPathAssertion>
-        <hashTree/>
       </hashTree>
+      <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
+        <stringProp name="JSON_PATH">$.error</stringProp>
+        <stringProp name="EXPECTED_VALUE"></stringProp>
+        <boolProp name="JSONVALIDATION">false</boolProp>
+        <boolProp name="EXPECT_NULL">false</boolProp>
+        <boolProp name="INVERT">true</boolProp>
+        <boolProp name="ISREGEX">false</boolProp>
+      </JSONPathAssertion>
+      <hashTree/>
       <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
         <collectionProp name="Asserion.test_strings">
           <stringProp name="49586">200</stringProp>
@@ -560,7 +755,7 @@
         <intProp name="Assertion.test_type">2</intProp>
       </ResponseAssertion>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
