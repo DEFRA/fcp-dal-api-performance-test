@@ -20,7 +20,7 @@
       </CSVDataSet>
       <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Paired test data - CSV Data Set Config">
-        <stringProp name="filename">data/${__P(env)}/jjmeter.config.pairedtestdata.csv</stringProp>
+        <stringProp name="filename">data/${__P(env)}/jmeter.config.pairedtestdata.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
@@ -32,7 +32,7 @@
       </CSVDataSet>
       <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test model - CSV Data Set Config">
-        <stringProp name="filename">data/${__P(env)}/jjmeter.config.testmodel.csv</stringProp>
+        <stringProp name="filename">data/${__P(env)}/jmeter.config.testmodel.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
