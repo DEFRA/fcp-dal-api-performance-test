@@ -37,8 +37,13 @@ if [ -z "${auth_token}" ] ; then
   exit 2
 fi
 
+# Create file paths for environments
+test_data_file_path="data/${ENVIRONMENT}/jmeter.config.testdata.csv"
+test_paireddata_file_path="data/${ENVIRONMENT}/jmeter.config.pairedtestdata.csv"
+test_model_file_path="data/${ENVIRONMENT}/jmeter.config.testmodel.csv"
+
 # Run the test suite
-jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -q user.properties -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}"
+jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -q user.properties -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}" -JtestDataFilePath="${test_data_file_path}" -JtestPairedDataFilePath="${test_paireddata_file_path}" -JtestModelFilePath="${test_model_file_path}"
 test_exit_code=$?
 
 # Publish the results into S3 so they can be displayed in the CDP Portal
