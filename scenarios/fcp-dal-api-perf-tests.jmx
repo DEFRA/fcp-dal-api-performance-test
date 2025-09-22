@@ -587,7 +587,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomerPermissions" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomerPermissions">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -996,7 +996,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessLegalStatus" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessLegalStatus">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1009,12 +1009,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-legal-status-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessLegalStatus">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1027,44 +1027,38 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessLegalStatus&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+       &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;legalStatusCode&quot;: 123
+	}
+},&quot;query&quot;:&quot;mutation UpdateBusinessLegalStatus($input: UpdateBusinessLegalStatusInput!) {\n        updateBusinessLegalStatus(input: $input) {\n          success\n            business {\n            info {\n              legalStatus {\n                code\n                type\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
-        name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
+          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessLegalStatus</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessLegalStatus($input: UpdateBusinessLegalStatusInput!) {
+        updateBusinessLegalStatus(input: $input) {
+          success
+            business {
+            info {
+              legalStatus {
+                code
+                type
+              }
+            }
+          }
         }
-      }
-    }
-}</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+      }</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+       &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;legalStatusCode&quot;: 123
+	}
+}
+</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1088,7 +1082,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessDateStartedFarming" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessDateStartedFarming">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1101,12 +1095,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-date-started-farming-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessDateStartedFarming">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1119,44 +1113,34 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessDateStartedFarming&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+	  &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;dateStartedFarming&quot;: &quot;01-01-2020&quot;
+	}
+},&quot;query&quot;:&quot;mutation UpdateBusinessDateStartedFarming($input: UpdateBusinessDateStartedFarmingInput!) {\n        updateBusinessDateStartedFarming(input: $input) {\n          success\n            business {\n            info {\n              dateStartedFarming\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
-        name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
+          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessDateStartedFarming</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessDateStartedFarming($input: UpdateBusinessDateStartedFarmingInput!) {
+        updateBusinessDateStartedFarming(input: $input) {
+          success
+            business {
+            info {
+              dateStartedFarming
+            }
+          }
         }
-      }
-    }
+      }</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+	  &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;dateStartedFarming&quot;: &quot;01-01-2020&quot;
+	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1180,7 +1164,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessType" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessType">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1193,12 +1177,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-type-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessType">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1211,44 +1195,37 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessType&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+		&quot;sbi&quot;: &quot;106430700&quot;,
+          &quot;typeCode&quot;: 123
+	}
+},&quot;query&quot;:&quot;mutation UpdateBusinessType($input: UpdateBusinessTypeInput!) {\n        updateBusinessType(input: $input) {\n          success\n            business {\n            info {\n              type {\n                code\n                type\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
-        name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
+          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessType</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessType($input: UpdateBusinessTypeInput!) {
+        updateBusinessType(input: $input) {
+          success
+            business {
+            info {
+              type {
+                code
+                type
+              }
+            }
+          }
         }
-      }
-    }
+      }</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+		&quot;sbi&quot;: &quot;106430700&quot;,
+          &quot;typeCode&quot;: 123
+	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1272,7 +1249,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessRegistrationNumbers" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessRegistrationNumbers">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1285,12 +1262,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-registration-numbers-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessRegistrationNumbers">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1303,44 +1280,43 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessRegistrationNumbers&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+	  &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;registrationNumbers&quot;: {
+         &quot;charityCommission&quot;: &quot;0123&quot;,
+         &quot;companiesHouse&quot;: &quot;0456&quot;
+       }
+     }
+},&quot;query&quot;:&quot;mutation UpdateBusinessRegistrationNumbers($input: UpdateBusinessRegistrationNumbersInput!) {\n        updateBusinessRegistrationNumbers(input: $input) {\n          success\n            business {\n            info {\n              registrationNumbers {\n                charityCommission\n                companiesHouse\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
-        name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
+          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessRegistrationNumbers</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessRegistrationNumbers($input: UpdateBusinessRegistrationNumbersInput!) {
+        updateBusinessRegistrationNumbers(input: $input) {
+          success
+            business {
+            info {
+              registrationNumbers {
+                charityCommission
+                companiesHouse
+              }
+            }
+          }
         }
-      }
-    }
+      }</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+	  &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;registrationNumbers&quot;: {
+         &quot;charityCommission&quot;: &quot;0123&quot;,
+         &quot;companiesHouse&quot;: &quot;0456&quot;
+       }
+     }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1379,7 +1355,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${create-business-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL - createBusiness">
@@ -1581,7 +1557,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessName" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessName">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1594,12 +1570,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-name-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessName">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1612,44 +1588,34 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessName&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+       &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;name&quot;: &quot;this is a new name&quot;
+     }
+},&quot;query&quot;:&quot;mutation UpdateBusinessName($input: UpdateBusinessNameInput!) {\n  updateBusinessName(input: $input) {\n    success\n    business {\n      info {\n        name\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
+          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessName</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessName($input: UpdateBusinessNameInput!) {
+  updateBusinessName(input: $input) {
+    success
+    business {
+      info {
         name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
-        }
       }
     }
+  }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+       &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;name&quot;: &quot;this is a new name&quot;
+     }
+}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1673,7 +1639,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessEmail" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessEmail">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1686,12 +1652,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-email-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessEmail">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1704,44 +1670,40 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updateBusinessEmail&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+       &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;email&quot;: {
+         &quot;address&quot;: &quot;newemail@test.com&quot;
+      }
+    }
+},&quot;query&quot;:&quot;mutation UpdateBusinessEmail($input: UpdateBusinessEmailInput!) {\n  updateBusinessEmail(input: $input) {\n    business {\n      info {\n        email {\n          address\n        }\n      }\n    }\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
-        name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
+          <stringProp name="GraphQLHTTPSampler.operationName">updateBusinessEmail</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessEmail($input: UpdateBusinessEmailInput!) {
+  updateBusinessEmail(input: $input) {
+    business {
+      info {
+        email {
+          address
         }
       }
     }
+    success
+  }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+       &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;email&quot;: {
+         &quot;address&quot;: &quot;newemail@test.com&quot;
+      }
+    }
+}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1765,7 +1727,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessPhone" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessPhone">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1778,12 +1740,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-phone-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessPhone">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1796,44 +1758,55 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updateBusinessPhone&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+	  &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;phone&quot;: {
+         &quot;landline&quot;: &quot;new phone&quot;,
+         &quot;mobile&quot;: &quot;new mobile&quot;
+       },
+       &quot;correspondencePhone&quot;: {
+         &quot;landline&quot;: &quot;new correspondence phone&quot;,
+         &quot;mobile&quot;: &quot;new correspondence mobile&quot;
+       }
+	}
+},&quot;query&quot;:&quot;mutation UpdateBusinessPhone($input: UpdateBusinessPhoneInput!) {\n        updateBusinessPhone(input: $input) {\n          business {\n            info {\n              phone {\n                landline\n                mobile\n              }\n              correspondencePhone {\n                landline\n                mobile\n              }\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
-        name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
+          <stringProp name="GraphQLHTTPSampler.operationName">updateBusinessPhone</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessPhone($input: UpdateBusinessPhoneInput!) {
+        updateBusinessPhone(input: $input) {
+          business {
+            info {
+              phone {
+                landline
+                mobile
+              }
+              correspondencePhone {
+                landline
+                mobile
+              }
+            }
+          }
+          success
         }
-      }
-    }
+      }</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+	  &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;phone&quot;: {
+         &quot;landline&quot;: &quot;new phone&quot;,
+         &quot;mobile&quot;: &quot;new mobile&quot;
+       },
+       &quot;correspondencePhone&quot;: {
+         &quot;landline&quot;: &quot;new correspondence phone&quot;,
+         &quot;mobile&quot;: &quot;new correspondence mobile&quot;
+       }
+	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1857,7 +1830,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessAddress" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessAddress">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1870,12 +1843,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-address-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessAddress">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1888,44 +1861,150 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessAddress&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+      &quot;sbi&quot;: &quot;106430700&quot;,
+      &quot;address&quot;: {
+        &quot;buildingName&quot;: &quot;new buildingName&quot;,
+        &quot;buildingNumberRange&quot;: &quot;new buildingNumberRange&quot;,
+        &quot;city&quot;: &quot;new city&quot;,
+        &quot;country&quot;: &quot;new country&quot;,
+        &quot;county&quot;: &quot;new county&quot;,
+        &quot;dependentLocality&quot;: &quot;new dependentLocality&quot;,
+        &quot;doubleDependentLocality&quot;: &quot;new doubleDependentLocality&quot;,
+        &quot;flatName&quot;: &quot;new flatName&quot;,
+        &quot;line1&quot;: &quot;new line1&quot;,
+        &quot;line2&quot;: &quot;new line2&quot;,
+        &quot;line3&quot;: &quot;new line3&quot;,
+        &quot;line4&quot;: &quot;new line4&quot;,
+        &quot;line5&quot;: &quot;new line5&quot;,
+        &quot;pafOrganisationName&quot;: &quot;new pafOrganisationName&quot;,
+        &quot;postalCode&quot;: &quot;new postalCode&quot;,
+        &quot;street&quot;: &quot;new street&quot;,
+        &quot;uprn&quot;: &quot;new uprn&quot;
+      },
+      &quot;correspondenceAddress&quot;: {
+        &quot;buildingName&quot;: &quot;new buildingName&quot;
+        &quot;buildingNumberRange&quot;: &quot;new buildingNumberRange&quot;,
+        &quot;city&quot;: &quot;new city&quot;,
+        &quot;country&quot;: &quot;new country&quot;,
+        &quot;county&quot;: &quot;new county&quot;,
+        &quot;dependentLocality&quot;: &quot;new dependentLocality&quot;,
+        &quot;doubleDependentLocality&quot;: &quot;new doubleDependentLocality&quot;,
+        &quot;flatName&quot;: &quot;new flatName&quot;,
+        &quot;line1&quot;: &quot;new line1&quot;,
+        &quot;line2&quot;: &quot;new line2&quot;,
+        &quot;line3&quot;: &quot;new line3&quot;,
+        &quot;line4&quot;: &quot;new line4&quot;,
+        &quot;line5&quot;: &quot;new line5&quot;,
+        &quot;pafOrganisationName&quot;: &quot;new pafOrganisationName&quot;,
+        &quot;postalCode&quot;: &quot;new postalCode&quot;,
+        &quot;street&quot;: &quot;new street&quot;,
+        &quot;uprn&quot;: &quot;new uprn&quot;
+      },
+      &quot;isCorrespondenceAsBusinessAddress&quot;: true
+
+	}
+},&quot;query&quot;:&quot;mutation UpdateBusinessAddress($input: UpdateBusinessAddressInput!) {\n        updateBusinessAddress(input: $input) {\n          business {\n            info {\n              correspondenceAddress {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              address {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              isCorrespondenceAsBusinessAddress\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
-        name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
+          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessAddress</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessAddress($input: UpdateBusinessAddressInput!) {
+        updateBusinessAddress(input: $input) {
+          business {
+            info {
+              correspondenceAddress {
+                buildingName
+                buildingNumberRange
+                city
+                country
+                county
+                dependentLocality
+                doubleDependentLocality
+                flatName
+                line1
+                line2
+                line3
+                line4
+                line5
+                pafOrganisationName
+                postalCode
+                street
+                uprn
+              }
+              address {
+                buildingName
+                buildingNumberRange
+                city
+                country
+                county
+                dependentLocality
+                doubleDependentLocality
+                flatName
+                line1
+                line2
+                line3
+                line4
+                line5
+                pafOrganisationName
+                postalCode
+                street
+                uprn
+              }
+              isCorrespondenceAsBusinessAddress
+            }
+          }
+          success
         }
-      }
-    }
+      }</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+      &quot;sbi&quot;: &quot;106430700&quot;,
+      &quot;address&quot;: {
+        &quot;buildingName&quot;: &quot;new buildingName&quot;,
+        &quot;buildingNumberRange&quot;: &quot;new buildingNumberRange&quot;,
+        &quot;city&quot;: &quot;new city&quot;,
+        &quot;country&quot;: &quot;new country&quot;,
+        &quot;county&quot;: &quot;new county&quot;,
+        &quot;dependentLocality&quot;: &quot;new dependentLocality&quot;,
+        &quot;doubleDependentLocality&quot;: &quot;new doubleDependentLocality&quot;,
+        &quot;flatName&quot;: &quot;new flatName&quot;,
+        &quot;line1&quot;: &quot;new line1&quot;,
+        &quot;line2&quot;: &quot;new line2&quot;,
+        &quot;line3&quot;: &quot;new line3&quot;,
+        &quot;line4&quot;: &quot;new line4&quot;,
+        &quot;line5&quot;: &quot;new line5&quot;,
+        &quot;pafOrganisationName&quot;: &quot;new pafOrganisationName&quot;,
+        &quot;postalCode&quot;: &quot;new postalCode&quot;,
+        &quot;street&quot;: &quot;new street&quot;,
+        &quot;uprn&quot;: &quot;new uprn&quot;
+      },
+      &quot;correspondenceAddress&quot;: {
+        &quot;buildingName&quot;: &quot;new buildingName&quot;
+        &quot;buildingNumberRange&quot;: &quot;new buildingNumberRange&quot;,
+        &quot;city&quot;: &quot;new city&quot;,
+        &quot;country&quot;: &quot;new country&quot;,
+        &quot;county&quot;: &quot;new county&quot;,
+        &quot;dependentLocality&quot;: &quot;new dependentLocality&quot;,
+        &quot;doubleDependentLocality&quot;: &quot;new doubleDependentLocality&quot;,
+        &quot;flatName&quot;: &quot;new flatName&quot;,
+        &quot;line1&quot;: &quot;new line1&quot;,
+        &quot;line2&quot;: &quot;new line2&quot;,
+        &quot;line3&quot;: &quot;new line3&quot;,
+        &quot;line4&quot;: &quot;new line4&quot;,
+        &quot;line5&quot;: &quot;new line5&quot;,
+        &quot;pafOrganisationName&quot;: &quot;new pafOrganisationName&quot;,
+        &quot;postalCode&quot;: &quot;new postalCode&quot;,
+        &quot;street&quot;: &quot;new street&quot;,
+        &quot;uprn&quot;: &quot;new uprn&quot;
+      },
+      &quot;isCorrespondenceAsBusinessAddress&quot;: true
+
+	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1949,7 +2028,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessVAT" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessVAT">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1962,12 +2041,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-business-vat-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessVAT">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1980,44 +2059,34 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updateBusinessVAT&quot;,&quot;variables&quot;:{
+	&quot;input&quot;: {
+       &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;vat&quot;: &quot;123456789&quot;
+	}
+},&quot;query&quot;:&quot;mutation UpdateBusinessVAT($input: UpdateBusinessVATInput!) {\n        updateBusinessVAT(input: $input) {\n          business {\n            info {\n              vat\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Applications</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Applications ($sbi: ID!) {
-    business(sbi: $sbi) {
-      applications {
-        sbi
-        id
-        subjectId
-        year
-        name
-        moduleCode
-        scheme
-        statusCodeP
-        statusCodeS
-        status
-        submissionDate
-        portalStatusP
-        portalStatusS
-        portalStatus
-        active
-        transitionId
-        transitionName
-        agreementReferences
-        transitionHistory {
-          id
-          name
-          timestamp
-          checkStatus
+          <stringProp name="GraphQLHTTPSampler.operationName">updateBusinessVAT</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessVAT($input: UpdateBusinessVATInput!) {
+        updateBusinessVAT(input: $input) {
+          business {
+            info {
+              vat
+            }
+          }
+          success
         }
-      }
-    }
+      }</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+	&quot;input&quot;: {
+       &quot;sbi&quot;: &quot;106430700&quot;,
+       &quot;vat&quot;: &quot;123456789&quot;
+	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2054,9 +2123,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${update-person-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updatePerson">
