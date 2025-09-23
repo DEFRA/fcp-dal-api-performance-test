@@ -2267,6 +2267,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">/graphql</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
@@ -2277,7 +2278,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;query&quot;:&quot;mutation UpdateCustomerAddress($input: UpdateCustomerAddressInput!) { updateCustomerAddress(input: $input) {    success    customer {      info {        address {          pafOrganisationName          line1          line2          line3          line4          line5          buildingNumberRange          buildingName          street          city          county          postalCode          country          uprn          dependentLocality          doubleDependentLocality        }      }    }  }}&quot;,&#xd;
+&quot;query&quot;:&quot;mutation ($input: UpdateCustomerAddressInput!) { updateCustomerAddress(input: $input) { \n success \n customer \n { \n info { \n address { \n pafOrganisationName \n line1 \n line2 \n line3 \n line4 \n line5 \n buildingNumberRange \n buildingName \n street \n city \n county \n postalCode \n country \n uprn \n dependentLocality \n doubleDependentLocality \n } \n } \n } \n } \n }&quot;,&#xd;
 &quot;variables&quot;:{&#xd;
   &quot;input&quot;: {&#xd;
     &quot;crn&quot;: &quot;1100696741&quot;,&#xd;
@@ -2309,7 +2310,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
