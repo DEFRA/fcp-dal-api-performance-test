@@ -2246,6 +2246,115 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updatePerson2">
+        <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
+        <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+          <intProp name="calcMode">4</intProp>
+          <stringProp name="throughput">${update-person-rrpm}</stringProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/graphql</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">PUT</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;query&quot;: &quot;mutation UpdateCustomerAddress($input: UpdateCustomerAddressInput!) { &#xd;
+		updateCustomerAddress(input: $input) {&#xd;
+    success&#xd;
+    customer {&#xd;
+      info {&#xd;
+        address {&#xd;
+          pafOrganisationName&#xd;
+          line1&#xd;
+          line2&#xd;
+          line3&#xd;
+          line4&#xd;
+          line5&#xd;
+          buildingNumberRange&#xd;
+          buildingName&#xd;
+          flatName&#xd;
+          street&#xd;
+          city&#xd;
+          county&#xd;
+          postalCode&#xd;
+          country&#xd;
+          uprn&#xd;
+          dependentLocality&#xd;
+          doubleDependentLocality&#xd;
+        }&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}&quot;,&#xd;
+&quot;variables&quot;:{&#xd;
+  &quot;input&quot;: {&#xd;
+    &quot;crn&quot;: &quot;1100696741&quot;,&#xd;
+    &quot;address&quot;: {&#xd;
+      &quot;buildingName&quot;: &quot;newBuildingName&quot;,&#xd;
+      &quot;buildingNumberRange&quot;: &quot;newBuildingNumberRange&quot;,&#xd;
+      &quot;city&quot;: &quot;newCity&quot;,&#xd;
+      &quot;country&quot;: &quot;newCountry&quot;,&#xd;
+      &quot;county&quot;: &quot;newCounty&quot;,&#xd;
+      &quot;dependentLocality&quot;: &quot;newDependentLocality&quot;,&#xd;
+      &quot;doubleDependentLocality&quot;: &quot;newDoubleDependentLocality&quot;,&#xd;
+      &quot;flatName&quot;: &quot;newFlatName&quot;,&#xd;
+      &quot;line1&quot;: &quot;newLine1&quot;,&#xd;
+      &quot;line2&quot;: &quot;newLine2&quot;,&#xd;
+      &quot;line3&quot;: &quot;newLine3&quot;,&#xd;
+      &quot;line4&quot;: &quot;newLine4&quot;,&#xd;
+      &quot;line5&quot;: &quot;newLine5&quot;,&#xd;
+      &quot;pafOrganisationName&quot;: &quot;newPafOrganisationName&quot;,&#xd;
+      &quot;postalCode&quot;: &quot;newPostalCode&quot;,&#xd;
+      &quot;street&quot;: &quot;newStreet&quot;,&#xd;
+      &quot;uprn&quot;: &quot;newUprn&quot;&#xd;
+    }&#xd;
+  }&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Email</stringProp>
+                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
       <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
         <stringProp name="JSON_PATH">$.error</stringProp>
         <stringProp name="EXPECTED_VALUE"></stringProp>
