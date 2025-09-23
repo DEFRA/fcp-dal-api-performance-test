@@ -2277,34 +2277,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;query&quot;: &quot;mutation UpdateCustomerAddress($input: UpdateCustomerAddressInput!) { &#xd;
-		updateCustomerAddress(input: $input) {&#xd;
-    success&#xd;
-    customer {&#xd;
-      info {&#xd;
-        address {&#xd;
-          pafOrganisationName&#xd;
-          line1&#xd;
-          line2&#xd;
-          line3&#xd;
-          line4&#xd;
-          line5&#xd;
-          buildingNumberRange&#xd;
-          buildingName&#xd;
-          flatName&#xd;
-          street&#xd;
-          city&#xd;
-          county&#xd;
-          postalCode&#xd;
-          country&#xd;
-          uprn&#xd;
-          dependentLocality&#xd;
-          doubleDependentLocality&#xd;
-        }&#xd;
-      }&#xd;
-    }&#xd;
-  }&#xd;
-}&quot;,&#xd;
+	&quot;query&quot;:&quot;mutation UpdateCustomerAddress($input: UpdateCustomerAddressInput!) { updateCustomerAddress(input: $input) {    success    customer {      info {        address {          pafOrganisationName          line1          line2          line3          line4          line5          buildingNumberRange          buildingName          street          city          county          postalCode          country          uprn          dependentLocality          doubleDependentLocality        }      }    }  }}&quot;,&#xd;
 &quot;variables&quot;:{&#xd;
   &quot;input&quot;: {&#xd;
     &quot;crn&quot;: &quot;1100696741&quot;,&#xd;
