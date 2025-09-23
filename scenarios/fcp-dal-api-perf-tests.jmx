@@ -2241,6 +2241,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.name">Email</stringProp>
                 <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
               </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">gateway-type</stringProp>
+                <stringProp name="Header.value">internal</stringProp>
+              </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
@@ -2265,7 +2269,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http-update-user">
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">/graphql</stringProp>
@@ -2324,6 +2328,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Email</stringProp>
                 <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">gateway-type</stringProp>
+                <stringProp name="Header.value">internal</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
