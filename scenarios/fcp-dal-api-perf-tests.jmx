@@ -2264,13 +2264,13 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${update-person-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http-update-user">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">/graphql</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">PUT</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -2302,6 +2302,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       &quot;uprn&quot;: &quot;newUprn&quot;&#xd;
     }&#xd;
   }&#xd;
+}&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
