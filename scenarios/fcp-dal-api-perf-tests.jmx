@@ -756,7 +756,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${cph-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CPH" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CPH">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -769,24 +769,24 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Cph&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query CPHTest($sbi: ID!) {\n  business(sbi: $sbi) {\n    countyParishHoldings {\n      cphNumber\n      parish\n      startDate\n      endDate\n      species\n      xCoordinate\n      yCoordinate\n      address\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetCph&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query GetCph($sbi: ID!) {\n  business(sbi: $sbi) {\n    countyParishHoldings {\n      address\n      cphNumber\n      endDate\n      parish\n      species\n      startDate\n      xCoordinate\n      yCoordinate\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Cph</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query CPHTest($sbi: ID!) {
+          <stringProp name="GraphQLHTTPSampler.operationName">GetCph</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query GetCph($sbi: ID!) {
   business(sbi: $sbi) {
     countyParishHoldings {
+      address
       cphNumber
-      parish
-      startDate
       endDate
+      parish
       species
+      startDate
       xCoordinate
       yCoordinate
-      address
     }
   }
 }</stringProp>
@@ -795,7 +795,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -814,7 +814,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Agreements" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Agreements">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -832,7 +832,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${agreements-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Agreements" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Agreements">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -885,7 +885,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -2141,7 +2141,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updatePerson&quot;,&quot;variables&quot;:{
   &quot;input&quot;: {
     &quot;crn&quot;: &quot;1100696741&quot;,
     &quot;address&quot;: {
@@ -2164,13 +2164,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       &quot;uprn&quot;: &quot;newUprn&quot;
     }
   }
-},&quot;query&quot;:&quot;mutation ($input: UpdateCustomerAddressInput!) {\n  updateCustomerAddress(input: $input) {\n    success\n    customer {\n      info {\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
+},&quot;query&quot;:&quot;mutation updatePerson($input: UpdateCustomerAddressInput!) {\n  updateCustomerAddress(input: $input) {\n    success\n    customer {\n      info {\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation ($input: UpdateCustomerAddressInput!) {
+          <stringProp name="GraphQLHTTPSampler.operationName">updatePerson</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation updatePerson($input: UpdateCustomerAddressInput!) {
   updateCustomerAddress(input: $input) {
     success
     customer {
