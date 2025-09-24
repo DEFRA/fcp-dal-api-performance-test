@@ -738,7 +738,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CPH" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CPH">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -904,7 +904,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Applications" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Applications">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -922,7 +922,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${applications-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2142,28 +2142,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updatePerson&quot;,&quot;variables&quot;:{
-  &quot;input&quot;: {
-    &quot;crn&quot;: &quot;1100696741&quot;,
-    &quot;address&quot;: {
-      &quot;buildingName&quot;: &quot;newBuildingName&quot;,
-      &quot;buildingNumberRange&quot;: &quot;newBuildingNumberRange&quot;,
-      &quot;city&quot;: &quot;newCity&quot;,
-      &quot;country&quot;: &quot;newCountry&quot;,
-      &quot;county&quot;: &quot;newCounty&quot;,
-      &quot;dependentLocality&quot;: &quot;newDependentLocality&quot;,
-      &quot;doubleDependentLocality&quot;: &quot;newDoubleDependentLocality&quot;,
-      &quot;flatName&quot;: &quot;newFlatName&quot;,
-      &quot;line1&quot;: &quot;newLine1&quot;,
-      &quot;line2&quot;: &quot;newLine2&quot;,
-      &quot;line3&quot;: &quot;newLine3&quot;,
-      &quot;line4&quot;: &quot;newLine4&quot;,
-      &quot;line5&quot;: &quot;newLine5&quot;,
-      &quot;pafOrganisationName&quot;: &quot;newPafOrganisationName&quot;,
-      &quot;postalCode&quot;: &quot;newPostalCode&quot;,
-      &quot;street&quot;: &quot;newStreet&quot;,
-      &quot;uprn&quot;: &quot;newUprn&quot;
-    }
-  }
+  &quot;input&quot;: &quot;{\&quot;crn\&quot;:\&quot;1100696741\&quot;,\&quot;address\&quot;:{\&quot;buildingName\&quot;:\&quot;newBuildingName\&quot;,\&quot;buildingNumberRange\&quot;:\&quot;newBuildingNumberRange\&quot;,\&quot;city\&quot;:\&quot;newCity\&quot;,\&quot;country\&quot;:\&quot;newCountry\&quot;,\&quot;county\&quot;:\&quot;newCounty\&quot;,\&quot;dependentLocality\&quot;:\&quot;newDependentLocality\&quot;,\&quot;doubleDependentLocality\&quot;:\&quot;newDoubleDependentLocality\&quot;,\&quot;flatName\&quot;:\&quot;newFlatName\&quot;,\&quot;line1\&quot;:\&quot;newLine1\&quot;,\&quot;line2\&quot;:\&quot;newLine2\&quot;,\&quot;line3\&quot;:\&quot;newLine3\&quot;,\&quot;line4\&quot;:\&quot;newLine4\&quot;,\&quot;line5\&quot;:\&quot;newLine5\&quot;,\&quot;pafOrganisationName\&quot;:\&quot;newPafOrganisationName\&quot;,\&quot;postalCode\&quot;:\&quot;newPostalCode\&quot;,\&quot;street\&quot;:\&quot;newStreet\&quot;,\&quot;uprn\&quot;:\&quot;newUprn\&quot;}}&quot;
 },&quot;query&quot;:&quot;mutation updatePerson($input: UpdateCustomerAddressInput!) {\n  updateCustomerAddress(input: $input) {\n    success\n    customer {\n      info {\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -2200,28 +2179,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
   }
 }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables">{
-  &quot;input&quot;: {
-    &quot;crn&quot;: &quot;1100696741&quot;,
-    &quot;address&quot;: {
-      &quot;buildingName&quot;: &quot;newBuildingName&quot;,
-      &quot;buildingNumberRange&quot;: &quot;newBuildingNumberRange&quot;,
-      &quot;city&quot;: &quot;newCity&quot;,
-      &quot;country&quot;: &quot;newCountry&quot;,
-      &quot;county&quot;: &quot;newCounty&quot;,
-      &quot;dependentLocality&quot;: &quot;newDependentLocality&quot;,
-      &quot;doubleDependentLocality&quot;: &quot;newDoubleDependentLocality&quot;,
-      &quot;flatName&quot;: &quot;newFlatName&quot;,
-      &quot;line1&quot;: &quot;newLine1&quot;,
-      &quot;line2&quot;: &quot;newLine2&quot;,
-      &quot;line3&quot;: &quot;newLine3&quot;,
-      &quot;line4&quot;: &quot;newLine4&quot;,
-      &quot;line5&quot;: &quot;newLine5&quot;,
-      &quot;pafOrganisationName&quot;: &quot;newPafOrganisationName&quot;,
-      &quot;postalCode&quot;: &quot;newPostalCode&quot;,
-      &quot;street&quot;: &quot;newStreet&quot;,
-      &quot;uprn&quot;: &quot;newUprn&quot;
-    }
-  }
+  &quot;input&quot;: &quot;{\&quot;crn\&quot;:\&quot;1100696741\&quot;,\&quot;address\&quot;:{\&quot;buildingName\&quot;:\&quot;newBuildingName\&quot;,\&quot;buildingNumberRange\&quot;:\&quot;newBuildingNumberRange\&quot;,\&quot;city\&quot;:\&quot;newCity\&quot;,\&quot;country\&quot;:\&quot;newCountry\&quot;,\&quot;county\&quot;:\&quot;newCounty\&quot;,\&quot;dependentLocality\&quot;:\&quot;newDependentLocality\&quot;,\&quot;doubleDependentLocality\&quot;:\&quot;newDoubleDependentLocality\&quot;,\&quot;flatName\&quot;:\&quot;newFlatName\&quot;,\&quot;line1\&quot;:\&quot;newLine1\&quot;,\&quot;line2\&quot;:\&quot;newLine2\&quot;,\&quot;line3\&quot;:\&quot;newLine3\&quot;,\&quot;line4\&quot;:\&quot;newLine4\&quot;,\&quot;line5\&quot;:\&quot;newLine5\&quot;,\&quot;pafOrganisationName\&quot;:\&quot;newPafOrganisationName\&quot;,\&quot;postalCode\&quot;:\&quot;newPostalCode\&quot;,\&quot;street\&quot;:\&quot;newStreet\&quot;,\&quot;uprn\&quot;:\&quot;newUprn\&quot;}}&quot;
 }</stringProp>
           <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
