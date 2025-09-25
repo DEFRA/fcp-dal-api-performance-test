@@ -2404,7 +2404,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Accept</stringProp>
-                <stringProp name="Header.value">application/graphql-response+, application/json</stringProp>
+                <stringProp name="Header.value">application/graphql-response+json, application/json</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
