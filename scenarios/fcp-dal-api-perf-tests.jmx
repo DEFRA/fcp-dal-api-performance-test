@@ -7,7 +7,7 @@
       </elementProp>
     </TestPlan>
     <hashTree>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test data - CSV Data Set Config" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test data - CSV Data Set Config">
         <stringProp name="filename">${__P(testDataFilePath)}</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -19,7 +19,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Paired test data - CSV Data Set Config" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Paired test data - CSV Data Set Config">
         <stringProp name="filename">${__P(testPairedDataFilePath)}</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -31,7 +31,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test model - CSV Data Set Config" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test model - CSV Data Set Config">
         <stringProp name="filename">${__P(testModelFilePath)}</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -1586,7 +1586,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessEmail" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessEmail">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1617,22 +1617,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessEmail&quot;,&quot;variables&quot;:{
-	&quot;input&quot;: {
-       &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;email&quot;: {
-         &quot;address&quot;: &quot;newemail@test.com&quot;
-      }
-    }
-},&quot;query&quot;:&quot;mutation UpdateBusinessEmail($input: UpdateBusinessEmailInput!) {\n  updateBusinessEmail(input: $input) {\n    business {\n      info {\n        email {\n          address\n        }\n      }\n    }\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessEmail(input: { sbi: \&quot;106430700\&quot;, email: { address: \&quot;newemail@test.com\&quot; } }) {\n    business {\n      info {\n        email {\n          address\n        }\n      }\n    }\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessEmail</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessEmail($input: UpdateBusinessEmailInput!) {
-  updateBusinessEmail(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+  updateBusinessEmail(input: { sbi: &quot;106430700&quot;, email: { address: &quot;newemail@test.com&quot; } }) {
     business {
       info {
         email {
@@ -1642,14 +1634,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
     success
   }
-}</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-	&quot;input&quot;: {
-       &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;email&quot;: {
-         &quot;address&quot;: &quot;newemail@test.com&quot;
-      }
-    }
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
@@ -1763,7 +1747,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessAddress" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessAddress">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1794,59 +1778,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessAddress&quot;,&quot;variables&quot;:{
-	&quot;input&quot;: {
-      &quot;sbi&quot;: &quot;106430700&quot;,
-      &quot;address&quot;: {
-        &quot;buildingName&quot;: &quot;new buildingName&quot;,
-        &quot;buildingNumberRange&quot;: &quot;new buildingNumberRange&quot;,
-        &quot;city&quot;: &quot;new city&quot;,
-        &quot;country&quot;: &quot;new country&quot;,
-        &quot;county&quot;: &quot;new county&quot;,
-        &quot;dependentLocality&quot;: &quot;new dependentLocality&quot;,
-        &quot;doubleDependentLocality&quot;: &quot;new doubleDependentLocality&quot;,
-        &quot;flatName&quot;: &quot;new flatName&quot;,
-        &quot;line1&quot;: &quot;new line1&quot;,
-        &quot;line2&quot;: &quot;new line2&quot;,
-        &quot;line3&quot;: &quot;new line3&quot;,
-        &quot;line4&quot;: &quot;new line4&quot;,
-        &quot;line5&quot;: &quot;new line5&quot;,
-        &quot;pafOrganisationName&quot;: &quot;new pafOrganisationName&quot;,
-        &quot;postalCode&quot;: &quot;new postalCode&quot;,
-        &quot;street&quot;: &quot;new street&quot;,
-        &quot;uprn&quot;: &quot;new uprn&quot;
-      },
-      &quot;correspondenceAddress&quot;: {
-        &quot;buildingName&quot;: &quot;new buildingName&quot;
-        &quot;buildingNumberRange&quot;: &quot;new buildingNumberRange&quot;,
-        &quot;city&quot;: &quot;new city&quot;,
-        &quot;country&quot;: &quot;new country&quot;,
-        &quot;county&quot;: &quot;new county&quot;,
-        &quot;dependentLocality&quot;: &quot;new dependentLocality&quot;,
-        &quot;doubleDependentLocality&quot;: &quot;new doubleDependentLocality&quot;,
-        &quot;flatName&quot;: &quot;new flatName&quot;,
-        &quot;line1&quot;: &quot;new line1&quot;,
-        &quot;line2&quot;: &quot;new line2&quot;,
-        &quot;line3&quot;: &quot;new line3&quot;,
-        &quot;line4&quot;: &quot;new line4&quot;,
-        &quot;line5&quot;: &quot;new line5&quot;,
-        &quot;pafOrganisationName&quot;: &quot;new pafOrganisationName&quot;,
-        &quot;postalCode&quot;: &quot;new postalCode&quot;,
-        &quot;street&quot;: &quot;new street&quot;,
-        &quot;uprn&quot;: &quot;new uprn&quot;
-      },
-      &quot;isCorrespondenceAsBusinessAddress&quot;: true
-
-	}
-},&quot;query&quot;:&quot;mutation UpdateBusinessAddress($input: UpdateBusinessAddressInput!) {\n        updateBusinessAddress(input: $input) {\n          business {\n            info {\n              correspondenceAddress {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              address {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              isCorrespondenceAsBusinessAddress\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessAddress(\&quot;input\&quot;:{\&quot;sbi\&quot;:\&quot;106430700\&quot;,\&quot;address\&quot;:{\&quot;buildingName\&quot;:\&quot;new buildingName\&quot;,\&quot;buildingNumberRange\&quot;:\&quot;new buildingNumberRange\&quot;,\&quot;city\&quot;:\&quot;new city\&quot;,\&quot;country\&quot;:\&quot;new country\&quot;,\&quot;county\&quot;:\&quot;new county\&quot;,\&quot;dependentLocality\&quot;:\&quot;new dependentLocality\&quot;,\&quot;doubleDependentLocality\&quot;:\&quot;new doubleDependentLocality\&quot;,\&quot;flatName\&quot;:\&quot;new flatName\&quot;,\&quot;line1\&quot;:\&quot;new line1\&quot;,\&quot;line2\&quot;:\&quot;new line2\&quot;,\&quot;line3\&quot;:\&quot;new line3\&quot;,\&quot;line4\&quot;:\&quot;new line4\&quot;,\&quot;line5\&quot;:\&quot;new line5\&quot;,\&quot;pafOrganisationName\&quot;:\&quot;new pafOrganisationName\&quot;,\&quot;postalCode\&quot;:\&quot;new postalCode\&quot;,\&quot;street\&quot;:\&quot;new street\&quot;,\&quot;uprn\&quot;:\&quot;new uprn\&quot;},\&quot;correspondenceAddress\&quot;:{\&quot;buildingName\&quot;:\&quot;new buildingName\&quot;,\&quot;buildingNumberRange\&quot;:\&quot;new buildingNumberRange\&quot;,\&quot;city\&quot;:\&quot;new city\&quot;,\&quot;country\&quot;:\&quot;new country\&quot;,\&quot;county\&quot;:\&quot;new county\&quot;,\&quot;dependentLocality\&quot;:\&quot;new dependentLocality\&quot;,\&quot;doubleDependentLocality\&quot;:\&quot;new doubleDependentLocality\&quot;,\&quot;flatName\&quot;:\&quot;new flatName\&quot;,\&quot;line1\&quot;:\&quot;new line1\&quot;,\&quot;line2\&quot;:\&quot;new line2\&quot;,\&quot;line3\&quot;:\&quot;new line3\&quot;,\&quot;line4\&quot;:\&quot;new line4\&quot;,\&quot;line5\&quot;:\&quot;new line5\&quot;,\&quot;pafOrganisationName\&quot;:\&quot;new pafOrganisationName\&quot;,\&quot;postalCode\&quot;:\&quot;new postalCode\&quot;,\&quot;street\&quot;:\&quot;new street\&quot;,\&quot;uprn\&quot;:\&quot;new uprn\&quot;},\&quot;isCorrespondenceAsBusinessAddress\&quot;:true}) {\n          business {\n            info {\n              correspondenceAddress {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              address {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              isCorrespondenceAsBusinessAddress\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessAddress</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessAddress($input: UpdateBusinessAddressInput!) {
-        updateBusinessAddress(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+        updateBusinessAddress(&quot;input&quot;:{&quot;sbi&quot;:&quot;106430700&quot;,&quot;address&quot;:{&quot;buildingName&quot;:&quot;new buildingName&quot;,&quot;buildingNumberRange&quot;:&quot;new buildingNumberRange&quot;,&quot;city&quot;:&quot;new city&quot;,&quot;country&quot;:&quot;new country&quot;,&quot;county&quot;:&quot;new county&quot;,&quot;dependentLocality&quot;:&quot;new dependentLocality&quot;,&quot;doubleDependentLocality&quot;:&quot;new doubleDependentLocality&quot;,&quot;flatName&quot;:&quot;new flatName&quot;,&quot;line1&quot;:&quot;new line1&quot;,&quot;line2&quot;:&quot;new line2&quot;,&quot;line3&quot;:&quot;new line3&quot;,&quot;line4&quot;:&quot;new line4&quot;,&quot;line5&quot;:&quot;new line5&quot;,&quot;pafOrganisationName&quot;:&quot;new pafOrganisationName&quot;,&quot;postalCode&quot;:&quot;new postalCode&quot;,&quot;street&quot;:&quot;new street&quot;,&quot;uprn&quot;:&quot;new uprn&quot;},&quot;correspondenceAddress&quot;:{&quot;buildingName&quot;:&quot;new buildingName&quot;,&quot;buildingNumberRange&quot;:&quot;new buildingNumberRange&quot;,&quot;city&quot;:&quot;new city&quot;,&quot;country&quot;:&quot;new country&quot;,&quot;county&quot;:&quot;new county&quot;,&quot;dependentLocality&quot;:&quot;new dependentLocality&quot;,&quot;doubleDependentLocality&quot;:&quot;new doubleDependentLocality&quot;,&quot;flatName&quot;:&quot;new flatName&quot;,&quot;line1&quot;:&quot;new line1&quot;,&quot;line2&quot;:&quot;new line2&quot;,&quot;line3&quot;:&quot;new line3&quot;,&quot;line4&quot;:&quot;new line4&quot;,&quot;line5&quot;:&quot;new line5&quot;,&quot;pafOrganisationName&quot;:&quot;new pafOrganisationName&quot;,&quot;postalCode&quot;:&quot;new postalCode&quot;,&quot;street&quot;:&quot;new street&quot;,&quot;uprn&quot;:&quot;new uprn&quot;},&quot;isCorrespondenceAsBusinessAddress&quot;:true}) {
           business {
             info {
               correspondenceAddress {
@@ -1893,51 +1832,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           success
         }
       }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-	&quot;input&quot;: {
-      &quot;sbi&quot;: &quot;106430700&quot;,
-      &quot;address&quot;: {
-        &quot;buildingName&quot;: &quot;new buildingName&quot;,
-        &quot;buildingNumberRange&quot;: &quot;new buildingNumberRange&quot;,
-        &quot;city&quot;: &quot;new city&quot;,
-        &quot;country&quot;: &quot;new country&quot;,
-        &quot;county&quot;: &quot;new county&quot;,
-        &quot;dependentLocality&quot;: &quot;new dependentLocality&quot;,
-        &quot;doubleDependentLocality&quot;: &quot;new doubleDependentLocality&quot;,
-        &quot;flatName&quot;: &quot;new flatName&quot;,
-        &quot;line1&quot;: &quot;new line1&quot;,
-        &quot;line2&quot;: &quot;new line2&quot;,
-        &quot;line3&quot;: &quot;new line3&quot;,
-        &quot;line4&quot;: &quot;new line4&quot;,
-        &quot;line5&quot;: &quot;new line5&quot;,
-        &quot;pafOrganisationName&quot;: &quot;new pafOrganisationName&quot;,
-        &quot;postalCode&quot;: &quot;new postalCode&quot;,
-        &quot;street&quot;: &quot;new street&quot;,
-        &quot;uprn&quot;: &quot;new uprn&quot;
-      },
-      &quot;correspondenceAddress&quot;: {
-        &quot;buildingName&quot;: &quot;new buildingName&quot;
-        &quot;buildingNumberRange&quot;: &quot;new buildingNumberRange&quot;,
-        &quot;city&quot;: &quot;new city&quot;,
-        &quot;country&quot;: &quot;new country&quot;,
-        &quot;county&quot;: &quot;new county&quot;,
-        &quot;dependentLocality&quot;: &quot;new dependentLocality&quot;,
-        &quot;doubleDependentLocality&quot;: &quot;new doubleDependentLocality&quot;,
-        &quot;flatName&quot;: &quot;new flatName&quot;,
-        &quot;line1&quot;: &quot;new line1&quot;,
-        &quot;line2&quot;: &quot;new line2&quot;,
-        &quot;line3&quot;: &quot;new line3&quot;,
-        &quot;line4&quot;: &quot;new line4&quot;,
-        &quot;line5&quot;: &quot;new line5&quot;,
-        &quot;pafOrganisationName&quot;: &quot;new pafOrganisationName&quot;,
-        &quot;postalCode&quot;: &quot;new postalCode&quot;,
-        &quot;street&quot;: &quot;new street&quot;,
-        &quot;uprn&quot;: &quot;new uprn&quot;
-      },
-      &quot;isCorrespondenceAsBusinessAddress&quot;: true
-
-	}
-}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2046,7 +1940,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${update-person-rrpm}</stringProp>
         </ConstantThroughputTimer>
