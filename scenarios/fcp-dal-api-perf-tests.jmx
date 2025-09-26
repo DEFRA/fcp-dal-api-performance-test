@@ -1742,14 +1742,24 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessPhone&quot;,&quot;query&quot;:&quot;mutation {\n        updateBusinessPhone(input: {\n\t  \t\t\t\t\t\t\tsbi: \&quot;106430700\&quot;,\n       \t\t\t\t\t\t\tphone: {\n         \t\t\t\t\t\t\t\tlandline: \&quot;new phone\&quot;,\n         \t\t\t\t\t\t\t\tmobile: \&quot;new mobile\&quot;\n       \t\t\t\t\t\t\t},\n       \t\t\t\t\t\t\tcorrespondencePhone: {\n         \t\t\t\t\t\t\t\tlandline: \&quot;new correspondence phone\&quot;,\n         \t\t\t\t\t\t\t\tmobile: \&quot;new correspondence mobile\&quot;\n       \t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t) \n\t{\n          business {\n            info {\n              phone {\n                landline\n                mobile\n              }\n              correspondencePhone {\n                landline\n                mobile\n              }\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessVAT(input: { sbi: \&quot;106430700\&quot;, vat: \&quot;123456789\&quot; }) {\n    business {\n      info {\n        vat\n      }\n    }\n    success\n  }\n}\n\nmutation {\n        updateBusinessPhone(input: {\n\t  \t\t\t\t\t\t\tsbi: \&quot;106430700\&quot;,\n       \t\t\t\t\t\t\tphone: {\n         \t\t\t\t\t\t\t\tlandline: \&quot;new phone\&quot;,\n         \t\t\t\t\t\t\t\tmobile: \&quot;new mobile\&quot;\n       \t\t\t\t\t\t\t},\n       \t\t\t\t\t\t\tcorrespondencePhone: {\n         \t\t\t\t\t\t\t\tlandline: \&quot;new correspondence phone\&quot;,\n         \t\t\t\t\t\t\t\tmobile: \&quot;new correspondence mobile\&quot;\n       \t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t) \n\t{\n          business {\n            info {\n              phone {\n                landline\n                mobile\n              }\n              correspondencePhone {\n                landline\n                mobile\n              }\n            }\n          }\n     \tsuccess\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessPhone</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
+  updateBusinessVAT(input: { sbi: &quot;106430700&quot;, vat: &quot;123456789&quot; }) {
+    business {
+      info {
+        vat
+      }
+    }
+    success
+  }
+}
+
+mutation {
         updateBusinessPhone(input: {
 	  							sbi: &quot;106430700&quot;,
        							phone: {
@@ -1775,9 +1785,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               }
             }
           }
-          success
-        }
-      }</stringProp>
+     	success
+	}
+}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
