@@ -1210,7 +1210,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessRegistrationNumbers" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessRegistrationNumbers">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1228,7 +1228,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${update-business-registration-numbers-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessRegistrationNumbers" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessRegistrationNumbers">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1241,23 +1241,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessRegistrationNumbers&quot;,&quot;variables&quot;:{
-	&quot;input&quot;: {
-	  &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;registrationNumbers&quot;: {
-         &quot;charityCommission&quot;: &quot;0123&quot;,
-         &quot;companiesHouse&quot;: &quot;0456&quot;
-       }
-     }
-},&quot;query&quot;:&quot;mutation UpdateBusinessRegistrationNumbers($input: UpdateBusinessRegistrationNumbersInput!) {\n        updateBusinessRegistrationNumbers(input: $input) {\n          success\n            business {\n            info {\n              registrationNumbers {\n                charityCommission\n                companiesHouse\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessRegistrationNumbers(input: { sbi: \&quot;106430700\&quot;, registrationNumbers: { charityCommission: \&quot;0123\&quot;, companiesHouse: \&quot;0456\&quot; } }) {\n          success\n            business {\n            info {\n              registrationNumbers {\n                charityCommission\n                companiesHouse\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessRegistrationNumbers</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessRegistrationNumbers($input: UpdateBusinessRegistrationNumbersInput!) {
-        updateBusinessRegistrationNumbers(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+        updateBusinessRegistrationNumbers(input: { sbi: &quot;106430700&quot;, registrationNumbers: { charityCommission: &quot;0123&quot;, companiesHouse: &quot;0456&quot; } }) {
           success
             business {
             info {
@@ -1269,15 +1260,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           }
         }
       }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-	&quot;input&quot;: {
-	  &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;registrationNumbers&quot;: {
-         &quot;charityCommission&quot;: &quot;0123&quot;,
-         &quot;companiesHouse&quot;: &quot;0456&quot;
-       }
-     }
-}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1319,7 +1301,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${create-business-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL - createBusiness" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL - createBusiness">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1332,50 +1314,49 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;CreateBusiness&quot;,&quot;variables&quot;:{
-  &quot;input&quot;: {
-      &quot;crn&quot;: &quot;1100696741&quot;,
-      &quot;name&quot;: &quot;Acme Farms Ltd&quot;,
-      &quot;vat&quot;: &quot;GB123456789&quot;,
-      &quot;traderNumber&quot;: &quot;TR12345&quot;,
-      &quot;vendorNumber&quot;: &quot;VN67890&quot;,
-      &quot;correspondenceAddress&quot;: {
-        &quot;line1&quot;: &quot;PO Box 123&quot;,
-        &quot;city&quot;: &quot;Farmville&quot;,
-        &quot;postalCode&quot;: &quot;FV1 2AB&quot;,
-        &quot;country&quot;: &quot;UK&quot;
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
+  input: {
+      crn: &quot;1100696741&quot;,
+      name: &quot;Acme Farms Ltd&quot;,
+      vat: &quot;GB123456789&quot;,
+      traderNumber: &quot;TR12345&quot;,
+      vendorNumber: &quot;VN67890&quot;,
+      correspondenceAddress: {
+        line1: &quot;PO Box 123&quot;,
+        city: &quot;Farmville&quot;,
+        postalCode: &quot;FV1 2AB&quot;,
+        country: &quot;UK&quot;
       },
-      &quot;typeCode&quot;: 2,
-      &quot;email&quot;: {
-        &quot;address&quot;: &quot;info@acmefarms.co.uk&quot;
+      typeCode: 2,
+      email: {
+        address: &quot;info@acmefarms.co.uk&quot;
       },
-      &quot;correspondenceEmail&quot;: {
-        &quot;address&quot;: &quot;correspondence@acmefarms.co.uk&quot;
+      correspondenceEmail: {
+        address: &quot;correspondence@acmefarms.co.uk&quot;
       },
-      &quot;phone&quot;: {
-        &quot;landline&quot;: &quot;+441234567890&quot;,
-        &quot;mobile&quot;: &quot;+441234567891&quot;
+      phone: {
+        landline: &quot;+441234567890&quot;,
+        mobile: &quot;+441234567891&quot;
       },
-      &quot;correspondencePhone&quot;: {
-        &quot;landline&quot;: &quot;+441234567892&quot;
+      correspondencePhone: {
+        landline: &quot;+441234567892&quot;
       },
-      &quot;legalStatusCode&quot;: 1,
-      &quot;registrationNumbers&quot;: {
-        &quot;companiesHouse&quot;: &quot;12345678&quot;,
-        &quot;charityCommission&quot;: &quot;87654321&quot;
+      legalStatusCode: 1,
+      registrationNumbers: {
+        companiesHouse: &quot;12345678&quot;,
+        charityCommission: &quot;87654321&quot;
       },
-      &quot;landConfirmed&quot;: true,
-      &quot;dateStartedFarming&quot;: &quot;2021-05-27T12:46:17.305Z&quot;
+      landConfirmed: true,
+      dateStartedFarming: &quot;2021-05-27T12:46:17.305Z&quot;
     }
-},&quot;query&quot;:&quot;mutation CreateBusiness($input: CreateBusinessInput!) {\n  createBusiness(input: $input) {\n    success\n    business {\n      info {\n        address {\n          buildingName\n          buildingNumberRange\n          city\n          country\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          flatName\n          street\n          county\n          postalCode\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        correspondenceAddress {\n          line1\n          line2\n          line3\n          line4\n          pafOrganisationName\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        name\n        reference\n        vat\n        traderNumber\n        vendorNumber\n        isCorrespondenceAsBusinessAddress\n        email {\n          address\n          validated\n        }\n        correspondenceEmail {\n          address\n          validated\n        }\n        phone {\n          mobile\n          landline\n        }\n        correspondencePhone {\n          mobile\n          landline\n        }\n        legalStatus {\n          code\n          type\n        }\n        type {\n          code\n          type\n        }\n        registrationNumbers {\n          companiesHouse\n          charityCommission\n        }\n        landConfirmed\n        dateStartedFarming\n      }\n    }\n  }\n}&quot;}</stringProp>
+},&quot;query&quot;:&quot;mutation {\n  createBusiness({input:{crn:\&quot;1100696741\&quot;,name:\&quot;AcmeFarmsLtd\&quot;,vat:\&quot;GB123456789\&quot;,traderNumber:\&quot;TR12345\&quot;,vendorNumber:\&quot;VN67890\&quot;,correspondenceAddress:{line1:\&quot;POBox123\&quot;,city:\&quot;Farmville\&quot;,postalCode:\&quot;FV12AB\&quot;,country:\&quot;UK\&quot;},typeCode:2,email:{address:\&quot;info@acmefarms.co.uk\&quot;},correspondenceEmail:{address:\&quot;correspondence@acmefarms.co.uk\&quot;},phone:{landline:\&quot;+441234567890\&quot;,mobile:\&quot;+441234567891\&quot;},correspondencePhone:{landline:\&quot;+441234567892\&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:\&quot;12345678\&quot;,charityCommission:\&quot;87654321\&quot;},landConfirmed:true,dateStartedFarming:\&quot;2021-05-27T12:46:17.305Z\&quot;}}) {\n    success\n    business {\n      info {\n        address {\n          buildingName\n          buildingNumberRange\n          city\n          country\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          flatName\n          street\n          county\n          postalCode\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        correspondenceAddress {\n          line1\n          line2\n          line3\n          line4\n          pafOrganisationName\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        name\n        reference\n        vat\n        traderNumber\n        vendorNumber\n        isCorrespondenceAsBusinessAddress\n        email {\n          address\n          validated\n        }\n        correspondenceEmail {\n          address\n          validated\n        }\n        phone {\n          mobile\n          landline\n        }\n        correspondencePhone {\n          mobile\n          landline\n        }\n        legalStatus {\n          code\n          type\n        }\n        type {\n          code\n          type\n        }\n        registrationNumbers {\n          companiesHouse\n          charityCommission\n        }\n        landConfirmed\n        dateStartedFarming\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">CreateBusiness</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation CreateBusiness($input: CreateBusinessInput!) {
-  createBusiness(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+  createBusiness({input:{crn:&quot;1100696741&quot;,name:&quot;AcmeFarmsLtd&quot;,vat:&quot;GB123456789&quot;,traderNumber:&quot;TR12345&quot;,vendorNumber:&quot;VN67890&quot;,correspondenceAddress:{line1:&quot;POBox123&quot;,city:&quot;Farmville&quot;,postalCode:&quot;FV12AB&quot;,country:&quot;UK&quot;},typeCode:2,email:{address:&quot;info@acmefarms.co.uk&quot;},correspondenceEmail:{address:&quot;correspondence@acmefarms.co.uk&quot;},phone:{landline:&quot;+441234567890&quot;,mobile:&quot;+441234567891&quot;},correspondencePhone:{landline:&quot;+441234567892&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:&quot;12345678&quot;,charityCommission:&quot;87654321&quot;},landConfirmed:true,dateStartedFarming:&quot;2021-05-27T12:46:17.305Z&quot;}}) {
     success
     business {
       info {
@@ -1460,39 +1441,39 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
   }
 }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables">{
-  &quot;input&quot;: {
-      &quot;crn&quot;: &quot;1100696741&quot;,
-      &quot;name&quot;: &quot;Acme Farms Ltd&quot;,
-      &quot;vat&quot;: &quot;GB123456789&quot;,
-      &quot;traderNumber&quot;: &quot;TR12345&quot;,
-      &quot;vendorNumber&quot;: &quot;VN67890&quot;,
-      &quot;correspondenceAddress&quot;: {
-        &quot;line1&quot;: &quot;PO Box 123&quot;,
-        &quot;city&quot;: &quot;Farmville&quot;,
-        &quot;postalCode&quot;: &quot;FV1 2AB&quot;,
-        &quot;country&quot;: &quot;UK&quot;
+  input: {
+      crn: &quot;1100696741&quot;,
+      name: &quot;Acme Farms Ltd&quot;,
+      vat: &quot;GB123456789&quot;,
+      traderNumber: &quot;TR12345&quot;,
+      vendorNumber: &quot;VN67890&quot;,
+      correspondenceAddress: {
+        line1: &quot;PO Box 123&quot;,
+        city: &quot;Farmville&quot;,
+        postalCode: &quot;FV1 2AB&quot;,
+        country: &quot;UK&quot;
       },
-      &quot;typeCode&quot;: 2,
-      &quot;email&quot;: {
-        &quot;address&quot;: &quot;info@acmefarms.co.uk&quot;
+      typeCode: 2,
+      email: {
+        address: &quot;info@acmefarms.co.uk&quot;
       },
-      &quot;correspondenceEmail&quot;: {
-        &quot;address&quot;: &quot;correspondence@acmefarms.co.uk&quot;
+      correspondenceEmail: {
+        address: &quot;correspondence@acmefarms.co.uk&quot;
       },
-      &quot;phone&quot;: {
-        &quot;landline&quot;: &quot;+441234567890&quot;,
-        &quot;mobile&quot;: &quot;+441234567891&quot;
+      phone: {
+        landline: &quot;+441234567890&quot;,
+        mobile: &quot;+441234567891&quot;
       },
-      &quot;correspondencePhone&quot;: {
-        &quot;landline&quot;: &quot;+441234567892&quot;
+      correspondencePhone: {
+        landline: &quot;+441234567892&quot;
       },
-      &quot;legalStatusCode&quot;: 1,
-      &quot;registrationNumbers&quot;: {
-        &quot;companiesHouse&quot;: &quot;12345678&quot;,
-        &quot;charityCommission&quot;: &quot;87654321&quot;
+      legalStatusCode: 1,
+      registrationNumbers: {
+        companiesHouse: &quot;12345678&quot;,
+        charityCommission: &quot;87654321&quot;
       },
-      &quot;landConfirmed&quot;: true,
-      &quot;dateStartedFarming&quot;: &quot;2021-05-27T12:46:17.305Z&quot;
+      landConfirmed: true,
+      dateStartedFarming: &quot;2021-05-27T12:46:17.305Z&quot;
     }
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
@@ -1778,14 +1759,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessAddress(\&quot;input\&quot;:{\&quot;sbi\&quot;:\&quot;106430700\&quot;,\&quot;address\&quot;:{\&quot;buildingName\&quot;:\&quot;new buildingName\&quot;,\&quot;buildingNumberRange\&quot;:\&quot;new buildingNumberRange\&quot;,\&quot;city\&quot;:\&quot;new city\&quot;,\&quot;country\&quot;:\&quot;new country\&quot;,\&quot;county\&quot;:\&quot;new county\&quot;,\&quot;dependentLocality\&quot;:\&quot;new dependentLocality\&quot;,\&quot;doubleDependentLocality\&quot;:\&quot;new doubleDependentLocality\&quot;,\&quot;flatName\&quot;:\&quot;new flatName\&quot;,\&quot;line1\&quot;:\&quot;new line1\&quot;,\&quot;line2\&quot;:\&quot;new line2\&quot;,\&quot;line3\&quot;:\&quot;new line3\&quot;,\&quot;line4\&quot;:\&quot;new line4\&quot;,\&quot;line5\&quot;:\&quot;new line5\&quot;,\&quot;pafOrganisationName\&quot;:\&quot;new pafOrganisationName\&quot;,\&quot;postalCode\&quot;:\&quot;new postalCode\&quot;,\&quot;street\&quot;:\&quot;new street\&quot;,\&quot;uprn\&quot;:\&quot;new uprn\&quot;},\&quot;correspondenceAddress\&quot;:{\&quot;buildingName\&quot;:\&quot;new buildingName\&quot;,\&quot;buildingNumberRange\&quot;:\&quot;new buildingNumberRange\&quot;,\&quot;city\&quot;:\&quot;new city\&quot;,\&quot;country\&quot;:\&quot;new country\&quot;,\&quot;county\&quot;:\&quot;new county\&quot;,\&quot;dependentLocality\&quot;:\&quot;new dependentLocality\&quot;,\&quot;doubleDependentLocality\&quot;:\&quot;new doubleDependentLocality\&quot;,\&quot;flatName\&quot;:\&quot;new flatName\&quot;,\&quot;line1\&quot;:\&quot;new line1\&quot;,\&quot;line2\&quot;:\&quot;new line2\&quot;,\&quot;line3\&quot;:\&quot;new line3\&quot;,\&quot;line4\&quot;:\&quot;new line4\&quot;,\&quot;line5\&quot;:\&quot;new line5\&quot;,\&quot;pafOrganisationName\&quot;:\&quot;new pafOrganisationName\&quot;,\&quot;postalCode\&quot;:\&quot;new postalCode\&quot;,\&quot;street\&quot;:\&quot;new street\&quot;,\&quot;uprn\&quot;:\&quot;new uprn\&quot;},\&quot;isCorrespondenceAsBusinessAddress\&quot;:true}) {\n          business {\n            info {\n              correspondenceAddress {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              address {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              isCorrespondenceAsBusinessAddress\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessAddress(input:{sbi:\&quot;106430700\&quot;,address:{buildingName:\&quot;new buildingName\&quot;,buildingNumberRange:\&quot;new buildingNumberRange\&quot;,city:\&quot;new city\&quot;,country:\&quot;new country\&quot;,county:\&quot;new county\&quot;,dependentLocality:\&quot;new dependentLocality\&quot;,doubleDependentLocality:\&quot;new doubleDependentLocality\&quot;,flatName:\&quot;new flatName\&quot;,line1:\&quot;new line1\&quot;,line2:\&quot;new line2\&quot;,line3:\&quot;new line3\&quot;,line4:\&quot;new line4\&quot;,line5:\&quot;new line5\&quot;,pafOrganisationName:\&quot;new pafOrganisationName\&quot;,postalCode:\&quot;new postalCode\&quot;,street:\&quot;new street\&quot;,uprn:\&quot;new uprn\&quot;},correspondenceAddress:{buildingName:\&quot;new buildingName\&quot;,buildingNumberRange:\&quot;new buildingNumberRange\&quot;,city:\&quot;new city\&quot;,country:\&quot;new country\&quot;,county:\&quot;new county\&quot;,dependentLocality:\&quot;new dependentLocality\&quot;,doubleDependentLocality:\&quot;new doubleDependentLocality\&quot;,flatName:\&quot;new flatName\&quot;,line1:\&quot;new line1\&quot;,line2:\&quot;new line2\&quot;,line3:\&quot;new line3\&quot;,line4:\&quot;new line4\&quot;,line5:\&quot;new line5\&quot;,pafOrganisationName:\&quot;new pafOrganisationName\&quot;,postalCode:\&quot;new postalCode\&quot;,street:\&quot;new street\&quot;,uprn:\&quot;new uprn\&quot;},isCorrespondenceAsBusinessAddress:true}) {\n          business {\n            info {\n              correspondenceAddress {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              address {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              isCorrespondenceAsBusinessAddress\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-        updateBusinessAddress(&quot;input&quot;:{&quot;sbi&quot;:&quot;106430700&quot;,&quot;address&quot;:{&quot;buildingName&quot;:&quot;new buildingName&quot;,&quot;buildingNumberRange&quot;:&quot;new buildingNumberRange&quot;,&quot;city&quot;:&quot;new city&quot;,&quot;country&quot;:&quot;new country&quot;,&quot;county&quot;:&quot;new county&quot;,&quot;dependentLocality&quot;:&quot;new dependentLocality&quot;,&quot;doubleDependentLocality&quot;:&quot;new doubleDependentLocality&quot;,&quot;flatName&quot;:&quot;new flatName&quot;,&quot;line1&quot;:&quot;new line1&quot;,&quot;line2&quot;:&quot;new line2&quot;,&quot;line3&quot;:&quot;new line3&quot;,&quot;line4&quot;:&quot;new line4&quot;,&quot;line5&quot;:&quot;new line5&quot;,&quot;pafOrganisationName&quot;:&quot;new pafOrganisationName&quot;,&quot;postalCode&quot;:&quot;new postalCode&quot;,&quot;street&quot;:&quot;new street&quot;,&quot;uprn&quot;:&quot;new uprn&quot;},&quot;correspondenceAddress&quot;:{&quot;buildingName&quot;:&quot;new buildingName&quot;,&quot;buildingNumberRange&quot;:&quot;new buildingNumberRange&quot;,&quot;city&quot;:&quot;new city&quot;,&quot;country&quot;:&quot;new country&quot;,&quot;county&quot;:&quot;new county&quot;,&quot;dependentLocality&quot;:&quot;new dependentLocality&quot;,&quot;doubleDependentLocality&quot;:&quot;new doubleDependentLocality&quot;,&quot;flatName&quot;:&quot;new flatName&quot;,&quot;line1&quot;:&quot;new line1&quot;,&quot;line2&quot;:&quot;new line2&quot;,&quot;line3&quot;:&quot;new line3&quot;,&quot;line4&quot;:&quot;new line4&quot;,&quot;line5&quot;:&quot;new line5&quot;,&quot;pafOrganisationName&quot;:&quot;new pafOrganisationName&quot;,&quot;postalCode&quot;:&quot;new postalCode&quot;,&quot;street&quot;:&quot;new street&quot;,&quot;uprn&quot;:&quot;new uprn&quot;},&quot;isCorrespondenceAsBusinessAddress&quot;:true}) {
+        updateBusinessAddress(input:{sbi:&quot;106430700&quot;,address:{buildingName:&quot;new buildingName&quot;,buildingNumberRange:&quot;new buildingNumberRange&quot;,city:&quot;new city&quot;,country:&quot;new country&quot;,county:&quot;new county&quot;,dependentLocality:&quot;new dependentLocality&quot;,doubleDependentLocality:&quot;new doubleDependentLocality&quot;,flatName:&quot;new flatName&quot;,line1:&quot;new line1&quot;,line2:&quot;new line2&quot;,line3:&quot;new line3&quot;,line4:&quot;new line4&quot;,line5:&quot;new line5&quot;,pafOrganisationName:&quot;new pafOrganisationName&quot;,postalCode:&quot;new postalCode&quot;,street:&quot;new street&quot;,uprn:&quot;new uprn&quot;},correspondenceAddress:{buildingName:&quot;new buildingName&quot;,buildingNumberRange:&quot;new buildingNumberRange&quot;,city:&quot;new city&quot;,country:&quot;new country&quot;,county:&quot;new county&quot;,dependentLocality:&quot;new dependentLocality&quot;,doubleDependentLocality:&quot;new doubleDependentLocality&quot;,flatName:&quot;new flatName&quot;,line1:&quot;new line1&quot;,line2:&quot;new line2&quot;,line3:&quot;new line3&quot;,line4:&quot;new line4&quot;,line5:&quot;new line5&quot;,pafOrganisationName:&quot;new pafOrganisationName&quot;,postalCode:&quot;new postalCode&quot;,street:&quot;new street&quot;,uprn:&quot;new uprn&quot;},isCorrespondenceAsBusinessAddress:true}) {
           business {
             info {
               correspondenceAddress {
