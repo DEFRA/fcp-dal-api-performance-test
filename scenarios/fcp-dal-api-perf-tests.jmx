@@ -1586,12 +1586,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
-	&quot;input&quot;: {
-       &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;name&quot;: &quot;this is a new name&quot;
-     }
-},&quot;query&quot;:&quot;mutation {\n  updateBusinessName(input: {sbi: \&quot;107167406\&quot;,name: \&quot;newname\&quot;}) {\n    success\n    business {\n      sbi\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessName(input: {sbi: \&quot;107167406\&quot;,name: \&quot;newname\&quot;}) {\n    success\n    business {\n      sbi\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1604,12 +1599,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       sbi
     }
   }
-}</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-	&quot;input&quot;: {
-       &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;name&quot;: &quot;this is a new name&quot;
-     }
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
@@ -2136,15 +2125,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updatePerson&quot;,&quot;variables&quot;:{ input: { crn: &quot;1100696741&quot;, address: { buildingName: &quot;newBuildingName&quot;, buildingNumberRange: &quot;newBuildingNumberRange&quot;, city: &quot;newCity&quot;, country: &quot;newCountry&quot;, county: &quot;newCounty&quot;, dependentLocality: &quot;newDependentLocality&quot;, doubleDependentLocality: &quot;newDoubleDependentLocality&quot;, flatName: &quot;newFlatName&quot;, line1: &quot;newLine1&quot;, line2: &quot;newLine2&quot;, line3: &quot;newLine3&quot;, line4: &quot;newLine4&quot;, line5: &quot;newLine5&quot;, pafOrganisationName: &quot;newPafOrganisationName&quot;, postalCode: &quot;newPostalCode&quot;, street: &quot;newStreet&quot;, uprn: &quot;newUprn&quot;} } },&quot;query&quot;:&quot;mutation updatePerson($input: UpdateCustomerAddressInput!) {\n  updateCustomerAddress(input: $input) {\n    success\n    customer {\n      info {\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerAddress(input: { crn: \&quot;1100696741\&quot;, address: { buildingName: \&quot;newBuildingName\&quot;, buildingNumberRange: \&quot;newBuildingNumberRange\&quot;, city: \&quot;newCity\&quot;, country: \&quot;newCountry\&quot;, county: \&quot;newCounty\&quot;, dependentLocality: \&quot;newDependentLocality\&quot;, doubleDependentLocality: \&quot;newDoubleDependentLocality\&quot;, flatName: \&quot;newFlatName\&quot;, line1: \&quot;newLine1\&quot;, line2: \&quot;newLine2\&quot;, line3: \&quot;newLine3\&quot;, line4: \&quot;newLine4\&quot;, line5: \&quot;newLine5\&quot;, pafOrganisationName: \&quot;newPafOrganisationName\&quot;, postalCode: \&quot;newPostalCode\&quot;, street: \&quot;newStreet\&quot;, uprn: \&quot;newUprn\&quot;} }) {\n    success\n    customer {\n      info {\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">updatePerson</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation updatePerson($input: UpdateCustomerAddressInput!) {
-  updateCustomerAddress(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+  updateCustomerAddress(input: { crn: &quot;1100696741&quot;, address: { buildingName: &quot;newBuildingName&quot;, buildingNumberRange: &quot;newBuildingNumberRange&quot;, city: &quot;newCity&quot;, country: &quot;newCountry&quot;, county: &quot;newCounty&quot;, dependentLocality: &quot;newDependentLocality&quot;, doubleDependentLocality: &quot;newDoubleDependentLocality&quot;, flatName: &quot;newFlatName&quot;, line1: &quot;newLine1&quot;, line2: &quot;newLine2&quot;, line3: &quot;newLine3&quot;, line4: &quot;newLine4&quot;, line5: &quot;newLine5&quot;, pafOrganisationName: &quot;newPafOrganisationName&quot;, postalCode: &quot;newPostalCode&quot;, street: &quot;newStreet&quot;, uprn: &quot;newUprn&quot;} }) {
     success
     customer {
       info {
@@ -2171,7 +2159,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{ input: { crn: &quot;1100696741&quot;, address: { buildingName: &quot;newBuildingName&quot;, buildingNumberRange: &quot;newBuildingNumberRange&quot;, city: &quot;newCity&quot;, country: &quot;newCountry&quot;, county: &quot;newCounty&quot;, dependentLocality: &quot;newDependentLocality&quot;, doubleDependentLocality: &quot;newDoubleDependentLocality&quot;, flatName: &quot;newFlatName&quot;, line1: &quot;newLine1&quot;, line2: &quot;newLine2&quot;, line3: &quot;newLine3&quot;, line4: &quot;newLine4&quot;, line5: &quot;newLine5&quot;, pafOrganisationName: &quot;newPafOrganisationName&quot;, postalCode: &quot;newPostalCode&quot;, street: &quot;newStreet&quot;, uprn: &quot;newUprn&quot;} } }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2193,82 +2180,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">gateway-type</stringProp>
                 <stringProp name="Header.value">internal</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
-        </hashTree>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - mutation test">
-        <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
-        <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <intProp name="LoopController.loops">-1</intProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
-          <intProp name="calcMode">4</intProp>
-          <doubleProp>
-            <name>throughput</name>
-            <value>10.0</value>
-            <savedValue>0.0</savedValue>
-          </doubleProp>
-        </ConstantThroughputTimer>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-mutation test">
-          <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
-          <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/graphql</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument" enabled="true">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessName(input: {sbi: \&quot;107167406\&quot;,name: \&quot;newname\&quot;}) {\n    success\n    business {\n      sbi\n    }\n  }\n}&quot;}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateBusinessName(input: {sbi: &quot;107167406&quot;,name: &quot;newname&quot;}) {
-    success
-    business {
-      sbi
-    }
-  }
-}</stringProp>
-          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Content-type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Accept</stringProp>
-                <stringProp name="Header.value">application/graphql-response+json, application/json</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
