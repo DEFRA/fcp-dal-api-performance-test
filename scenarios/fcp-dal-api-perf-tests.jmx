@@ -994,7 +994,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessLegalStatus" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - UpdateBusinessLegalStatus">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1012,7 +1012,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${update-business-legal-status-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessLegalStatus" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessLegalStatus">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1025,38 +1025,25 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessLegalStatus&quot;,&quot;variables&quot;:{
-	&quot;input&quot;: {
-       &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;legalStatusCode&quot;: 123
-	}
-},&quot;query&quot;:&quot;mutation UpdateBusinessLegalStatus($input: UpdateBusinessLegalStatusInput!) {\n        updateBusinessLegalStatus(input: $input) {\n          success\n            business {\n            info {\n              legalStatus {\n                code\n                type\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n\tupdateBusinessLegalStatus(input: { sbi: \&quot;106430700\&quot;, legalStatusCode: 123 }) {\n     \tsuccess\n          business {\n          \tinfo {\n              \t\tlegalStatus {\n                \t\tcode\n                \t\ttype\n              \t\t}\n          \t}\n    \t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessLegalStatus</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessLegalStatus($input: UpdateBusinessLegalStatusInput!) {
-        updateBusinessLegalStatus(input: $input) {
-          success
-            business {
-            info {
-              legalStatus {
-                code
-                type
-              }
-            }
-          }
-        }
-      }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-	&quot;input&quot;: {
-       &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;legalStatusCode&quot;: 123
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+	updateBusinessLegalStatus(input: { sbi: &quot;106430700&quot;, legalStatusCode: 123 }) {
+     	success
+          business {
+          	info {
+              		legalStatus {
+                		code
+                		type
+              		}
+          	}
+    		}
 	}
-}
-</stringProp>
+}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1080,7 +1067,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessDateStartedFarming" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - UpdateBusinessDateStartedFarming">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1098,7 +1085,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${update-business-date-started-farming-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessDateStartedFarming" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessDateStartedFarming">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1111,20 +1098,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessDateStartedFarming&quot;,&quot;variables&quot;:{
-	&quot;input&quot;: {
-	  &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;dateStartedFarming&quot;: &quot;01-01-2020&quot;
-	}
-},&quot;query&quot;:&quot;mutation UpdateBusinessDateStartedFarming($input: UpdateBusinessDateStartedFarmingInput!) {\n        updateBusinessDateStartedFarming(input: $input) {\n          success\n            business {\n            info {\n              dateStartedFarming\n            }\n          }\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessDateStartedFarming(input: { sbi: \&quot;106430700\&quot;, dateStartedFarming: \&quot;01-01-2020\&quot; }) {\n          success\n            business {\n            info {\n              dateStartedFarming\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessDateStartedFarming</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessDateStartedFarming($input: UpdateBusinessDateStartedFarmingInput!) {
-        updateBusinessDateStartedFarming(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+        updateBusinessDateStartedFarming(input: { sbi: &quot;106430700&quot;, dateStartedFarming: &quot;01-01-2020&quot; }) {
           success
             business {
             info {
@@ -1133,12 +1114,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           }
         }
       }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-	&quot;input&quot;: {
-	  &quot;sbi&quot;: &quot;106430700&quot;,
-       &quot;dateStartedFarming&quot;: &quot;01-01-2020&quot;
-	}
-}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1162,7 +1137,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessType" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - UpdateBusinessType">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1180,7 +1155,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${update-business-type-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessType" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessType">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1193,20 +1168,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessType&quot;,&quot;variables&quot;:{
-	&quot;input&quot;: {
-		&quot;sbi&quot;: &quot;106430700&quot;,
-          &quot;typeCode&quot;: 123
-	}
-},&quot;query&quot;:&quot;mutation UpdateBusinessType($input: UpdateBusinessTypeInput!) {\n        updateBusinessType(input: $input) {\n          success\n            business {\n            info {\n              type {\n                code\n                type\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessType(input: { sbi: \&quot;106430700\&quot;, typeCode: 123 }) {\n          success\n            business {\n            info {\n              type {\n                code\n                type\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessType</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessType($input: UpdateBusinessTypeInput!) {
-        updateBusinessType(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+        updateBusinessType(input: { sbi: &quot;106430700&quot;, typeCode: 123 }) {
           success
             business {
             info {
@@ -1218,12 +1187,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           }
         }
       }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-	&quot;input&quot;: {
-		&quot;sbi&quot;: &quot;106430700&quot;,
-          &quot;typeCode&quot;: 123
-	}
-}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1338,7 +1301,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test-createBusiness" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CreateBusiness" enabled="false">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1555,7 +1518,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessName">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - UpdateBusinessName">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1711,7 +1674,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessPhone">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - UpdateBusinessPhone">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1998,7 +1961,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessVAT">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - UpdateBusinessVAT">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2070,7 +2033,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updatePerson">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - UpdatePerson">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
