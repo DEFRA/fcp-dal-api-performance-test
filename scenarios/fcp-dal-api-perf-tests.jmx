@@ -5,11 +5,9 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test data - CSV Data Set Config" enabled="false">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test data - CSV Data Set Config" enabled="true">
         <stringProp name="filename">${__P(testDataFilePath)}</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -21,7 +19,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Paired test data - CSV Data Set Config" enabled="false">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Paired test data - CSV Data Set Config" enabled="true">
         <stringProp name="filename">${__P(testPairedDataFilePath)}</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -33,7 +31,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test model - CSV Data Set Config" enabled="false">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Test model - CSV Data Set Config" enabled="true">
         <stringProp name="filename">${__P(testModelFilePath)}</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -45,7 +43,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Health" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Health">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -91,7 +89,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </JSR223PostProcessor>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessSimple" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessSimple" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -158,7 +156,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerSimple" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerSimple" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -225,7 +223,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomers" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomers" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -295,7 +293,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - QueryCustomerBusinesses" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - QueryCustomerBusinesses" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -367,7 +365,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - AuthenticateQuestions" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - AuthenticateQuestions" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -441,7 +439,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerBusinesses" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerBusinesses" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -513,7 +511,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerPermissions" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerPermissions" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -587,7 +585,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomerPermissions" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomerPermissions">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -660,7 +658,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessMessages" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessMessages" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -738,7 +736,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CPH" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CPH" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -814,7 +812,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Agreements" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Agreements" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -904,7 +902,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Applications" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Applications" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1557,7 +1555,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessName" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updateBusinessName">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1575,7 +1573,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${update-business-name-rrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessName" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessName">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1588,18 +1586,17 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateBusinessName&quot;,&quot;variables&quot;:{
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
 	&quot;input&quot;: {
        &quot;sbi&quot;: &quot;106430700&quot;,
        &quot;name&quot;: &quot;this is a new name&quot;
      }
-},&quot;query&quot;:&quot;mutation UpdateBusinessName($input: UpdateBusinessNameInput!) {\n  updateBusinessName(input: $input) {\n    success\n    business {\n      info {\n        name\n      }\n    }\n  }\n}&quot;}</stringProp>
+},&quot;query&quot;:&quot;mutation UpdateBusinessName($input: UpdateBusinessNameInput!) {\n  updateBusinessName(input: $input) {\n    success\n    business {\n      info {\n        name\n      }\n    }\n  }\n}\n\nmutation {\n  updateBusinessName(input: {sbi: \&quot;107167406\&quot;,name: \&quot;newname\&quot;}) {\n    success\n    business {\n      sbi\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateBusinessName</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessName($input: UpdateBusinessNameInput!) {
   updateBusinessName(input: $input) {
     success
@@ -1607,6 +1604,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       info {
         name
       }
+    }
+  }
+}
+
+mutation {
+  updateBusinessName(input: {sbi: &quot;107167406&quot;,name: &quot;newname&quot;}) {
+    success
+    business {
+      sbi
     }
   }
 }</stringProp>
@@ -2142,26 +2148,26 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updatePerson&quot;,&quot;variables&quot;:{
-  &quot;input&quot;: {
-    &quot;crn&quot;: &quot;1100696741&quot;,
-    &quot;address&quot;: {
-      &quot;buildingName&quot;: &quot;newBuildingName&quot;,
-      &quot;buildingNumberRange&quot;: &quot;newBuildingNumberRange&quot;,
-      &quot;city&quot;: &quot;newCity&quot;,
-      &quot;country&quot;: &quot;newCountry&quot;,
-      &quot;county&quot;: &quot;newCounty&quot;,
-      &quot;dependentLocality&quot;: &quot;newDependentLocality&quot;,
-      &quot;doubleDependentLocality&quot;: &quot;newDoubleDependentLocality&quot;,
-      &quot;flatName&quot;: &quot;newFlatName&quot;,
-      &quot;line1&quot;: &quot;newLine1&quot;,
-      &quot;line2&quot;: &quot;newLine2&quot;,
-      &quot;line3&quot;: &quot;newLine3&quot;,
-      &quot;line4&quot;: &quot;newLine4&quot;,
-      &quot;line5&quot;: &quot;newLine5&quot;,
-      &quot;pafOrganisationName&quot;: &quot;newPafOrganisationName&quot;,
-      &quot;postalCode&quot;: &quot;newPostalCode&quot;,
-      &quot;street&quot;: &quot;newStreet&quot;,
-      &quot;uprn&quot;: &quot;newUprn&quot;
+  input: {
+    crn: &quot;1100696741&quot;,
+    address: {
+      buildingName: &quot;newBuildingName&quot;,
+      buildingNumberRange: &quot;newBuildingNumberRange&quot;,
+      city: &quot;newCity&quot;,
+      country: &quot;newCountry&quot;,
+      county: &quot;newCounty&quot;,
+      dependentLocality: &quot;newDependentLocality&quot;,
+      doubleDependentLocality: &quot;newDoubleDependentLocality&quot;,
+      flatName: &quot;newFlatName&quot;,
+      line1: &quot;newLine1&quot;,
+      line2: &quot;newLine2&quot;,
+      line3: &quot;newLine3&quot;,
+      line4: &quot;newLine4&quot;,
+      line5: &quot;newLine5&quot;,
+      pafOrganisationName: &quot;newPafOrganisationName&quot;,
+      postalCode: &quot;newPostalCode&quot;,
+      street: &quot;newStreet&quot;,
+      uprn: &quot;newUprn&quot;
     }
   }
 },&quot;query&quot;:&quot;mutation updatePerson($input: UpdateCustomerAddressInput!) {\n  updateCustomerAddress(input: $input) {\n    success\n    customer {\n      info {\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
@@ -2200,119 +2206,31 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
   }
 }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables">{
-  &quot;input&quot;: {
-    &quot;crn&quot;: &quot;1100696741&quot;,
-    &quot;address&quot;: {
-      &quot;buildingName&quot;: &quot;newBuildingName&quot;,
-      &quot;buildingNumberRange&quot;: &quot;newBuildingNumberRange&quot;,
-      &quot;city&quot;: &quot;newCity&quot;,
-      &quot;country&quot;: &quot;newCountry&quot;,
-      &quot;county&quot;: &quot;newCounty&quot;,
-      &quot;dependentLocality&quot;: &quot;newDependentLocality&quot;,
-      &quot;doubleDependentLocality&quot;: &quot;newDoubleDependentLocality&quot;,
-      &quot;flatName&quot;: &quot;newFlatName&quot;,
-      &quot;line1&quot;: &quot;newLine1&quot;,
-      &quot;line2&quot;: &quot;newLine2&quot;,
-      &quot;line3&quot;: &quot;newLine3&quot;,
-      &quot;line4&quot;: &quot;newLine4&quot;,
-      &quot;line5&quot;: &quot;newLine5&quot;,
-      &quot;pafOrganisationName&quot;: &quot;newPafOrganisationName&quot;,
-      &quot;postalCode&quot;: &quot;newPostalCode&quot;,
-      &quot;street&quot;: &quot;newStreet&quot;,
-      &quot;uprn&quot;: &quot;newUprn&quot;
+  input: {
+    crn: &quot;1100696741&quot;,
+    address: {
+      buildingName: &quot;newBuildingName&quot;,
+      buildingNumberRange: &quot;newBuildingNumberRange&quot;,
+      city: &quot;newCity&quot;,
+      country: &quot;newCountry&quot;,
+      county: &quot;newCounty&quot;,
+      dependentLocality: &quot;newDependentLocality&quot;,
+      doubleDependentLocality: &quot;newDoubleDependentLocality&quot;,
+      flatName: &quot;newFlatName&quot;,
+      line1: &quot;newLine1&quot;,
+      line2: &quot;newLine2&quot;,
+      line3: &quot;newLine3&quot;,
+      line4: &quot;newLine4&quot;,
+      line5: &quot;newLine5&quot;,
+      pafOrganisationName: &quot;newPafOrganisationName&quot;,
+      postalCode: &quot;newPostalCode&quot;,
+      street: &quot;newStreet&quot;,
+      uprn: &quot;newUprn&quot;
     }
   }
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">content-type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">gateway-type</stringProp>
-                <stringProp name="Header.value">internal</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
-        </hashTree>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updatePerson2" enabled="false">
-        <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
-        <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <intProp name="LoopController.loops">-1</intProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
-          <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-person-rrpm}</stringProp>
-        </ConstantThroughputTimer>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http-update-user">
-          <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
-          <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/graphql</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-&quot;query&quot;:&quot;mutation ($input: UpdateCustomerAddressInput!) { updateCustomerAddress(input: $input) { \n success \n customer \n { \n info { \n address { \n pafOrganisationName \n line1 \n line2 \n line3 \n line4 \n line5 \n buildingNumberRange \n buildingName \n street \n city \n county \n postalCode \n country \n uprn \n dependentLocality \n doubleDependentLocality \n } \n } \n } \n } \n }&quot;,&#xd;
-&quot;variables&quot;:{&#xd;
-  &quot;input&quot;: {&#xd;
-    &quot;crn&quot;: &quot;1100696741&quot;,&#xd;
-    &quot;address&quot;: {&#xd;
-      &quot;buildingName&quot;: &quot;newBuildingName&quot;,&#xd;
-      &quot;buildingNumberRange&quot;: &quot;newBuildingNumberRange&quot;,&#xd;
-      &quot;city&quot;: &quot;newCity&quot;,&#xd;
-      &quot;country&quot;: &quot;newCountry&quot;,&#xd;
-      &quot;county&quot;: &quot;newCounty&quot;,&#xd;
-      &quot;dependentLocality&quot;: &quot;newDependentLocality&quot;,&#xd;
-      &quot;doubleDependentLocality&quot;: &quot;newDoubleDependentLocality&quot;,&#xd;
-      &quot;flatName&quot;: &quot;newFlatName&quot;,&#xd;
-      &quot;line1&quot;: &quot;newLine1&quot;,&#xd;
-      &quot;line2&quot;: &quot;newLine2&quot;,&#xd;
-      &quot;line3&quot;: &quot;newLine3&quot;,&#xd;
-      &quot;line4&quot;: &quot;newLine4&quot;,&#xd;
-      &quot;line5&quot;: &quot;newLine5&quot;,&#xd;
-      &quot;pafOrganisationName&quot;: &quot;newPafOrganisationName&quot;,&#xd;
-      &quot;postalCode&quot;: &quot;newPostalCode&quot;,&#xd;
-      &quot;street&quot;: &quot;newStreet&quot;,&#xd;
-      &quot;uprn&quot;: &quot;newUprn&quot;&#xd;
-    }&#xd;
-  }&#xd;
-}&#xd;
-}&#xd;
-</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
