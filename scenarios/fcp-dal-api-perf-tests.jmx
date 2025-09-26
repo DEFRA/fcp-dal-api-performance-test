@@ -1591,24 +1591,13 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
        &quot;sbi&quot;: &quot;106430700&quot;,
        &quot;name&quot;: &quot;this is a new name&quot;
      }
-},&quot;query&quot;:&quot;mutation UpdateBusinessName($input: UpdateBusinessNameInput!) {\n  updateBusinessName(input: $input) {\n    success\n    business {\n      info {\n        name\n      }\n    }\n  }\n}\n\nmutation {\n  updateBusinessName(input: {sbi: \&quot;107167406\&quot;,name: \&quot;newname\&quot;}) {\n    success\n    business {\n      sbi\n    }\n  }\n}&quot;}</stringProp>
+},&quot;query&quot;:&quot;mutation {\n  updateBusinessName(input: {sbi: \&quot;107167406\&quot;,name: \&quot;newname\&quot;}) {\n    success\n    business {\n      sbi\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateBusinessName($input: UpdateBusinessNameInput!) {
-  updateBusinessName(input: $input) {
-    success
-    business {
-      info {
-        name
-      }
-    }
-  }
-}
-
-mutation {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
   updateBusinessName(input: {sbi: &quot;107167406&quot;,name: &quot;newname&quot;}) {
     success
     business {
@@ -1626,7 +1615,7 @@ mutation {
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -2116,7 +2105,7 @@ mutation {
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updatePerson" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - updatePerson">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2273,7 +2262,7 @@ mutation {
           <intProp name="calcMode">4</intProp>
           <doubleProp>
             <name>throughput</name>
-            <value>60.0</value>
+            <value>10.0</value>
             <savedValue>0.0</savedValue>
           </doubleProp>
         </ConstantThroughputTimer>
