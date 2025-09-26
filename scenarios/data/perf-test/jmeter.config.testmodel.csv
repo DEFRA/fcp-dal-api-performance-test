@@ -1,2 +1,2 @@
-health-rrpm,business-simple-rrpm,customer-simple-rrpm,business-customer-rrpm,query-customer-businesses-rrpm,authenticate-questions-rrpm,customer-businesses-rrpm,customer-permissions-rrpm,business-customer-permissions-rrpm,business-messages-rrpm,cph-rrpm,agreements-rrpm,applications-rrpm
-1,1,1,1,1,1,1,1,1,1,1,1,1
+healthRrpm,businessSimpleRrpm,customerSimpleRrpm,businessCustomerRrpm,queryCustomerBusinessesRrpm,authenticateQuestionsRrpm,customerBusinessesRrpm,customerPermissionsRrpm,businessCustomerPermissionsRrpm,businessMessagesRrpm,getCphRrpm,getAgreementsRrpm,getApplicationsRrpm,createBusinessRrpm,updatePersonRrpm,updateBusinessNameRrpm,updateBusinessEmailRrpm,updateBusinessAddressRrpm,updateBusinessPhoneRrpm,updateBusinessVatRrpm,updateBusinessLegalStatusRrpm,updateBusinessTypeRrpm,updateBusinessRegistrationNumbersRrpm,updateBusinessDateStartedFarmingRrpm
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
