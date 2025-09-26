@@ -223,7 +223,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomers" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - BusinessCustomers">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -293,7 +293,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - QueryCustomerBusinesses" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - QueryCustomerBusinesses">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -306,9 +306,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${query-customer-businesses-rrpm}</stringProp>
+          <stringProp name="throughput">${queryCustomerBusinessesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-QueryCustomerBusinesses" enabled="true">
@@ -365,7 +365,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - AuthenticateQuestions" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - AuthenticateQuestions">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -378,9 +378,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${authenticate-questions-rrpm}</stringProp>
+          <stringProp name="throughput">${authenticateQuestionsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-AuthenticateQuestions" enabled="true">
@@ -439,7 +439,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerBusinesses" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerBusinesses">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -452,9 +452,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${customer-businesses-rrpm}</stringProp>
+          <stringProp name="throughput">${customerBusinessesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerBusinesses" enabled="true">
@@ -511,7 +511,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerPermissions" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - CustomerPermissions">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -524,9 +524,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${customer-permissions-rrpm}</stringProp>
+          <stringProp name="throughput">${customerPermissionsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CustomerPermissions" enabled="true">
@@ -598,9 +598,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${business-customer-permissions-rrpm}</stringProp>
+          <stringProp name="throughput">${businessCustomerPermissionsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessCustomerPermissions" enabled="true">
@@ -671,9 +671,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${business-messages-rrpm}</stringProp>
+          <stringProp name="throughput">${businessMessagesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-BusinessMessages" enabled="true">
@@ -749,9 +749,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${cph-rrpm}</stringProp>
+          <stringProp name="throughput">${getCphRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-CPH">
@@ -812,7 +812,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Agreements" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Agreements">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -825,9 +825,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${agreements-rrpm}</stringProp>
+          <stringProp name="throughput">${getAgreementsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Agreements">
@@ -902,7 +902,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Applications" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DAL Test - Applications">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -915,9 +915,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${applications-rrpm}</stringProp>
+          <stringProp name="throughput">${getApplicationsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-Applications" enabled="true">
@@ -1007,9 +1007,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-legal-status-rrpm}</stringProp>
+          <stringProp name="throughput">${updateBusinessLegalStatusRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessLegalStatus">
@@ -1080,9 +1080,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-date-started-farming-rrpm}</stringProp>
+          <stringProp name="throughput">${updateBusinessDateStartedFarmingRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessDateStartedFarming">
@@ -1150,9 +1150,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-type-rrpm}</stringProp>
+          <stringProp name="throughput">${updateBusinessTypeRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessType">
@@ -1223,9 +1223,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-registration-numbers-rrpm}</stringProp>
+          <stringProp name="throughput">${updateBusinessRegistrationNumbersRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessRegistrationNumbers">
@@ -1298,7 +1298,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${create-business-rrpm}</stringProp>
+          <stringProp name="throughput">${createBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL - createBusiness">
@@ -1314,14 +1314,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusiness({input:{crn:\&quot;1100696741\&quot;,name:\&quot;AcmeFarmsLtd\&quot;,vat:\&quot;GB123456789\&quot;,traderNumber:\&quot;TR12345\&quot;,vendorNumber:\&quot;VN67890\&quot;,correspondenceAddress:{line1:\&quot;POBox123\&quot;,city:\&quot;Farmville\&quot;,postalCode:\&quot;FV12AB\&quot;,country:\&quot;UK\&quot;},typeCode:2,email:{address:\&quot;info@acmefarms.co.uk\&quot;},correspondenceEmail:{address:\&quot;correspondence@acmefarms.co.uk\&quot;},phone:{landline:\&quot;+441234567890\&quot;,mobile:\&quot;+441234567891\&quot;},correspondencePhone:{landline:\&quot;+441234567892\&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:\&quot;12345678\&quot;,charityCommission:\&quot;87654321\&quot;},landConfirmed:true,dateStartedFarming:\&quot;2021-05-27T12:46:17.305Z\&quot;}}\n  ){\n    success\n    business {\n      info {\n        address {\n          buildingName\n          buildingNumberRange\n          city\n          country\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          flatName\n          street\n          county\n          postalCode\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        correspondenceAddress {\n          line1\n          line2\n          line3\n          line4\n          pafOrganisationName\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        name\n        reference\n        vat\n        traderNumber\n        vendorNumber\n        isCorrespondenceAsBusinessAddress\n        email {\n          address\n          validated\n        }\n        correspondenceEmail {\n          address\n          validated\n        }\n        phone {\n          mobile\n          landline\n        }\n        correspondencePhone {\n          mobile\n          landline\n        }\n        legalStatus {\n          code\n          type\n        }\n        type {\n          code\n          type\n        }\n        registrationNumbers {\n          companiesHouse\n          charityCommission\n        }\n        landConfirmed\n        dateStartedFarming\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusiness(input:{crn:\&quot;1100696741\&quot;,name:\&quot;AcmeFarmsLtd\&quot;,vat:\&quot;GB123456789\&quot;,traderNumber:\&quot;TR12345\&quot;,vendorNumber:\&quot;VN67890\&quot;,correspondenceAddress:{line1:\&quot;POBox123\&quot;,city:\&quot;Farmville\&quot;,postalCode:\&quot;FV12AB\&quot;,country:\&quot;UK\&quot;},typeCode:2,email:{address:\&quot;info@acmefarms.co.uk\&quot;},correspondenceEmail:{address:\&quot;correspondence@acmefarms.co.uk\&quot;},phone:{landline:\&quot;+441234567890\&quot;,mobile:\&quot;+441234567891\&quot;},correspondencePhone:{landline:\&quot;+441234567892\&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:\&quot;12345678\&quot;,charityCommission:\&quot;87654321\&quot;},landConfirmed:true,dateStartedFarming:\&quot;2021-05-27T12:46:17.305Z\&quot;}\n  ){\n    success\n    business {\n      info {\n        address {\n          buildingName\n          buildingNumberRange\n          city\n          country\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          flatName\n          street\n          county\n          postalCode\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        correspondenceAddress {\n          line1\n          line2\n          line3\n          line4\n          pafOrganisationName\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        name\n        reference\n        vat\n        traderNumber\n        vendorNumber\n        isCorrespondenceAsBusinessAddress\n        email {\n          address\n          validated\n        }\n        correspondenceEmail {\n          address\n          validated\n        }\n        phone {\n          mobile\n          landline\n        }\n        correspondencePhone {\n          mobile\n          landline\n        }\n        legalStatus {\n          code\n          type\n        }\n        type {\n          code\n          type\n        }\n        registrationNumbers {\n          companiesHouse\n          charityCommission\n        }\n        landConfirmed\n        dateStartedFarming\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  createBusiness({input:{crn:&quot;1100696741&quot;,name:&quot;AcmeFarmsLtd&quot;,vat:&quot;GB123456789&quot;,traderNumber:&quot;TR12345&quot;,vendorNumber:&quot;VN67890&quot;,correspondenceAddress:{line1:&quot;POBox123&quot;,city:&quot;Farmville&quot;,postalCode:&quot;FV12AB&quot;,country:&quot;UK&quot;},typeCode:2,email:{address:&quot;info@acmefarms.co.uk&quot;},correspondenceEmail:{address:&quot;correspondence@acmefarms.co.uk&quot;},phone:{landline:&quot;+441234567890&quot;,mobile:&quot;+441234567891&quot;},correspondencePhone:{landline:&quot;+441234567892&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:&quot;12345678&quot;,charityCommission:&quot;87654321&quot;},landConfirmed:true,dateStartedFarming:&quot;2021-05-27T12:46:17.305Z&quot;}}
+  createBusiness(input:{crn:&quot;1100696741&quot;,name:&quot;AcmeFarmsLtd&quot;,vat:&quot;GB123456789&quot;,traderNumber:&quot;TR12345&quot;,vendorNumber:&quot;VN67890&quot;,correspondenceAddress:{line1:&quot;POBox123&quot;,city:&quot;Farmville&quot;,postalCode:&quot;FV12AB&quot;,country:&quot;UK&quot;},typeCode:2,email:{address:&quot;info@acmefarms.co.uk&quot;},correspondenceEmail:{address:&quot;correspondence@acmefarms.co.uk&quot;},phone:{landline:&quot;+441234567890&quot;,mobile:&quot;+441234567891&quot;},correspondencePhone:{landline:&quot;+441234567892&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:&quot;12345678&quot;,charityCommission:&quot;87654321&quot;},landConfirmed:true,dateStartedFarming:&quot;2021-05-27T12:46:17.305Z&quot;}
   ){
     success
     business {
@@ -1442,9 +1442,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-name-rrpm}</stringProp>
+          <stringProp name="throughput">${updateBusinessNameRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessName">
@@ -1510,9 +1510,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-email-rrpm}</stringProp>
+          <stringProp name="throughput">${updateBusinessEmailRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessEmail">
@@ -1582,9 +1582,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-phone-rrpm}</stringProp>
+          <stringProp name="throughput">${uupdateBusinessPhoneRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessPhone">
@@ -1671,9 +1671,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-address-rrpm}</stringProp>
+          <stringProp name="throughput">${updateBusinessAddressRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessAddress">
@@ -1779,9 +1779,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-business-vat-rrpm}</stringProp>
+          <stringProp name="throughput">${updateBusinessVatRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updateBusinessVAT">
@@ -1853,7 +1853,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       <hashTree>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${update-person-rrpm}</stringProp>
+          <stringProp name="throughput">${updatePersonRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="GraphQL-updatePerson">
