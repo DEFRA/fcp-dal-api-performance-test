@@ -2136,30 +2136,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updatePerson&quot;,&quot;variables&quot;:{
-  input: {
-    crn: &quot;1100696741&quot;,
-    address: {
-      buildingName: &quot;newBuildingName&quot;,
-      buildingNumberRange: &quot;newBuildingNumberRange&quot;,
-      city: &quot;newCity&quot;,
-      country: &quot;newCountry&quot;,
-      county: &quot;newCounty&quot;,
-      dependentLocality: &quot;newDependentLocality&quot;,
-      doubleDependentLocality: &quot;newDoubleDependentLocality&quot;,
-      flatName: &quot;newFlatName&quot;,
-      line1: &quot;newLine1&quot;,
-      line2: &quot;newLine2&quot;,
-      line3: &quot;newLine3&quot;,
-      line4: &quot;newLine4&quot;,
-      line5: &quot;newLine5&quot;,
-      pafOrganisationName: &quot;newPafOrganisationName&quot;,
-      postalCode: &quot;newPostalCode&quot;,
-      street: &quot;newStreet&quot;,
-      uprn: &quot;newUprn&quot;
-    }
-  }
-},&quot;query&quot;:&quot;mutation updatePerson($input: UpdateCustomerAddressInput!) {\n  updateCustomerAddress(input: $input) {\n    success\n    customer {\n      info {\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;updatePerson&quot;,&quot;variables&quot;:{ input: { crn: &quot;1100696741&quot;, address: { buildingName: &quot;newBuildingName&quot;, buildingNumberRange: &quot;newBuildingNumberRange&quot;, city: &quot;newCity&quot;, country: &quot;newCountry&quot;, county: &quot;newCounty&quot;, dependentLocality: &quot;newDependentLocality&quot;, doubleDependentLocality: &quot;newDoubleDependentLocality&quot;, flatName: &quot;newFlatName&quot;, line1: &quot;newLine1&quot;, line2: &quot;newLine2&quot;, line3: &quot;newLine3&quot;, line4: &quot;newLine4&quot;, line5: &quot;newLine5&quot;, pafOrganisationName: &quot;newPafOrganisationName&quot;, postalCode: &quot;newPostalCode&quot;, street: &quot;newStreet&quot;, uprn: &quot;newUprn&quot;} } },&quot;query&quot;:&quot;mutation updatePerson($input: UpdateCustomerAddressInput!) {\n  updateCustomerAddress(input: $input) {\n    success\n    customer {\n      info {\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2194,30 +2171,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-  input: {
-    crn: &quot;1100696741&quot;,
-    address: {
-      buildingName: &quot;newBuildingName&quot;,
-      buildingNumberRange: &quot;newBuildingNumberRange&quot;,
-      city: &quot;newCity&quot;,
-      country: &quot;newCountry&quot;,
-      county: &quot;newCounty&quot;,
-      dependentLocality: &quot;newDependentLocality&quot;,
-      doubleDependentLocality: &quot;newDoubleDependentLocality&quot;,
-      flatName: &quot;newFlatName&quot;,
-      line1: &quot;newLine1&quot;,
-      line2: &quot;newLine2&quot;,
-      line3: &quot;newLine3&quot;,
-      line4: &quot;newLine4&quot;,
-      line5: &quot;newLine5&quot;,
-      pafOrganisationName: &quot;newPafOrganisationName&quot;,
-      postalCode: &quot;newPostalCode&quot;,
-      street: &quot;newStreet&quot;,
-      uprn: &quot;newUprn&quot;
-    }
-  }
-}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{ input: { crn: &quot;1100696741&quot;, address: { buildingName: &quot;newBuildingName&quot;, buildingNumberRange: &quot;newBuildingNumberRange&quot;, city: &quot;newCity&quot;, country: &quot;newCountry&quot;, county: &quot;newCounty&quot;, dependentLocality: &quot;newDependentLocality&quot;, doubleDependentLocality: &quot;newDoubleDependentLocality&quot;, flatName: &quot;newFlatName&quot;, line1: &quot;newLine1&quot;, line2: &quot;newLine2&quot;, line3: &quot;newLine3&quot;, line4: &quot;newLine4&quot;, line5: &quot;newLine5&quot;, pafOrganisationName: &quot;newPafOrganisationName&quot;, postalCode: &quot;newPostalCode&quot;, street: &quot;newStreet&quot;, uprn: &quot;newUprn&quot;} } }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
