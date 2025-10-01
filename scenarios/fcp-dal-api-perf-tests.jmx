@@ -935,14 +935,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Get-cph-by-sbi&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${land-sbi}&quot;, &quot;sheetId&quot;:&quot;${land-sheet-id}”, &quot;parcelId&quot;:&quot;${land-parcel-id}&quot;},&quot;query&quot;:&quot;query Business($sbi: ID!, $sheetId: ID!, $parcelId: ID!) {\n  business(sbi: $sbi) {\n    land {\n      parcelCovers(sheetId: $sheetId, parcelId: $parcelId) {\n        area\n        code\n        id\n        isBpsEligible\n        name\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandCovers&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${land-sbi}&quot;,&quot;sheetId&quot;:&quot;${land-sheet-id}&quot;,&quot;parcelId&quot;:&quot;${land-parcel-id}&quot;},&quot;query&quot;:&quot;query GetLandCovers($sbi: ID!, $sheetId: ID!, $parcelId: ID!) {\n  business(sbi: $sbi) {\n    land {\n      parcelCovers(sheetId: $sheetId, parcelId: $parcelId) {\n        area\n        code\n        id\n        isBpsEligible\n        name\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">Get-cph-by-sbi</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query Business($sbi: ID!, $sheetId: ID!, $parcelId: ID!) {
+          <stringProp name="GraphQLHTTPSampler.operationName">GetLandCovers</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query GetLandCovers($sbi: ID!, $sheetId: ID!, $parcelId: ID!) {
   business(sbi: $sbi) {
     land {
       parcelCovers(sheetId: $sheetId, parcelId: $parcelId) {
@@ -955,7 +955,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${land-sbi}&quot;, &quot;sheetId&quot;:&quot;${land-sheet-id}”, &quot;parcelId&quot;:&quot;${land-parcel-id}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${land-sbi}&quot;,&quot;sheetId&quot;:&quot;${land-sheet-id}&quot;,&quot;parcelId&quot;:&quot;${land-parcel-id}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
