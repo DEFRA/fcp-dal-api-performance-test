@@ -1,2 +1,2 @@
-healthRrpm,businessSimpleRrpm,customerSimpleRrpm,businessCustomerRrpm,queryCustomerBusinessesRrpm,authenticateQuestionsRrpm,customerPermissionsRrpm,businessMessagesRrpm,getCphRrpm,getAgreementsRrpm,getApplicationsRrpm,createBusinessRrpm,updatePersonRrpm,updateBusinessRrpm,getLandCoverSummaryRrpm,getLandCoversByParcelRrpm,GetLandParcelsRrpm,toggleLockPersonRrpm
-3,69,147,69,2,18,154,3,3,3,3,3,3,3,3,6,3,3
+createBusinessRrpm,healthRrpm,updatePersonRrpm,getAgreementsRrpm,getApplicationsRrpm,authenticateQuestionsRrpm,customerPermissionsRrpm,businessCustomerRrpm,businessSimpleRrpm,businessMessagesRrpm,getCphRrpm,queryCustomerBusinessesRrpm,customerSimpleRrpm,getLandCoverSummaryRrpm,getLandCoversByParcelRrpm,GetLandParcelsRrpm,toggleLockPersonRrpm,updateBusinessRrpm
+2,2,2,1,1,5,45,22,22,1,1,1,46,1,2,1,2,2
