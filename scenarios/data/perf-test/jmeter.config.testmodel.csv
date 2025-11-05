@@ -1,2 +1,2 @@
 createBusinessRrpm,healthRrpm,updatePersonRrpm,getAgreementsRrpm,getApplicationsRrpm,authenticateQuestionsRrpm,customerPermissionsRrpm,businessCustomerRrpm,businessSimpleRrpm,businessMessagesRrpm,getCphRrpm,queryCustomerBusinessesRrpm,customerSimpleRrpm,getLandCoverSummaryRrpm,getLandCoversByParcelRrpm,GetLandParcelsRrpm,toggleLockPersonRrpm,updateBusinessRrpm
-14,14,14,7,7,35,315,154,154,7,7,7,322,7,14,7,14,14
+8,8,8,4,4,20,180,88,88,4,4,4,184,4,8,4,8,8
