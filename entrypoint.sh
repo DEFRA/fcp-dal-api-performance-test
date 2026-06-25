@@ -23,7 +23,7 @@ auth_url=https://login.microsoftonline.com/${TENANT_ID:?required secret not set!
 client_auth=`echo -n "${CLIENT_ID:?required secret not set!}:${CLIENT_SECRET:?required secret not set!}" | base64  | tr -d '\n'`
 auth_token=`curl -s \
   --connect-timeout 5 \
-  -x ${CDP_HTTP_PROXY:?required env var not set!} \
+  -x ${CDP_HTTPS_PROXY:?required env var not set!} \
   -L ${auth_url} \
   -H "Authorization: Basic ${client_auth}" \
   -H 'content-type: application/x-www-form-urlencoded' \
