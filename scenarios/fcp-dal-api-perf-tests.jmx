@@ -274,7 +274,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -282,7 +282,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
+                <stringProp name="Header.name">email</stringProp>
                 <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
               </elementProp>
             </collectionProp>
@@ -387,7 +387,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -457,7 +457,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
