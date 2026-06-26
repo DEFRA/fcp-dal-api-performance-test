@@ -290,7 +290,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerDetails" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerDetails">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -403,7 +403,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessCustomers" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessCustomers">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -416,7 +416,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${businessCustomerRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -526,7 +526,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -558,12 +558,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${authenticateQuestionsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-authenticate-questions-by-crn" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-authenticate-questions-by-crn">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -600,7 +600,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -711,7 +711,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${businessMessagesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-business-messages-by-crn-and-sbi">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-business-messages-by-crn-and-sbi" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -752,7 +752,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -1151,7 +1151,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Agreements" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Agreements">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1169,7 +1169,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${getAgreementsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-agreements-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-agreements-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1351,7 +1351,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${createBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Create-business">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Create-business" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1460,7 +1460,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -2173,10 +2173,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2184,19 +2184,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">gateway-type</stringProp>
-                <stringProp name="Header.value">internal</stringProp>
+                <stringProp name="Header.name">email</stringProp>
+                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UpdateCustomerAllFields" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UpdateCustomerAllFields">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2209,12 +2205,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${updateCustomerAllFieldsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Update-customer-all-fields" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Update-customer-all-fields">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2315,10 +2311,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2326,19 +2322,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">gateway-type</stringProp>
-                <stringProp name="Header.value">internal</stringProp>
+                <stringProp name="Header.name">email</stringProp>
+                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ToggleLockBusiness" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ToggleLockBusiness">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2392,10 +2384,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2403,12 +2395,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">gateway-type</stringProp>
-                <stringProp name="Header.value">internal</stringProp>
+                <stringProp name="Header.name">email</stringProp>
+                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
