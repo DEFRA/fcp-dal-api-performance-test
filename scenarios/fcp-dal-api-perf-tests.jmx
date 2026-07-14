@@ -303,9 +303,9 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
-          <stringProp name="throughput">${businessSimpleRrpm}</stringProp>
+          <stringProp name="throughput">${bankAccountsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
         <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-bank-details-by-sbi">
@@ -391,13 +391,13 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetBusinessDetails&quot;,&quot;query&quot;:&quot;query ReferenceData {\n  referenceData {\n    countriesCurrencies {\n      code\n      currency\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;ReferenceData&quot;,&quot;query&quot;:&quot;query ReferenceData {\n  referenceData {\n    countriesCurrencies {\n      code\n      currency\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">GetBusinessDetails</stringProp>
+          <stringProp name="GraphQLHTTPSampler.operationName">ReferenceData</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query ReferenceData {
   referenceData {
     countriesCurrencies {
