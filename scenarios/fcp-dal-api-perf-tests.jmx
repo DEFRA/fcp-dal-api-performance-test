@@ -2421,18 +2421,17 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateCustomerAllFields&quot;,&quot;query&quot;:&quot;mutation UpdateCustomerAllFields(sbi: \&quot;${psbi}\&quot;, input: { crn: \&quot;${pcrn}\&quot;} ) {\n  updateCustomerAllFields(input: $input) {\n    success\n    customer {\n      personId\n      info {\n        name {\n          title\n          otherTitle\n          first\n          middle\n          last\n        }\n        dateOfBirth\n        phone {\n          mobile\n          landline\n        }\n        email {\n          address\n          validated\n        }\n        status {\n          locked\n          confirmed\n          deactivated\n        }\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        doNotContact\n        personalIdentifiers\n      }\n\n      businesses {\n        name\n        sbi\n        organisationId\n      }\n      business(sbi: $sbi) {\n        organisationId\n        sbi\n        name\n        messages {\n          id\n          subject\n          date\n          body\n          read\n          deleted\n        }\n        permissionGroups {\n          id\n          level\n          functions\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateCustomerAllFields&quot;,&quot;query&quot;:&quot;mutation UpdateCustomerAllFields(input: { crn: \&quot;${pcrn}\&quot;, email {address: \&quot;test@test.com\&quot;}} ) {\n    updateCustomerAllFields(input: $input) {\n    success\n    customer {\n      info {\n        name {\n          title\n          otherTitle\n          first\n          middle\n          last\n        }\n        dateOfBirth\n        phone {\n          mobile\n          landline\n        }\n        email {\n          address\n          validated\n        }\n        status {\n          locked\n          confirmed\n          deactivated\n        }\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        doNotContact\n        personalIdentifiers\n      }\n      personId\n      businesses {\n        name\n        organisationId\n        sbi\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.operationName">UpdateCustomerAllFields</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateCustomerAllFields(sbi: &quot;${psbi}&quot;, input: { crn: &quot;${pcrn}&quot;} ) {
-  updateCustomerAllFields(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateCustomerAllFields(input: { crn: &quot;${pcrn}&quot;, email {address: &quot;test@test.com&quot;}} ) {
+    updateCustomerAllFields(input: $input) {
     success
     customer {
-      personId
       info {
         name {
           title
@@ -2478,29 +2477,11 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         doNotContact
         personalIdentifiers
       }
-
+      personId
       businesses {
         name
-        sbi
-        organisationId
-      }
-      business(sbi: $sbi) {
         organisationId
         sbi
-        name
-        messages {
-          id
-          subject
-          date
-          body
-          read
-          deleted
-        }
-        permissionGroups {
-          id
-          level
-          functions
-        }
       }
     }
   }
