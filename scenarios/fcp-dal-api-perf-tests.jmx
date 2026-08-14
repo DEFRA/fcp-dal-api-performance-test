@@ -2340,7 +2340,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusinessCustomerBankDetails(input: { sbi: \&quot;${bankSbi}\&quot;, crn: \&quot;${bankCrn}\&quot;, account: { ukBusiness: {accountHolderName: \&quot;${bankAccountHolderName}\&quot;, accountNumber: \&quot;${bankAccountNumber}\&quot;, bankName: \&quot;${bankName}\&quot;, sortCode: \&quot;${bankSortCode}\&quot;, currency: \&quot;${bankCurrency}\&quot;}}}) {\n    ... on BankDetailsSubmitted {\n      success\n    }\n    ... on BankDetailsValidationFailed {\n      message\n      attemptsRemaining\n    }\n    ... on BankDetailsLocked {\n      message\n    }\n    ... on BankDetailsNotEditable {\n      message\n      submitted\n      updatedRecently\n      new\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusinessCustomerBankDetails(input: { sbi: \&quot;${bankSbi}\&quot;, crn: \&quot;${bankCrn}\&quot;, account: { ukBusiness: {accountHolderName: \&quot;${bankAccountHolderName}\&quot;, accountNumber: \&quot;${bankAccountNumber}\&quot;, bankName: \&quot;${bankName}\&quot;, sortCode: \&quot;${bankSortCode}\&quot;, currency: \&quot;${bankCurrency}\&quot;}}}) {\n    ... on BankDetailsSubmitted {\n      success\n    }\n    ... on BankDetailsValidationFailed {\n      message\n      attemptsRemaining\n    }\n    ... on BankDetailsLocked {\n      message\n    }\n    ... on BankDetailsNotEditable {\n      message\n      submitted\n      updatedRecently\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2362,7 +2362,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       message
       submitted
       updatedRecently
-      new
     }
   }
 }</stringProp>
@@ -2370,7 +2369,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -2420,14 +2419,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerAllFields((input: { crn: \&quot;${pcrn}\&quot;, email {address: \&quot;test@test.com\&quot;}} )) {\n    success\n    customer {\n      info {\n        name {\n          title\n          otherTitle\n          first\n          middle\n          last\n        }\n        dateOfBirth\n        phone {\n          mobile\n          landline\n        }\n        email {\n          address\n          validated\n        }\n        status {\n          locked\n          confirmed\n          deactivated\n        }\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        doNotContact\n        personalIdentifiers\n      }\n      personId\n      businesses {\n        name\n        organisationId\n        sbi\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerAllFields(input: { crn: \&quot;${pcrn}\&quot;, email {address: \&quot;test@test.com\&quot;}} ) {\n    success\n    customer {\n      info {\n        name {\n          title\n          otherTitle\n          first\n          middle\n          last\n        }\n        dateOfBirth\n        phone {\n          mobile\n          landline\n        }\n        email {\n          address\n          validated\n        }\n        status {\n          locked\n          confirmed\n          deactivated\n        }\n        address {\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        doNotContact\n        personalIdentifiers\n      }\n      personId\n      businesses {\n        name\n        organisationId\n        sbi\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateCustomerAllFields((input: { crn: &quot;${pcrn}&quot;, email {address: &quot;test@test.com&quot;}} )) {
+  updateCustomerAllFields(input: { crn: &quot;${pcrn}&quot;, email {address: &quot;test@test.com&quot;}} ) {
     success
     customer {
       info {
@@ -2488,7 +2487,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -2525,7 +2524,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${toggleLockPersonRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Toggle-lock-business" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Toggle-lock-business">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2561,7 +2560,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
