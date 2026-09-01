@@ -2309,7 +2309,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CreateBusinessBankDetails">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CreateBusinessBankDetails - JMETER CANNOT PARSE THIS QUERY" enabled="false">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2390,7 +2390,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CreateBusinessBankDetails2">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CreateBusinessBankDetails">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2408,97 +2408,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${CreateBankDetailsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Create-business-bank-account 2-1">
-          <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
-          <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/graphql</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument" enabled="true">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
-  &quot;input&quot;: {
-    &quot;account&quot;: {
-      &quot;ukBusiness&quot;: {
-        &quot;accountHolderName&quot;: &quot;Acme Farms Ltd&quot;,
-        &quot;accountNumber&quot;: &quot;11111100&quot;,
-        &quot;bankName&quot;: &quot;Match Bank&quot;,
-        &quot;currency&quot;: &quot;GBP&quot;,
-        &quot;sortCode&quot;: &quot;111111&quot;
-      }
-    },
-    &quot;crn&quot;: &quot;1111112200&quot;,
-    &quot;sbi&quot;: &quot;900000001&quot;
-  }
-},&quot;query&quot;:&quot;mutation CreateBusinessCustomerBankDetails($input: CreateBusinessCustomerBankDetailsInput!) {\n  createBusinessCustomerBankDetails(input: $input) {\n    ... on BankDetailsSubmitted {\n      success\n    }\n    ... on BankDetailsValidationFailed {\n      message\n      attemptsRemaining\n    }\n    ... on BankDetailsLocked {\n      message\n    }\n    ... on BankDetailsNotEditable {\n      message\n      submitted\n      updatedRecently\n      new\n    }\n  }\n}&quot;}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation CreateBusinessCustomerBankDetails($input: CreateBusinessCustomerBankDetailsInput!) {
-  createBusinessCustomerBankDetails(input: $input) {
-    ... on BankDetailsSubmitted {
-      success
-    }
-    ... on BankDetailsValidationFailed {
-      message
-      attemptsRemaining
-    }
-    ... on BankDetailsLocked {
-      message
-    }
-    ... on BankDetailsNotEditable {
-      message
-      submitted
-      updatedRecently
-      new
-    }
-  }
-}</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-  &quot;input&quot;: {
-    &quot;account&quot;: {
-      &quot;ukBusiness&quot;: {
-        &quot;accountHolderName&quot;: &quot;Acme Farms Ltd&quot;,
-        &quot;accountNumber&quot;: &quot;11111100&quot;,
-        &quot;bankName&quot;: &quot;Match Bank&quot;,
-        &quot;currency&quot;: &quot;GBP&quot;,
-        &quot;sortCode&quot;: &quot;111111&quot;
-      }
-    },
-    &quot;crn&quot;: &quot;1111112200&quot;,
-    &quot;sbi&quot;: &quot;900000001&quot;
-  }
-}</stringProp>
-          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">content-type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create-business-bank-account 2-2">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create-business-bank-account">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/graphql</stringProp>
