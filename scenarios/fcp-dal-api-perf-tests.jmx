@@ -2340,7 +2340,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusinessCustomerBankDetails(input: { sbi: \&quot;${bankSbi}\&quot;, crn: \&quot;${bankCrn}\&quot;, account: { ukBusiness: { accountHolderName:\&quot;${bankAccountHolderName}\&quot;, accountNumber: \&quot;${bankAccountNumber}\&quot;, bankName: \&quot;${bankName}\&quot;, sortCode: \&quot;${bankSortCode}\&quot;, currency: \&quot;${bankCurrency}\&quot;}}})\n  {\n    ... on BankDetailsSubmitted {\n      success\n    }\n    ... on BankDetailsValidationFailed {\n      message\n      attemptsRemaining\n    }\n    ... on BankDetailsLocked {\n      message\n    }\n    ... on BankDetailsNotEditable {\n      message\n      submitted\n      updatedRecently\n      new\n    }\n  }\n}\n\nmutation {\n  updateCustomerAllFields(input: { crn: \&quot;${pcrn}\&quot;, email: {address: \&quot;test@test.com\&quot;}} ) {\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusinessCustomerBankDetails(input: { sbi: \&quot;${bankSbi}\&quot;, crn: \&quot;${bankCrn}\&quot;, account: { ukBusiness: { accountHolderName:\&quot;${bankAccountHolderName}\&quot;, accountNumber: \&quot;${bankAccountNumber}\&quot;, bankName: \&quot;${bankName}\&quot;, sortCode: \&quot;${bankSortCode}\&quot;, currency: \&quot;${bankCurrency}\&quot;}}})\n  {\n    ... on BankDetailsSubmitted {\n      success\n    }\n    ... on BankDetailsValidationFailed {\n      message\n      attemptsRemaining\n    }\n    ... on BankDetailsLocked {\n      message\n    }\n    ... on BankDetailsNotEditable {\n      message\n      submitted\n      updatedRecently\n      new\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2365,12 +2365,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       updatedRecently
       new
     }
-  }
-}
-
-mutation {
-  updateCustomerAllFields(input: { crn: &quot;${pcrn}&quot;, email: {address: &quot;test@test.com&quot;}} ) {
-    success
   }
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
