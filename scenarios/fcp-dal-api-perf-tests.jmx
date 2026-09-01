@@ -2408,7 +2408,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${CreateBankDetailsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Create-business-bank-account">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Create-business-bank-account 2-1">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2421,15 +2421,28 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusinessCustomerBankDetails(input: { sbi: \&quot;${bankSbi}\&quot;, crn: \&quot;${bankCrn}\&quot;, account: { ukBusiness: { accountHolderName:\&quot;${bankAccountHolderName}\&quot;, accountNumber: \&quot;${bankAccountNumber}\&quot;, bankName: \&quot;${bankName}\&quot;, sortCode: \&quot;${bankSortCode}\&quot;, currency:\&quot;${bankCurrency}\&quot;}}})\n  {\n    ... on BankDetailsSubmitted {\n      success\n    }\n    ... on BankDetailsValidationFailed {\n      message\n      attemptsRemaining\n    }\n    ... on BankDetailsLocked {\n      message\n    }\n    ... on BankDetailsNotEditable {\n      message\n      submitted\n      updatedRecently\n      new\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
+  &quot;input&quot;: {
+    &quot;account&quot;: {
+      &quot;ukBusiness&quot;: {
+        &quot;accountHolderName&quot;: &quot;Acme Farms Ltd&quot;,
+        &quot;accountNumber&quot;: &quot;11111100&quot;,
+        &quot;bankName&quot;: &quot;Match Bank&quot;,
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;sortCode&quot;: &quot;111111&quot;
+      }
+    },
+    &quot;crn&quot;: &quot;1111112200&quot;,
+    &quot;sbi&quot;: &quot;900000001&quot;
+  }
+},&quot;query&quot;:&quot;mutation CreateBusinessCustomerBankDetails($input: CreateBusinessCustomerBankDetailsInput!) {\n  createBusinessCustomerBankDetails(input: $input) {\n    ... on BankDetailsSubmitted {\n      success\n    }\n    ... on BankDetailsValidationFailed {\n      message\n      attemptsRemaining\n    }\n    ... on BankDetailsLocked {\n      message\n    }\n    ... on BankDetailsNotEditable {\n      message\n      submitted\n      updatedRecently\n      new\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation {
-  createBusinessCustomerBankDetails(input: { sbi: &quot;${bankSbi}&quot;, crn: &quot;${bankCrn}&quot;, account: { ukBusiness: { accountHolderName:&quot;${bankAccountHolderName}&quot;, accountNumber: &quot;${bankAccountNumber}&quot;, bankName: &quot;${bankName}&quot;, sortCode: &quot;${bankSortCode}&quot;, currency:&quot;${bankCurrency}&quot;}}})
-  {
+          <stringProp name="GraphQLHTTPSampler.query">mutation CreateBusinessCustomerBankDetails($input: CreateBusinessCustomerBankDetailsInput!) {
+  createBusinessCustomerBankDetails(input: $input) {
     ... on BankDetailsSubmitted {
       success
     }
@@ -2446,6 +2459,21 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       updatedRecently
       new
     }
+  }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{
+  &quot;input&quot;: {
+    &quot;account&quot;: {
+      &quot;ukBusiness&quot;: {
+        &quot;accountHolderName&quot;: &quot;Acme Farms Ltd&quot;,
+        &quot;accountNumber&quot;: &quot;11111100&quot;,
+        &quot;bankName&quot;: &quot;Match Bank&quot;,
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;sortCode&quot;: &quot;111111&quot;
+      }
+    },
+    &quot;crn&quot;: &quot;1111112200&quot;,
+    &quot;sbi&quot;: &quot;900000001&quot;
   }
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
@@ -2470,7 +2498,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create-business-bank-account">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create-business-bank-account 2-2">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/graphql</stringProp>
