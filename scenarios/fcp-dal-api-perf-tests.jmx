@@ -2475,14 +2475,16 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/graphql</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;mutation&quot;:&quot;{ \n createBusinessCustomerBankDetails() \n { \n ... on BankDetailsSubmitted { \n success \n } \n ... on BankDetailsValidationFailed { \n message \n attemptsRemaining \n } \n  ... on BankDetailsLocked { \n message \n } \n ... on BankDetailsNotEditable { \n message \n submitted \n updatedRecently \n new \n } \n } \n }&quot;, &quot;variables&quot;:&quot;{ \n &apos;input&apos;: \n { &apos;sbi&apos;: &apos;${bankSbi}&apos;, \n &apos;crn&apos;: &apos;${bankCrn}&apos;, \n &apos;account&apos;: { \n &apos;ukBusiness&apos;: { \n &apos;accountHolderName&apos;: &apos;${bankAccountHolderName}&apos;, \n &apos;accountNumber&apos;: &apos;${bankAccountNumber}&apos;, \n &apos;bankName&apos;: &apos;${bankName}&apos;, \n &apos;sortCode&apos;: &apos;${bankSortCode}&apos;, \n &apos;currency&apos;: &apos;${bankCurrency}&apos; \n } \n } \n }&quot;, &quot;operationName&quot;:&quot;CreateBusinessCustomerBankDetails&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;query&quot;: &quot;mutation CreateBusinessCustomerBankDetails($input: CreateBusinessCustomerBankDetailsInput!) { \n createBusinessCustomerBankDetails(input: $input) { \n ... on BankDetailsSubmitted { \n success } \n ... on BankDetailsValidationFailed { \n message \n attemptsRemaining \n } \n ... on BankDetailsLocked { \n message \n } \n ... on BankDetailsNotEditable { \n message \n submitted \n updatedRecently \n new \n } \n } \n }&quot;, &quot;variables&quot;:&quot;{ \n \&quot;input\&quot;: \n { \&quot;sbi\&quot;: \&quot;900000001\&quot;, \n \&quot;crn\&quot;: \&quot;1111112200\&quot;, \n \&quot;account\&quot;: { \n \&quot;ukBusiness\&quot;: { \n \&quot;accountHolderName\&quot;: \&quot;Acme Farms Ltd\&quot;, \n \&quot;accountNumber\&quot;: \&quot;11111100\&quot;, \n \&quot;bankName\&quot;: \&quot;Match Bank\&quot;, \n \&quot;sortCode\&quot;: \&quot;111111\&quot;, \n \&quot;currency\&quot;: \&quot;GBP\&quot; \n } \n } \n }&quot;}&#xd;
+&#xd;
+</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
