@@ -127,7 +127,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </JSR223PostProcessor>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessDetails" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessDetails">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -145,7 +145,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${businessSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-business-details-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-business-details-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -290,7 +290,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BankAccountDetails" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BankAccountDetails">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -308,7 +308,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${bankAccountsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-bank-details-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-bank-details-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -360,7 +360,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CountriesCurrencies" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CountriesCurrencies">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -378,7 +378,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${countriesCurrenciesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-countries-currencies" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-countries-currencies">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -429,7 +429,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LegalStatuses" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LegalStatuses">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -447,7 +447,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${legalStatusesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-legal-statuses" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-legal-statuses">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -498,7 +498,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerDetails" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerDetails">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -516,7 +516,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${customerSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-customer-details-by-crn" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-customer-details-by-crn">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -611,7 +611,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessCustomers" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessCustomers">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -629,7 +629,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${businessCustomerRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-business-customers-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-business-customers-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -681,7 +681,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerBusinesses" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerBusinesses">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -694,12 +694,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${queryCustomerBusinessesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-customer-businesses-by-crn" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-customer-businesses-by-crn">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -919,7 +919,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${businessMessagesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-business-messages-by-crn-and-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-business-messages-by-crn-and-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2776,7 +2776,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${getCustomerSearchRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-customer-search-results" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-customer-search-results">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3041,20 +3041,17 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
-  &quot;email&quot;: &quot;skeleton@the-closet.net&quot;
-},&quot;query&quot;:&quot;query IsCustomerEmailRegistered($email: String!) {\n  isCustomerEmailRegistered(email: $email)\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;IsCustomerEmailRegistered&quot;,&quot;variables&quot;:{&quot;email&quot;:&quot;skeleton@the-closet.net&quot;},&quot;query&quot;:&quot;query IsCustomerEmailRegistered($email: String!) {\n  isCustomerEmailRegistered(email: $email)\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
+          <stringProp name="GraphQLHTTPSampler.operationName">IsCustomerEmailRegistered</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query IsCustomerEmailRegistered($email: String!) {
   isCustomerEmailRegistered(email: $email)
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{
-  &quot;email&quot;: &quot;skeleton@the-closet.net&quot;
-}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;email&quot;:&quot;skeleton@the-closet.net&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
