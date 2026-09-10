@@ -3087,14 +3087,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerEmail(input: {crn: \&quot;1111111901\&quot;,email:{address: \&quot;unvalidated@the-closet.net\&quot;}}) {\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerEmail(input: { crn: \&quot;1111111900\&quot;, email: { address: \&quot;skeleton@the-closet.net\&quot;} }) {\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateCustomerEmail(input: {crn: &quot;1111111901&quot;,email:{address: &quot;unvalidated@the-closet.net&quot;}}) {
+  updateCustomerEmail(input: { crn: &quot;1111111900&quot;, email: { address: &quot;skeleton@the-closet.net&quot;} }) {
     success
   }
 }</stringProp>
