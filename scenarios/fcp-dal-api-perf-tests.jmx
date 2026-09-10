@@ -2251,7 +2251,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${updatePersonRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Update-person" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Update-person">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3041,7 +3041,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessSearch&quot;,&quot;variables&quot;:{
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
   &quot;email&quot;: &quot;skeleton@the-closet.net&quot;
 },&quot;query&quot;:&quot;query IsCustomerEmailRegistered($email: String!) {\n  isCustomerEmailRegistered(email: $email)\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -3049,7 +3049,6 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">BusinessSearch</stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query IsCustomerEmailRegistered($email: String!) {
   isCustomerEmailRegistered(email: $email)
 }</stringProp>
@@ -3091,22 +3090,19 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateCustomerEmail&quot;,&quot;variables&quot;:{
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;variables&quot;:{
   &quot;email&quot;: &quot;skeleton@the-closet.net&quot;
-},&quot;query&quot;:&quot;mutation UpdateCustomerEmail(input: {crn: \&quot;1111111901\&quot;,email:{address: \&quot;unvalidated@the-closet.net\&quot;}}) {\n  updateCustomerEmail(input: $input) {\n    success\n  }\n}&quot;}</stringProp>
+},&quot;query&quot;:&quot;mutation {\n  updateCustomerEmail(input: {crn: \&quot;1111111901\&quot;,email:{address: \&quot;unvalidated@the-closet.net\&quot;}}) {\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.operationName">UpdateCustomerEmail</stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation UpdateCustomerEmail(input: {crn: &quot;1111111901&quot;,email:{address: &quot;unvalidated@the-closet.net&quot;}}) {
-  updateCustomerEmail(input: $input) {
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+  updateCustomerEmail(input: {crn: &quot;1111111901&quot;,email:{address: &quot;unvalidated@the-closet.net&quot;}}) {
     success
   }
-}
-
-</stringProp>
+}</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables">{
   &quot;email&quot;: &quot;skeleton@the-closet.net&quot;
 }</stringProp>
