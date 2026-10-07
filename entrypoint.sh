@@ -31,9 +31,26 @@ auth_token=`curl -s \
   --data "scope=${CLIENT_SCOPE:?required secret not set!}" \
 | jq -r '.access_token'`
 
-# fast-fail when no token available!
+# Fast-fail when no token available!
 if [ -z "${auth_token}" ] ; then
   echo ERROR! Exiting because an auth token could not be retrieved
+  exit 2
+fi
+
+# Get a DefraId token
+crn="1102823449"
+defraIdPolicy="b2c_1a_cui_cpdev_signupsigninsfi"
+defraIdRedirectUrl="https://fcp-dal-upstream-mock.${ENVIRONMENT}.cdp-int.defra.cloud/auth/sign-in-oidc"
+defraIdRelationshipId="5598801"
+defraIdPassword=${DEFRA_ID_PASSWORD}
+defraIdClientId=${DEFRA_ID_CLIENT_ID}
+defraIdClientSecret=${DEFRA_ID_CLIENT_SECRET}
+defraIdServiceId=${DEFRA_ID_SERVICE_ID}
+defra_id_token=$(node get-defraid-token.js crn defraIdPolicy defraIdRedirectUrl defraIdRelationshipId defraIdPassword defraIdClientId defraIdClientSecret defraIdServiceId)
+
+# Fast-fail when no DefraId token available!
+if [ -z "${defra_id_token}" ] ; then
+  echo ERROR! Exiting because a DefraId token could not be retrieved
   exit 2
 fi
 
@@ -46,7 +63,7 @@ lock_data_file_path="data/${ENVIRONMENT}/jmeter.config.lockabletestdata.csv"
 bank_data_file_path="data/${ENVIRONMENT}/jmeter.config.banktestdata.csv"
 
 # Run the test suite
-jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -q user.properties -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}" -JtestDataFilePath="${test_data_file_path}" -JtestPairedDataFilePath="${test_paireddata_file_path}" -JtestModelFilePath="${test_model_file_path}" -JbankDataFilePath="${bank_data_file_path}" -JlandDataFilePath="${land_data_file_path}" -JlockableTestDataFilePath="${lock_data_file_path}"
+jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -q user.properties -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}" -JdefraIdToken="${defra_id_token}" -JtestDataFilePath="${test_data_file_path}" -JtestPairedDataFilePath="${test_paireddata_file_path}" -JtestModelFilePath="${test_model_file_path}" -JbankDataFilePath="${bank_data_file_path}" -JlandDataFilePath="${land_data_file_path}" -JlockableTestDataFilePath="${lock_data_file_path}"
 test_exit_code=$?
 
 # Publish the results into S3 so they can be displayed in the CDP Portal
