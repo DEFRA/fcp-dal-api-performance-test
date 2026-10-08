@@ -380,9 +380,9 @@ const b2cBase = new URL(oidc.authorization_endpoint).origin
 const redirectOrigin = new URL(config.redirectUrl).origin
 const state = uuid()
 
-const firstB2CPage = await passFrontDoor()
-const code = await runB2CRounds(firstB2CPage)
-const defraIdToken = await exchangeCodeForToken(code)
+(async () => { const firstB2CPage = await passFrontDoor() })();
+(async () => { const code = await runB2CRounds(firstB2CPage) })();
+(async () => { const defraIdToken = await exchangeCodeForToken(code) })();
 
 // Output the ID so it can be picked up by the process calling this file
 console.log(defraIdToken)
