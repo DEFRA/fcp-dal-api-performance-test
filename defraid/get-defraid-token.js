@@ -375,7 +375,7 @@ const showSummary = (defraIdToken, claims, organisationId, sbi, lookups) => {
 
 // ---- the journey ----
 
-const res = await axios.get("https://your-account.pre.cui.defra.gov.uk/idphub/b2c/b2c_1a_cui_signupsigninsfi/.well-known/openid-configuration")
+(async () => { const res = await axios.get("https://your-account.pre.cui.defra.gov.uk/idphub/b2c/b2c_1a_cui_signupsigninsfi/.well-known/openid-configuration") })();
 const oidc = readDiscovery(res)
 const b2cBase = new URL(oidc.authorization_endpoint).origin
 const redirectOrigin = new URL(config.redirectUrl).origin
