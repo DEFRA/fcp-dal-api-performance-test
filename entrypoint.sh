@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "run_id: $RUN_ID in $ENVIRONMENT"
+echo "current dir: ${PWD}"
 
 NOW=$(date +"%Y%m%d-%H%M%S")
 
