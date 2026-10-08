@@ -46,7 +46,7 @@ defraIdPassword=${DEFRA_ID_PASSWORD}
 defraIdClientId=${DEFRA_ID_CLIENT_ID}
 defraIdClientSecret=${DEFRA_ID_CLIENT_SECRET}
 defraIdServiceId=${DEFRA_ID_SERVICE_ID}
-defra_id_token=$(node get-defraid-token.js crn defraIdPolicy defraIdRedirectUrl defraIdRelationshipId defraIdPassword defraIdClientId defraIdClientSecret defraIdServiceId)
+defra_id_token=$(node $JM_HOME/get-defraid-token.js crn defraIdPolicy defraIdRedirectUrl defraIdRelationshipId defraIdPassword defraIdClientId defraIdClientSecret defraIdServiceId)
 
 # Fast-fail when no DefraId token available!
 if [ -z "${defra_id_token}" ] ; then
