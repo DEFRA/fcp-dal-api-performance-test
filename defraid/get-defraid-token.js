@@ -385,10 +385,12 @@ const showSummary = (defraIdToken, claims, organisationId, sbi, lookups) => {
   const firstB2CPage = await passFrontDoor()
   const code = await runB2CRounds(firstB2CPage)
   const defraIdToken = await exchangeCodeForToken(code)
+
+  // Output the ID so it can be picked up by the process calling this file
+  console.log(defraIdToken)
 })();
 
-// Output the ID so it can be picked up by the process calling this file
-console.log(defraIdToken)
+
 
 // const { claims, organisationId, sbi } = applyTokenToEnv(defraIdToken)
 // const lookups = await lookupPersonAndFrn(defraIdToken, claims, organisationId)
