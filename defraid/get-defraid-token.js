@@ -1,5 +1,5 @@
-const axios = require('axios')
-const { v4: uuid } = require('uuid')
+import axios from 'axios'
+import { v4 as uuid } from 'uuid'
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
