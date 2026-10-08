@@ -129,8 +129,8 @@ const tryJson = (body) => {
 
 // ---- journey steps ----
 
-const readDiscovery = () => {
-  const rawBody = res.getBody()
+const readDiscovery = (res) => {
+  const rawBody = res.data
   const oidc = typeof rawBody === 'string' ? tryJson(rawBody) : rawBody
   if (!oidc.authorization_endpoint) throw new Error('Discovery document has no authorization_endpoint')
   return oidc
@@ -375,7 +375,8 @@ const showSummary = (defraIdToken, claims, organisationId, sbi, lookups) => {
 
 // ---- the journey ----
 
-const oidc = readDiscovery()
+const res = await axios.get("https://your-account.pre.cui.defra.gov.uk/idphub/b2c/b2c_1a_cui_signupsigninsfi/.well-known/openid-configuration")
+const oidc = readDiscovery(res)
 const b2cBase = new URL(oidc.authorization_endpoint).origin
 const redirectOrigin = new URL(config.redirectUrl).origin
 const state = uuid()
