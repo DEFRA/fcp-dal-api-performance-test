@@ -375,15 +375,17 @@ const showSummary = (defraIdToken, claims, organisationId, sbi, lookups) => {
 
 // ---- the journey ----
 
-(async () => { const res = await axios.get("https://your-account.pre.cui.defra.gov.uk/idphub/b2c/b2c_1a_cui_signupsigninsfi/.well-known/openid-configuration") })();
-const oidc = readDiscovery(res)
-const b2cBase = new URL(oidc.authorization_endpoint).origin
-const redirectOrigin = new URL(config.redirectUrl).origin
-const state = uuid()
+(async () => {
+  const res = await axios.get("https://your-account.pre.cui.defra.gov.uk/idphub/b2c/b2c_1a_cui_signupsigninsfi/.well-known/openid-configuration")
+  const oidc = readDiscovery(res)
+  const b2cBase = new URL(oidc.authorization_endpoint).origin
+  const redirectOrigin = new URL(config.redirectUrl).origin
+  const state = uuid()
 
-(async () => { const firstB2CPage = await passFrontDoor() })();
-(async () => { const code = await runB2CRounds(firstB2CPage) })();
-(async () => { const defraIdToken = await exchangeCodeForToken(code) })();
+  const firstB2CPage = await passFrontDoor()
+  const code = await runB2CRounds(firstB2CPage)
+  const defraIdToken = await exchangeCodeForToken(code)
+})();
 
 // Output the ID so it can be picked up by the process calling this file
 console.log(defraIdToken)
