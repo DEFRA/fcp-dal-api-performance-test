@@ -129,8 +129,8 @@ const tryJson = (body) => {
 
 // ---- journey steps ----
 
-const readDiscovery = () => {
-  const rawBody = res.getBody()
+const readDiscovery = (res) => {
+  const rawBody = res.data
   const oidc = typeof rawBody === 'string' ? tryJson(rawBody) : rawBody
   if (!oidc.authorization_endpoint) throw new Error('Discovery document has no authorization_endpoint')
   return oidc
