@@ -9,6 +9,8 @@ COPY defraid/ ./defraid/
 COPY entrypoint.sh .
 COPY user.properties .
 
+RUN npm --prefix ./defraid install
+
 ENV S3_ENDPOINT=https://s3.eu-west-2.amazonaws.com
 ENV TEST_SCENARIO=fcp-dal-api-perf-tests
 
