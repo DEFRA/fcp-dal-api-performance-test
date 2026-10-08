@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { v4 as uuid } from 'uuid'
+const axios = require('axios')
+const { v4: uuid } = require('uuid')
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
@@ -129,8 +129,8 @@ const tryJson = (body) => {
 
 // ---- journey steps ----
 
-const readDiscovery = (res) => {
-  const rawBody = res.data
+const readDiscovery = () => {
+  const rawBody = res.getBody()
   const oidc = typeof rawBody === 'string' ? tryJson(rawBody) : rawBody
   if (!oidc.authorization_endpoint) throw new Error('Discovery document has no authorization_endpoint')
   return oidc
