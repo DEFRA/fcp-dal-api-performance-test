@@ -47,7 +47,6 @@ defraIdPassword=${DEFRA_ID_PASSWORD}
 defraIdClientId=${DEFRA_ID_CLIENT_ID}
 defraIdClientSecret=${DEFRA_ID_CLIENT_SECRET}
 defraIdServiceId=${DEFRA_ID_SERVICE_ID}
-npm --prefix ./defraid install
 defra_id_token=$(node $JM_HOME/defraid/get-defraid-token.js crn defraIdPolicy defraIdRedirectUrl defraIdRelationshipId defraIdPassword defraIdClientId defraIdClientSecret defraIdServiceId)
 
 # Fast-fail when no DefraId token available!
