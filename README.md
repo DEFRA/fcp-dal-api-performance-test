@@ -43,13 +43,21 @@ The CDP Platform runs test suites in much the same way it runs any other service
 
 ## Local Testing with LocalStack
 
+LocalStack stands in for S3, where the test results are published. The tests themselves still run against the CDP environment selected by `ENVIRONMENT`.
+
+### Start LocalStack
+```
+docker run --rm -d -p 4566:4566 --name localstack localstack/localstack
+```
+LocalStack is ready when `curl http://localhost:4566/_localstack/health` shows `s3` as `available` or `running`. To stop it, run `docker stop localstack`.
+
 ### Build a new Docker image
 ```
 docker build . -t my-performance-tests
 ```
 ### Create a Localstack bucket
 ```
-aws --endpoint-url=localhost:4566 s3 mb s3://my-bucket
+aws --endpoint-url=http://localhost:4566 s3 mb s3://my-bucket
 ```
 
 ### Run performance tests
