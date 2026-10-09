@@ -38,16 +38,18 @@ if [ -z "${auth_token}" ] ; then
   exit 2
 fi
 
-# Get a DefraId token
-crn="1102823449"
-defraIdPolicy="b2c_1a_cui_cpdev_signupsigninsfi"
-defraIdRedirectUrl="https://fcp-dal-upstream-mock.${ENVIRONMENT}.cdp-int.defra.cloud/auth/sign-in-oidc"
-defraIdRelationshipId="5598801"
-defraIdPassword=${DEFRA_ID_PASSWORD}
-defraIdClientId=${DEFRA_ID_CLIENT_ID}
-defraIdClientSecret=${DEFRA_ID_CLIENT_SECRET}
-defraIdServiceId=${DEFRA_ID_SERVICE_ID}
-defra_id_token=$(node $JM_HOME/defraid/get-defraid-token.js crn defraIdPolicy defraIdRedirectUrl defraIdRelationshipId defraIdPassword defraIdClientId defraIdClientSecret defraIdServiceId)
+# Get a DefraId token from the FCP Defra ID stub (it does not validate client id, secret, service id or password)
+defra_id_token=$(
+  DEFRA_ID_WELL_KNOWN_URL="${DEFRA_ID_WELL_KNOWN_URL:-https://fcp-defra-id-stub.${ENVIRONMENT}.cdp-int.defra.cloud/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration}" \
+  DEFRA_ID_CRN="${DEFRA_ID_CRN:-1102823449}" \
+  DEFRA_ID_PASSWORD="${DEFRA_ID_PASSWORD:-stub}" \
+  DEFRA_ID_CLIENT_ID="${DEFRA_ID_CLIENT_ID:-fcp-dal-api-perf-test}" \
+  DEFRA_ID_CLIENT_SECRET="${DEFRA_ID_CLIENT_SECRET:-stub}" \
+  DEFRA_ID_SERVICE_ID="${DEFRA_ID_SERVICE_ID:-fcp-dal-api-perf-test}" \
+  DEFRA_ID_REDIRECT_URL="${DEFRA_ID_REDIRECT_URL:-https://fcp-dal-upstream-mock.${ENVIRONMENT}.cdp-int.defra.cloud/auth/sign-in-oidc}" \
+  DEFRA_ID_RELATIONSHIP_ID="${DEFRA_ID_RELATIONSHIP_ID:-5900001}" \
+  node $JM_HOME/defraid/get-defraid-token.js
+)
 
 # Fast-fail when no DefraId token available!
 if [ -z "${defra_id_token}" ] ; then
