@@ -13,6 +13,41 @@ In the entrypoint.sh file, a call is made to microsoftonline.com to extract an a
 
 In the tests themselves, this environment variable is then referenced in the JMeter header components with `Name=Authorization` and `Value=Bearer {token}`.
 
+### Defra ID (external user) authentication
+
+Tests that call Consolidated View as an external user also need a Defra ID user token. `entrypoint.sh` gets one by running [`defraid/get-defraid-token.js`](defraid/get-defraid-token.js) and passes it to JMeter as the `defraIdToken` property.
+
+The script does not use the real Defra ID. It signs in through the [FCP Defra ID stub](https://github.com/DEFRA/fcp-defra-id-stub), driving its sign-in journey headlessly (authorize → CRN/password → organisation → code → token) and printing only the access token to stdout. The stub only checks that the client ID, client secret, service ID and password are present, so any values work. In its default mode any 10 digit CRN is accepted, and every CRN has the same three mock organisations (`5900001`, `5900002`, `5900003`).
+
+If no token can be retrieved, `entrypoint.sh` exits with code `2` before JMeter starts.
+
+The script is configured with environment variables. `entrypoint.sh` sets defaults for each, and any of them can be overridden:
+
+| Variable | Default in `entrypoint.sh` |
+| --- | --- |
+| `DEFRA_ID_WELL_KNOWN_URL` | `https://fcp-defra-id-stub.${ENVIRONMENT}.cdp-int.defra.cloud/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration` |
+| `DEFRA_ID_CRN` | `1102823449` |
+| `DEFRA_ID_PASSWORD` | `stub` |
+| `DEFRA_ID_CLIENT_ID` | `fcp-dal-api-perf-test` |
+| `DEFRA_ID_CLIENT_SECRET` | `stub` |
+| `DEFRA_ID_SERVICE_ID` | `fcp-dal-api-perf-test` |
+| `DEFRA_ID_REDIRECT_URL` | `https://fcp-dal-upstream-mock.${ENVIRONMENT}.cdp-int.defra.cloud/auth/sign-in-oidc` |
+| `DEFRA_ID_RELATIONSHIP_ID` | `5900001` (the organisation to sign in as; optional when the CRN has only one) |
+
+The CDP-hosted stubs can only be reached from inside CDP.
+
+#### Testing the token script
+
+The script has [vitest](https://vitest.dev/) tests that run it the same way `entrypoint.sh` does. By default they start the stub (`defradigital/fcp-defra-id-stub`) in Docker on port `3007`:
+
+```
+cd defraid
+npm install
+npm test
+```
+
+To test against a stub that is already running, set `STUB_URL` (e.g. `STUB_URL=http://localhost:3007 npm test`). `STUB_PORT`, `STUB_IMAGE` and `DOCKER_BIN` can also be set to change the port, the image, or where `docker` is found.
+
 ### Validation
 
 Validation for each of the test calls is currently quite simple. Each call is subject to a response assertion that it receives a 200 response code. Each call is also subject to a JSON assertion to ensure there is NOT an `error` property in the response object.
