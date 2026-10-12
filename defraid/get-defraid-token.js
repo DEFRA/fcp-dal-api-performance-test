@@ -22,7 +22,7 @@ const config = {
   clientSecret: process.argv[5], //interpolate(bru.getEnvVar('defraIdClientSecret')), ** Is secret **
   serviceId: process.argv[6], //bru.getEnvVar('defraIdServiceId'), ** Is secret **
 }
-const missing = Object.entries(config)
+/*const missing = Object.entries(config)
   .filter(([key, value]) => !value && key !== 'relationshipId')
   .map(([key]) => key)
 if (missing.length) {
@@ -30,7 +30,7 @@ if (missing.length) {
     `Missing Defra ID config: ${missing.join(', ')} ` +
       '(defraId* env vars; password/client secret come from the collection .env)'
   )
-}
+}*/
 config.scope = `openid offline_access ${config.clientId}`
 
 // ---- minimal HTTP client: per-host cookie jar, manual redirects, retries ----
@@ -138,7 +138,7 @@ const readDiscovery = (res) => {
 
 // Front door: idphub check-js gate, then relay the auto-POST callback to B2C;
 // returns the first B2C SelfAsserted page
-const passFrontDoor = async () => {
+const passFrontDoor = async (oidc, state) => {
   const authorizeUrl =
     oidc.authorization_endpoint +
     '?' +
@@ -379,10 +379,10 @@ const showSummary = (defraIdToken, claims, organisationId, sbi, lookups) => {
   const res = await axios.get("https://your-account.pre.cui.defra.gov.uk/idphub/b2c/b2c_1a_cui_signupsigninsfi/.well-known/openid-configuration")
   const oidc = readDiscovery(res)
   const b2cBase = new URL(oidc.authorization_endpoint).origin
-  const redirectOrigin = new URL(config.redirectUrl).origin
+  const redirectOrigin = new URL("https://fcp-dal-upstream-mock.perf-test.cdp-int.defra.cloud/auth/sign-in-oidc").origin
   const state = uuid()
 
-  const firstB2CPage = await passFrontDoor()
+  const firstB2CPage = await passFrontDoor(oidc, state)
   const code = await runB2CRounds(firstB2CPage)
   const defraIdToken = await exchangeCodeForToken(code)
 
