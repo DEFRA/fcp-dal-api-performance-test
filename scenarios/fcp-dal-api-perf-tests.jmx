@@ -642,7 +642,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetCustomerDetails&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query GetCustomerDetails($crn: ID!) {\n  customer(crn: $crn) {\n    crn\n    personId\n    info {\n      name {\n        title\n        otherTitle\n        first\n        middle\n        last\n      }\n      dateOfBirth\n      phone {\n        mobile\n        landline\n      }\n      email {\n        address\n        validated\n      }\n      status {\n        locked\n        confirmed\n        deactivated\n      }\n      address {\n        pafOrganisationName\n        line1\n        line2\n        line3\n        line4\n        line5\n        buildingNumberRange\n        buildingName\n        flatName\n        street\n        city\n        county\n        postalCode\n        country\n        uprn\n        dependentLocality\n        doubleDependentLocality\n        typeId\n      }\n      doNotContact\n      personalIdentifiers\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetCustomerDetails&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;1102823449&quot;},&quot;query&quot;:&quot;query GetCustomerDetails($crn: ID!) {\n  customer(crn: $crn) {\n    crn\n    personId\n    info {\n      name {\n        title\n        otherTitle\n        first\n        middle\n        last\n      }\n      dateOfBirth\n      phone {\n        mobile\n        landline\n      }\n      email {\n        address\n        validated\n      }\n      status {\n        locked\n        confirmed\n        deactivated\n      }\n      address {\n        pafOrganisationName\n        line1\n        line2\n        line3\n        line4\n        line5\n        buildingNumberRange\n        buildingName\n        flatName\n        street\n        city\n        county\n        postalCode\n        country\n        uprn\n        dependentLocality\n        doubleDependentLocality\n        typeId\n      }\n      doNotContact\n      personalIdentifiers\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -700,7 +700,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;1102823449&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
