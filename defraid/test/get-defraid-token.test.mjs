@@ -19,6 +19,7 @@ const wellKnownUrl = `${stubUrl}/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.we
 const runScript = (overrides = {}) => {
   const env = {
     PATH: process.env.PATH,
+    DEFRA_ID_PROVIDER: 'stub',
     DEFRA_ID_WELL_KNOWN_URL: wellKnownUrl,
     DEFRA_ID_CRN: CRN,
     DEFRA_ID_PASSWORD: 'test',
@@ -67,7 +68,17 @@ describe('get-defraid-token.js', () => {
     {
       name: 'rejects missing config',
       overrides: { DEFRA_ID_CLIENT_SECRET: undefined },
-      message: 'Missing Defra ID stub config: clientSecret'
+      message: 'Missing Defra ID config: clientSecret'
+    },
+    {
+      name: 'rejects a missing provider',
+      overrides: { DEFRA_ID_PROVIDER: undefined },
+      message: 'Missing Defra ID config: provider'
+    },
+    {
+      name: 'rejects an unknown provider',
+      overrides: { DEFRA_ID_PROVIDER: 'other' },
+      message: "Unknown DEFRA_ID_PROVIDER 'other'"
     },
     {
       name: 'fails cleanly on a bad discovery URL',

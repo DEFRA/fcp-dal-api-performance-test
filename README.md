@@ -17,14 +17,18 @@ In the tests themselves, this environment variable is then referenced in the JMe
 
 Tests that call Consolidated View as an external user also need a Defra ID user token. `entrypoint.sh` gets one by running [`defraid/get-defraid-token.js`](defraid/get-defraid-token.js) and passes it to JMeter as the `defraIdToken` property.
 
-The script does not use the real Defra ID. It signs in through the [FCP Defra ID stub](https://github.com/DEFRA/fcp-defra-id-stub), driving its sign-in journey headlessly (authorize → CRN/password → organisation → code → token) and printing only the access token to stdout. The stub only checks that the client ID, client secret, service ID and password are present, so any values work. In its default mode any 10 digit CRN is accepted, and every CRN has the same three mock organisations (`5900001`, `5900002`, `5900003`).
+`DEFRA_ID_PROVIDER` picks how the script signs in. Both drive the sign-in journey headlessly (authorize → sign in → code → token) and print only the access token to stdout:
+
+- `stub` (the default in `entrypoint.sh`) - the [FCP Defra ID stub](https://github.com/DEFRA/fcp-defra-id-stub) ([`signin-stub.js`](defraid/signin-stub.js)). The stub only checks that the client ID, client secret, service ID and password are present, so any values work. In its default mode any 10 digit CRN is accepted, and every CRN has the same three mock organisations (`5900001`, `5900002`, `5900003`).
+- `b2c` - the real Defra ID on Azure AD B2C, e.g. `https://your-account.cpdev.cui.defra.gov.uk/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration` ([`signin-b2c.js`](defraid/signin-b2c.js)). It replays the browser journey: the idphub check-js gate, then each B2C page (a pre-step, CRN and password, and the business picker if the account has several businesses). It needs a client registered with Defra ID (client ID, secret, service ID and an allowed redirect URL) and a test account. If the account has several businesses and `DEFRA_ID_RELATIONSHIP_ID` is unset or not one of them, the error lists the ones it has.
 
 If no token can be retrieved, `entrypoint.sh` exits with code `2` before JMeter starts.
 
-The script is configured with environment variables. `entrypoint.sh` sets defaults for each, and any of them can be overridden:
+The script is configured with environment variables. With `DEFRA_ID_PROVIDER=stub`, `entrypoint.sh` sets defaults for each, and any of them can be overridden. With `b2c` there are no defaults and all of them except `DEFRA_ID_RELATIONSHIP_ID` must be set:
 
-| Variable | Default in `entrypoint.sh` |
+| Variable | Default in `entrypoint.sh` (stub only) |
 | --- | --- |
+| `DEFRA_ID_PROVIDER` | `stub` |
 | `DEFRA_ID_WELL_KNOWN_URL` | `https://fcp-defra-id-stub.${ENVIRONMENT}.cdp-int.defra.cloud/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration` |
 | `DEFRA_ID_CRN` | `1102823449` |
 | `DEFRA_ID_PASSWORD` | `stub` |
@@ -38,7 +42,7 @@ The CDP-hosted stubs can only be reached from inside CDP.
 
 #### Testing the token script
 
-The script has [vitest](https://vitest.dev/) tests that run it the same way `entrypoint.sh` does. By default they start the stub (`defradigital/fcp-defra-id-stub`) in Docker on port `3007`:
+The script has [vitest](https://vitest.dev/) tests that run it the same way `entrypoint.sh` does. The `b2c` tests run against a fake B2C server in the test itself. The `stub` tests by default start the stub (`defradigital/fcp-defra-id-stub`) in Docker on port `3007`:
 
 ```
 cd defraid
