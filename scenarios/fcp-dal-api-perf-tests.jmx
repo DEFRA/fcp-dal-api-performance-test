@@ -57,7 +57,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Internal calls test model - CSV Data Set Config">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Internal calls test model - CSV Data Set Config" enabled="true">
         <stringProp name="filename">${__P(internalTestModelFilePath)}</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -69,7 +69,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="External calls test model - CSV Data Set Config">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="External calls test model - CSV Data Set Config" enabled="true">
         <stringProp name="filename">${__P(externalTestModelFilePath)}</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="variableNames"></stringProp>
@@ -93,7 +93,7 @@
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DalHealth">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DalHealth" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -106,12 +106,12 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intHealthRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Dal-health">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Dal-health" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/health</stringProp>
@@ -139,7 +139,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </JSR223PostProcessor>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessDetails">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessDetails" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -152,7 +152,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intBusinessSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -315,7 +315,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extBusinessSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -446,7 +446,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -457,8 +457,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -535,7 +535,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CountriesCurrencies">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CountriesCurrencies" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -548,7 +548,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intCountriesCurrenciesRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -617,7 +617,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extCountriesCurrenciesRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -654,7 +654,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -665,8 +665,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -686,7 +686,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intLegalStatusesRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -755,7 +755,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extLegalStatusesRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -792,7 +792,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -803,15 +803,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerDetails" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerDetails">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -824,7 +824,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intCustomerSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -937,12 +937,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extCustomerSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-customer-details-by-crn">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-customer-details-by-crn" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1037,7 +1037,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessCustomers">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessCustomers" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1050,7 +1050,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intBusinessCustomerRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1120,7 +1120,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extBusinessCustomerRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1158,7 +1158,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -1169,15 +1169,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerBusinesses">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerBusinesses" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1190,7 +1190,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intQueryCustomerBusinessesRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1262,7 +1262,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extQueryCustomerBusinessesRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1302,10 +1302,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -1313,15 +1313,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="AuthenticateQuestions">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="AuthenticateQuestions" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1334,12 +1334,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intAuthenticateQuestionsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-authenticate-questions-by-crn">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-authenticate-questions-by-crn" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1408,7 +1408,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extAuthenticateQuestionsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1450,10 +1450,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -1461,15 +1461,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerBusinessPermissions">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerBusinessPermissions" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1482,7 +1482,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intCustomerPermissionsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1556,7 +1556,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extCustomerPermissionsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1598,10 +1598,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -1609,15 +1609,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Messages">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Messages" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1630,7 +1630,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intBusinessMessagesRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1708,7 +1708,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extBusinessMessagesRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1754,10 +1754,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -1765,15 +1765,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CPH">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CPH" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1786,7 +1786,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetCphRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1862,7 +1862,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetCphRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -1906,10 +1906,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -1917,15 +1917,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessLandParcels">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessLandParcels" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1938,7 +1938,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetLandParcelsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2013,7 +2013,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetLandParcelsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2056,10 +2056,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2067,15 +2067,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessLandCoverSummary">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessLandCoverSummary" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2088,7 +2088,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetLandCoverSummaryRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2163,7 +2163,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetLandCoverSummaryRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2206,10 +2206,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2217,15 +2217,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ParcelLandCovers">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ParcelLandCovers" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2238,7 +2238,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetLandCoversByParcelRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2313,7 +2313,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetLandCoversByParcelRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2356,10 +2356,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2367,15 +2367,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LandUsage">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="LandUsage" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2388,7 +2388,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetLandUsageRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2467,7 +2467,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetLandUsageRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2514,10 +2514,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2525,15 +2525,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Agreements">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Agreements" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2546,12 +2546,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetAgreementsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-agreements-by-sbi">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-agreements-by-sbi" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2636,7 +2636,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetAgreementsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2694,10 +2694,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2705,15 +2705,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Applications">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Applications" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2726,7 +2726,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetApplicationsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2818,7 +2818,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetApplicationsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -2878,10 +2878,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -2889,15 +2889,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CreateBusiness">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CreateBusiness" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2910,7 +2910,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intCreateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -3056,7 +3056,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extCreateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -3170,7 +3170,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -3181,15 +3181,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UpdateBusiness">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UpdateBusiness" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -3202,7 +3202,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intUpdateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -3735,7 +3735,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdateBusiness">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdateBusiness" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -3748,7 +3748,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extUpdateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -3786,10 +3786,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -3797,8 +3797,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -3840,10 +3840,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -3851,8 +3851,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -3894,10 +3894,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -3905,8 +3905,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -3943,10 +3943,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -3954,8 +3954,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -3996,10 +3996,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -4007,8 +4007,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -4066,10 +4066,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -4077,8 +4077,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -4155,10 +4155,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -4166,8 +4166,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -4208,10 +4208,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -4219,8 +4219,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -4262,10 +4262,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -4273,15 +4273,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UpdatePerson">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UpdatePerson" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4294,7 +4294,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intUpdatePersonRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -4357,7 +4357,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdatePerson">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdatePerson" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4370,7 +4370,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extUpdatePersonRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -4410,10 +4410,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -4421,12 +4421,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">gateway-type</stringProp>
-                <stringProp name="Header.value">internal</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -4662,7 +4658,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UpdateCustomerAllFields">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UpdateCustomerAllFields" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4675,7 +4671,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intUpdateCustomerAllFieldsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -4727,7 +4723,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdateCustomerAllFields">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdateCustomerAllFields" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4740,7 +4736,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extUpdateCustomerAllFieldsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -4773,7 +4769,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -4784,15 +4780,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ToggleLockBusiness">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ToggleLockBusiness" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4805,7 +4801,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intToggleLockPersonRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -4878,7 +4874,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extToggleLockPersonRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -4919,7 +4915,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
@@ -4930,15 +4926,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">email</stringProp>
-                <stringProp name="Header.value">Test.User@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Payments">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Payments" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4951,7 +4947,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetPaymentsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5033,7 +5029,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetPaymentsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5083,10 +5079,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -5094,15 +5090,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerSearch">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerSearch" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5115,7 +5111,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetCustomerSearchRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5238,7 +5234,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetCustomerSearchRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5329,10 +5325,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -5340,15 +5336,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessSearch">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BusinessSearch" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5361,7 +5357,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetBusinessSearchRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5490,7 +5486,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extGetBusinessSearchRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5587,10 +5583,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -5598,15 +5594,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="GetPermittedFunctions">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="GetPermittedFunctions" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5619,7 +5615,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetPermittedFunctionsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5695,7 +5691,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intGetPermittedFunctionsRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5739,10 +5735,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -5750,15 +5746,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EmailValidationAndChange">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EmailValidationAndChange" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5771,7 +5767,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intEmailValidationChangeRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5869,7 +5865,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - EmailValidationAndChange">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - EmailValidationAndChange" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5882,7 +5878,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extEmailValidationChangeRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -5915,10 +5911,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -5926,8 +5922,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -5961,10 +5957,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -5972,15 +5968,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerLock">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerLock" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5993,7 +5989,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intUpdateCustomerLockRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -6058,7 +6054,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extUpdateCustomerLockRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -6091,10 +6087,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -6102,15 +6098,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerUnlock">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerUnlock" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -6123,12 +6119,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intUpdateCustomerUnlockRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Update-customer-unlock">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Update-customer-unlock" enabled="true">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -6188,7 +6184,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extUpdateCustomerUnlockRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -6221,10 +6217,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -6232,15 +6228,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DeactivateCustomer">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="DeactivateCustomer" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -6253,7 +6249,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intUpdateCustomerDeactivateRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -6318,7 +6314,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extUpdateCustomerDeactivateRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -6351,10 +6347,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -6362,8 +6358,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -6383,12 +6379,12 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intDeactivateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Deactivate-business" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Deactivate-business">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -6428,7 +6424,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -6460,7 +6456,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extDeactivateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -6505,10 +6501,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -6516,15 +6512,15 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ReactivateBusiness">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ReactivateBusiness" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -6537,7 +6533,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${intReactivateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -6614,7 +6610,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
           <intProp name="calcMode">4</intProp>
           <stringProp name="throughput">${extReactivateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
@@ -6659,10 +6655,10 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">Bearer ${__P(authToken)}</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
@@ -6670,8 +6666,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
               <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Email</stringProp>
-                <stringProp name="Header.value">test.user01@defra.gov.uk</stringProp>
+                <stringProp name="Header.name">x-forwarded-authorization</stringProp>
+                <stringProp name="Header.value">${__P(defraIdToken)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
