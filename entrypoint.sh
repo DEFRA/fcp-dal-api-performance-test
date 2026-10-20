@@ -58,16 +58,23 @@ if [ -z "${defra_id_token}" ] ; then
 fi
 
 # Create file paths for environments
-test_data_file_path="data/${ENVIRONMENT}/jmeter.config.testdata.csv"
-test_paireddata_file_path="data/${ENVIRONMENT}/jmeter.config.pairedtestdata.csv"
+internal_test_data_file_path="data/${ENVIRONMENT}/jmeter.config.internalcalls.testdata.csv"
+internal_test_paireddata_file_path="data/${ENVIRONMENT}/jmeter.config.internalcalls.pairedtestdata.csv"
+internal_land_data_file_path="data/${ENVIRONMENT}/jmeter.config.internalcalls.landdata.csv"
+internal_lock_data_file_path="data/${ENVIRONMENT}/jmeter.config.internalcalls.lockabletestdata.csv"
+
+external_test_data_file_path="data/${ENVIRONMENT}/jmeter.config.externalcalls.testdata.csv"
+external_test_paireddata_file_path="data/${ENVIRONMENT}/jmeter.config.externalcalls.pairedtestdata.csv"
+external_land_data_file_path="data/${ENVIRONMENT}/jmeter.config.externalcalls.landdata.csv"
+external_lock_data_file_path="data/${ENVIRONMENT}/jmeter.config.externalcalls.lockabletestdata.csv"
+
 internal_test_model_file_path="data/${ENVIRONMENT}/jmeter.config.internalcalls.testmodel.csv"
 external_test_model_file_path="data/${ENVIRONMENT}/jmeter.config.externalcalls.testmodel.csv"
-land_data_file_path="data/${ENVIRONMENT}/jmeter.config.landdata.csv"
-lock_data_file_path="data/${ENVIRONMENT}/jmeter.config.lockabletestdata.csv"
+
 bank_data_file_path="data/${ENVIRONMENT}/jmeter.config.banktestdata.csv"
 
 # Run the test suite
-jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -q user.properties -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}" -JdefraIdToken="${defra_id_token}" -JtestDataFilePath="${test_data_file_path}" -JtestPairedDataFilePath="${test_paireddata_file_path}" -JinternalTestModelFilePath="${internal_test_model_file_path}" -JexternalTestModelFilePath="${external_test_model_file_path}" -JbankDataFilePath="${bank_data_file_path}" -JlandDataFilePath="${land_data_file_path}" -JlockableTestDataFilePath="${lock_data_file_path}"
+jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -q user.properties -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}" -JdefraIdToken="${defra_id_token}" -JinternalTestDataFilePath="${internal_test_data_file_path}" -JexternalTestDataFilePath="${external_test_data_file_path}" -JinternalTestPairedDataFilePath="${internal_test_paireddata_file_path}" -JexternalTestPairedDataFilePath="${external_test_paireddata_file_path}" -JinternalTestModelFilePath="${internal_test_model_file_path}" -JexternalTestModelFilePath="${external_test_model_file_path}" -JbankDataFilePath="${bank_data_file_path}" -JinternalLandDataFilePath="${internal_land_data_file_path}" -JexternalLandDataFilePath="${external_land_data_file_path}" -JinternalLockableTestDataFilePath="${internal_lock_data_file_path}" -JexternalLockableTestDataFilePath="${external_lock_data_file_path}"
 test_exit_code=$?
 
 # Publish the results into S3 so they can be displayed in the CDP Portal
