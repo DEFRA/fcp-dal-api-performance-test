@@ -44,13 +44,13 @@ fi
 DEFRA_ID_PROVIDER="${DEFRA_ID_PROVIDER:-stub}"
 if [ "${DEFRA_ID_PROVIDER}" = "stub" ] ; then
   DEFRA_ID_WELL_KNOWN_URL="${DEFRA_ID_WELL_KNOWN_URL:-https://fcp-defra-id-stub.${ENVIRONMENT}.cdp-int.defra.cloud/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration}"
-  DEFRA_ID_CRN="${DEFRA_ID_CRN:-1102823449}"
+  DEFRA_ID_CRN="${DEFRA_ID_CRN:-1111111100}"  # Originally 1102823449
   DEFRA_ID_PASSWORD="${DEFRA_ID_PASSWORD:-stub}"
   DEFRA_ID_CLIENT_ID="${DEFRA_ID_CLIENT_ID:-fcp-dal-api-perf-test}"
   DEFRA_ID_CLIENT_SECRET="${DEFRA_ID_CLIENT_SECRET:-stub}"
   DEFRA_ID_SERVICE_ID="${DEFRA_ID_SERVICE_ID:-fcp-dal-api-perf-test}"
   DEFRA_ID_REDIRECT_URL="${DEFRA_ID_REDIRECT_URL:-https://fcp-dal-upstream-mock.${ENVIRONMENT}.cdp-int.defra.cloud/auth/sign-in-oidc}"
-  DEFRA_ID_RELATIONSHIP_ID="${DEFRA_ID_RELATIONSHIP_ID:-5900001}"
+  DEFRA_ID_RELATIONSHIP_ID="${DEFRA_ID_RELATIONSHIP_ID:-5900001}" # Does this need to map to the CRN?
 fi
 defra_id_token=$(
   DEFRA_ID_PROVIDER="${DEFRA_ID_PROVIDER}" \

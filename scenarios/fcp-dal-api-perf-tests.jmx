@@ -368,7 +368,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extBusinessSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-Get-business-details-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-Get-business-details-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -381,7 +381,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetBusinessDetails&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query GetBusinessDetails($sbi: ID!) {\n  business(sbi: $sbi) {\n    info {\n      additionalBusinessActivities {\n        code\n        type\n      }\n      additionalSbis\n      address {\n        pafOrganisationName\n        line1\n        line2\n        line3\n        line4\n        line5\n        buildingNumberRange\n        buildingName\n        flatName\n        street\n        city\n        county\n        postalCode\n        country\n        uprn\n        dependentLocality\n        doubleDependentLocality\n        typeId\n      }\n      correspondenceAddress {\n        pafOrganisationName\n        line1\n        line2\n        line3\n        line4\n        line5\n        buildingNumberRange\n        buildingName\n        flatName\n        street\n        city\n        county\n        postalCode\n        country\n        uprn\n        dependentLocality\n        doubleDependentLocality\n        typeId\n      }\n      correspondenceEmail {\n        address\n        validated\n      }\n      correspondencePhone {\n        mobile\n        landline\n      }\n      dateStartedFarming\n      email {\n        address\n        validated\n      }\n      hasAdditionalBusinessActivities\n      name\n      reference\n      vat\n      traderNumber\n      vendorNumber\n      isCorrespondenceAsBusinessAddress\n      phone {\n        mobile\n        landline\n      }\n      legalStatus {\n        code\n        type\n      }\n      type {\n        code\n        type\n      }\n      registrationNumbers {\n        companiesHouse\n        charityCommission\n      }\n      lastUpdated\n      isFinancialToBusinessAddress\n      hasLandInNorthernIreland\n      hasLandInScotland\n      hasLandInWales\n      landConfirmed\n      isAccountablePeopleDeclarationCompleted\n      status {\n        locked\n        confirmed\n        deactivated\n      }\n    }\n    organisationId\n    sbi\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetBusinessDetails&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extSbi}&quot;},&quot;query&quot;:&quot;query GetBusinessDetails($sbi: ID!) {\n  business(sbi: $sbi) {\n    info {\n      additionalBusinessActivities {\n        code\n        type\n      }\n      additionalSbis\n      address {\n        pafOrganisationName\n        line1\n        line2\n        line3\n        line4\n        line5\n        buildingNumberRange\n        buildingName\n        flatName\n        street\n        city\n        county\n        postalCode\n        country\n        uprn\n        dependentLocality\n        doubleDependentLocality\n        typeId\n      }\n      correspondenceAddress {\n        pafOrganisationName\n        line1\n        line2\n        line3\n        line4\n        line5\n        buildingNumberRange\n        buildingName\n        flatName\n        street\n        city\n        county\n        postalCode\n        country\n        uprn\n        dependentLocality\n        doubleDependentLocality\n        typeId\n      }\n      correspondenceEmail {\n        address\n        validated\n      }\n      correspondencePhone {\n        mobile\n        landline\n      }\n      dateStartedFarming\n      email {\n        address\n        validated\n      }\n      hasAdditionalBusinessActivities\n      name\n      reference\n      vat\n      traderNumber\n      vendorNumber\n      isCorrespondenceAsBusinessAddress\n      phone {\n        mobile\n        landline\n      }\n      legalStatus {\n        code\n        type\n      }\n      type {\n        code\n        type\n      }\n      registrationNumbers {\n        companiesHouse\n        charityCommission\n      }\n      lastUpdated\n      isFinancialToBusinessAddress\n      hasLandInNorthernIreland\n      hasLandInScotland\n      hasLandInWales\n      landConfirmed\n      isAccountablePeopleDeclarationCompleted\n      status {\n        locked\n        confirmed\n        deactivated\n      }\n    }\n    organisationId\n    sbi\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -489,7 +489,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     sbi
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -652,7 +652,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CountriesCurrencies" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CountriesCurrencies">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -670,7 +670,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extCountriesCurrenciesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-countries-currencies" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-countries-currencies">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -790,7 +790,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - LegalStatuses" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - LegalStatuses">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -808,7 +808,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extLegalStatusesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-legal-statuses" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-legal-statuses">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -859,7 +859,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerDetails" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CustomerDetails">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -877,7 +877,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${intCustomerSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-customer-details-by-crn" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get-customer-details-by-crn">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -972,7 +972,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerDetails" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerDetails">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -990,7 +990,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extCustomerSimpleRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-customer-details-by-crn" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-customer-details-by-crn">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1003,7 +1003,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetCustomerDetails&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;1102823449&quot;},&quot;query&quot;:&quot;query GetCustomerDetails($crn: ID!) {\n  customer(crn: $crn) {\n    crn\n    personId\n    info {\n      name {\n        title\n        otherTitle\n        first\n        middle\n        last\n      }\n      dateOfBirth\n      phone {\n        mobile\n        landline\n      }\n      email {\n        address\n        validated\n      }\n      status {\n        locked\n        confirmed\n        deactivated\n      }\n      address {\n        pafOrganisationName\n        line1\n        line2\n        line3\n        line4\n        line5\n        buildingNumberRange\n        buildingName\n        flatName\n        street\n        city\n        county\n        postalCode\n        country\n        uprn\n        dependentLocality\n        doubleDependentLocality\n        typeId\n      }\n      doNotContact\n      personalIdentifiers\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetCustomerDetails&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${extCrn}&quot;},&quot;query&quot;:&quot;query GetCustomerDetails($crn: ID!) {\n  customer(crn: $crn) {\n    crn\n    personId\n    info {\n      name {\n        title\n        otherTitle\n        first\n        middle\n        last\n      }\n      dateOfBirth\n      phone {\n        mobile\n        landline\n      }\n      email {\n        address\n        validated\n      }\n      status {\n        locked\n        confirmed\n        deactivated\n      }\n      address {\n        pafOrganisationName\n        line1\n        line2\n        line3\n        line4\n        line5\n        buildingNumberRange\n        buildingName\n        flatName\n        street\n        city\n        county\n        postalCode\n        country\n        uprn\n        dependentLocality\n        doubleDependentLocality\n        typeId\n      }\n      doNotContact\n      personalIdentifiers\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1061,7 +1061,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;1102823449&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${extCrn}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1155,7 +1155,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - BusinessCustomers" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - BusinessCustomers">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1173,7 +1173,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extBusinessCustomerRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-business-customers-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-business-customers-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1186,7 +1186,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessCustomers&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query BusinessCustomers($sbi: ID!) {\n  business(sbi: $sbi) {\n    customers {\n      role\n      crn\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessCustomers&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extSbi}&quot;},&quot;query&quot;:&quot;query BusinessCustomers($sbi: ID!) {\n  business(sbi: $sbi) {\n    customers {\n      role\n      crn\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1201,7 +1201,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1297,7 +1297,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerBusinesses" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerBusinesses">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1315,7 +1315,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extQueryCustomerBusinessesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-customer-businesses-by-crn" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-customer-businesses-by-crn">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1328,7 +1328,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Query ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tbusinesses {\n\t\t\tname\n\t\t}\n\t\tcrn\n\t\tpersonId\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Query&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${extCrn}&quot;},&quot;query&quot;:&quot;query Query ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tbusinesses {\n\t\t\tname\n\t\t}\n\t\tcrn\n\t\tpersonId\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1345,7 +1345,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
 	}
 }
 </stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${extCrn}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1443,7 +1443,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - AuthenticateQuestions" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - AuthenticateQuestions">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1461,7 +1461,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extAuthenticateQuestionsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-authenticate-questions-by-crn" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-authenticate-questions-by-crn">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1474,7 +1474,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${crn}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tauthenticationQuestions {\n\t\t\tisFound\n\t\t\tupdatedAt\n\t\t\tmemorableDate\n\t\t\tmemorableEvent\n\t\t\tmemorableLocation\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${extCrn}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tauthenticationQuestions {\n\t\t\tisFound\n\t\t\tupdatedAt\n\t\t\tmemorableDate\n\t\t\tmemorableEvent\n\t\t\tmemorableLocation\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1493,7 +1493,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${crn}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${extCrn}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1591,7 +1591,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerBusinessPermissions" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerBusinessPermissions">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1609,7 +1609,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extCustomerPermissionsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-authorisations-by-sbi-and-crn" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-authorisations-by-sbi-and-crn">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1622,7 +1622,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Customer&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${extPCrn}&quot;,&quot;sbi&quot;:&quot;${extPSbi}&quot;},&quot;query&quot;:&quot;query Customer ($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\trole\n\t\t\tpermissionGroups {\n\t\t\t\tlevel\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1641,7 +1641,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${extPCrn}&quot;,&quot;sbi&quot;:&quot;${extPSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1743,7 +1743,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - Messages" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - Messages">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1761,7 +1761,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extBusinessMessagesRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-business-messages-by-crn-and-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-business-messages-by-crn-and-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1774,7 +1774,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessMessages&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;},&quot;query&quot;:&quot;query BusinessMessages($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\tmessages {\n\t\t\t\tid\n\t\t\t\tsubject\n\t\t\t\tdate\n\t\t\t\tbody\n\t\t\t\tread\n\t\t\t\tdeleted\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessMessages&quot;,&quot;variables&quot;:{&quot;crn&quot;:&quot;${extPCrn}&quot;,&quot;sbi&quot;:&quot;${extPSbi}&quot;},&quot;query&quot;:&quot;query BusinessMessages($crn: ID!, $sbi: ID!) {\n\tcustomer(crn: $crn) {\n\t\tpersonId\n\t\tcrn\n\t\tbusiness(sbi: $sbi) {\n\t\t\tmessages {\n\t\t\t\tid\n\t\t\t\tsubject\n\t\t\t\tdate\n\t\t\t\tbody\n\t\t\t\tread\n\t\t\t\tdeleted\n\t\t\t}\n\t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1797,7 +1797,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
 		}
 	}
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${pcrn}&quot;,&quot;sbi&quot;:&quot;${psbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;crn&quot;:&quot;${extPCrn}&quot;,&quot;sbi&quot;:&quot;${extPSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -1897,7 +1897,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CPH" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CPH">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -1915,7 +1915,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetCphRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-cph-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-cph-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1928,7 +1928,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetCph&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query GetCph($sbi: ID!) {\n  business(sbi: $sbi) {\n    countyParishHoldings {\n      address\n      cphNumber\n      endDate\n      parish\n      species\n      startDate\n      xCoordinate\n      yCoordinate\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetCph&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extSbi}&quot;},&quot;query&quot;:&quot;query GetCph($sbi: ID!) {\n  business(sbi: $sbi) {\n    countyParishHoldings {\n      address\n      cphNumber\n      endDate\n      parish\n      species\n      startDate\n      xCoordinate\n      yCoordinate\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1949,7 +1949,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2048,7 +2048,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - BusinessLandParcels" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - BusinessLandParcels">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2066,7 +2066,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetLandParcelsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-land-parcels-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-land-parcels-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2079,7 +2079,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandParcels&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query GetLandParcels($sbi: ID!) {\n  business(sbi: $sbi) {\n    land {\n      parcels {\n        area\n        id\n        parcelId\n        pendingDigitisation\n        sheetId\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandParcels&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extSbi}&quot;},&quot;query&quot;:&quot;query GetLandParcels($sbi: ID!) {\n  business(sbi: $sbi) {\n    land {\n      parcels {\n        area\n        id\n        parcelId\n        pendingDigitisation\n        sheetId\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2099,7 +2099,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2198,7 +2198,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - BusinessLandCoverSummary" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - BusinessLandCoverSummary">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2216,7 +2216,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetLandCoverSummaryRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-land-cover-summary-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-land-cover-summary-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2229,7 +2229,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandCoverSummary&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query GetLandCoverSummary($sbi: ID!) {\n  business(sbi: $sbi) {\n    land {\n      summary {\n        arableLandArea\n        permanentCropsArea\n        permanentGrasslandArea\n        totalArea\n        totalParcels\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandCoverSummary&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extSbi}&quot;},&quot;query&quot;:&quot;query GetLandCoverSummary($sbi: ID!) {\n  business(sbi: $sbi) {\n    land {\n      summary {\n        arableLandArea\n        permanentCropsArea\n        permanentGrasslandArea\n        totalArea\n        totalParcels\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2249,7 +2249,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2348,7 +2348,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - ParcelLandCovers" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - ParcelLandCovers">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2366,7 +2366,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetLandCoversByParcelRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-land-covers-by-parcel" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-land-covers-by-parcel">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2379,7 +2379,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandCovers&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${landSbi}&quot;,&quot;sheetId&quot;:&quot;${landSheetId}&quot;,&quot;parcelId&quot;:&quot;${landParcelId}&quot;},&quot;query&quot;:&quot;query GetLandCovers($sbi: ID!, $sheetId: ID!, $parcelId: ID!) {\n  business(sbi: $sbi) {\n    land {\n      parcelCovers(sheetId: $sheetId, parcelId: $parcelId) {\n        area\n        code\n        id\n        isBpsEligible\n        name\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandCovers&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extLandSbi}&quot;,&quot;sheetId&quot;:&quot;${extLandSheetId}&quot;,&quot;parcelId&quot;:&quot;${extLandParcelId}&quot;},&quot;query&quot;:&quot;query GetLandCovers($sbi: ID!, $sheetId: ID!, $parcelId: ID!) {\n  business(sbi: $sbi) {\n    land {\n      parcelCovers(sheetId: $sheetId, parcelId: $parcelId) {\n        area\n        code\n        id\n        isBpsEligible\n        name\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2399,7 +2399,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${landSbi}&quot;,&quot;sheetId&quot;:&quot;${landSheetId}&quot;,&quot;parcelId&quot;:&quot;${landParcelId}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extLandSbi}&quot;,&quot;sheetId&quot;:&quot;${extLandSheetId}&quot;,&quot;parcelId&quot;:&quot;${extLandParcelId}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2502,7 +2502,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - LandUsage" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - LandUsage">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2520,7 +2520,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetLandUsageRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-land-usage-by-sheet-parcel" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-land-usage-by-sheet-parcel">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2533,7 +2533,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandUses&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${landSbi}&quot;,&quot;sheetId&quot;:&quot;${landSheetId}&quot;,&quot;parcelId&quot;:&quot;${landParcelId}&quot;},&quot;query&quot;:&quot;query GetLandUses($sbi: ID!, $sheetId: ID!, $parcelId: ID!) {\n            business(sbi: $sbi) {\n              land {\n                parcelLandUses(sheetId: $sheetId, parcelId: $parcelId) {\n                  code\n                  startDate\n                  endDate\n                  insertDate\n                  deleteDate\n                  area\n                  length\n                  type\n                  campaign\n                }\n              }\n            }\n          }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetLandUses&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extLandSbi}&quot;,&quot;sheetId&quot;:&quot;${extLandSheetId}&quot;,&quot;parcelId&quot;:&quot;${extLandParcelId}&quot;},&quot;query&quot;:&quot;query GetLandUses($sbi: ID!, $sheetId: ID!, $parcelId: ID!) {\n            business(sbi: $sbi) {\n              land {\n                parcelLandUses(sheetId: $sheetId, parcelId: $parcelId) {\n                  code\n                  startDate\n                  endDate\n                  insertDate\n                  deleteDate\n                  area\n                  length\n                  type\n                  campaign\n                }\n              }\n            }\n          }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2557,7 +2557,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               }
             }
           }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${landSbi}&quot;,&quot;sheetId&quot;:&quot;${landSheetId}&quot;,&quot;parcelId&quot;:&quot;${landParcelId}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extLandSbi}&quot;,&quot;sheetId&quot;:&quot;${extLandSheetId}&quot;,&quot;parcelId&quot;:&quot;${extLandParcelId}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2671,7 +2671,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - Agreements" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - Agreements">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2689,7 +2689,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetAgreementsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-agreements-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-agreements-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2702,7 +2702,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Agreements&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Agreements ($sbi: ID!) {\n    business(sbi: $sbi) {\n        agreements {\n            contractId\n            name\n            status\n            contractType\n            schemeYear\n            startDate\n            endDate\n            paymentSchedules {\n                optionCode\n                optionDescription\n                commitmentGroupStartDate\n                commitmentGroupEndDate\n                year\n                sheetName\n                parcelName\n                actionArea\n                actionMTL\n                actionUnits\n                parcelTotalArea\n                startDate\n                endDate\n            }\n        }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Agreements&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extSbi}&quot;},&quot;query&quot;:&quot;query Agreements ($sbi: ID!) {\n    business(sbi: $sbi) {\n        agreements {\n            contractId\n            name\n            status\n            contractType\n            schemeYear\n            startDate\n            endDate\n            paymentSchedules {\n                optionCode\n                optionDescription\n                commitmentGroupStartDate\n                commitmentGroupEndDate\n                year\n                sheetName\n                parcelName\n                actionArea\n                actionMTL\n                actionUnits\n                parcelTotalArea\n                startDate\n                endDate\n            }\n        }\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2737,7 +2737,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         }
     }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -2853,7 +2853,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - Applications" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - Applications">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -2871,7 +2871,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetApplicationsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-applications-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-applications-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -2884,7 +2884,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;Applications&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extSbi}&quot;},&quot;query&quot;:&quot;query Applications ($sbi: ID!) {\n    business(sbi: $sbi) {\n      applications {\n        sbi\n        id\n        subjectId\n        year\n        name\n        moduleCode\n        scheme\n        statusCodeP\n        statusCodeS\n        status\n        submissionDate\n        portalStatusP\n        portalStatusS\n        portalStatus\n        active\n        transitionId\n        transitionName\n        agreementReferences\n        transitionHistory {\n          id\n          name\n          timestamp\n          checkStatus\n        }\n      }\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2921,7 +2921,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
       }
     }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extSbi}&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -3091,7 +3091,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CreateBusiness" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CreateBusiness">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -3109,7 +3109,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extCreateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-create-business" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-create-business">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3122,14 +3122,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusiness(input:{crn:\&quot;${crn}\&quot;,name:\&quot;AcmeFarmsLtd\&quot;,vat:\&quot;GB123456789\&quot;,traderNumber:\&quot;TR12345\&quot;,vendorNumber:\&quot;VN67890\&quot;,address:{withoutUprn:{line1:\&quot;1 Farm Lane\&quot;,line2:\&quot;Rural Area\&quot;,city:\&quot;Farmville\&quot;,postalCode:\&quot;FV1 2AB\&quot;,country:\&quot;UK\&quot;}},correspondenceAddress:{withoutUprn:{line1:\&quot;POBox123\&quot;,city:\&quot;Farmville\&quot;,postalCode:\&quot;FV12AB\&quot;,country:\&quot;UK\&quot;}},typeCode:2,email:{address:\&quot;info@acmefarms.co.uk\&quot;},correspondenceEmail:{address:\&quot;correspondence@acmefarms.co.uk\&quot;},phone:{landline:\&quot;+441234567890\&quot;,mobile:\&quot;+441234567891\&quot;},correspondencePhone:{landline:\&quot;+441234567892\&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:\&quot;12345678\&quot;,charityCommission:\&quot;87654321\&quot;},landConfirmed:true,dateStartedFarming:\&quot;2021-05-27T12:46:17.305Z\&quot;}\n  ){\n    success\n    business {\n      info {\n        address {\n          buildingName\n          buildingNumberRange\n          city\n          country\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          flatName\n          street\n          county\n          postalCode\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        correspondenceAddress {\n          line1\n          line2\n          line3\n          line4\n          pafOrganisationName\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        name\n        reference\n        vat\n        traderNumber\n        vendorNumber\n        isCorrespondenceAsBusinessAddress\n        email {\n          address\n          validated\n        }\n        correspondenceEmail {\n          address\n          validated\n        }\n        phone {\n          mobile\n          landline\n        }\n        correspondencePhone {\n          mobile\n          landline\n        }\n        legalStatus {\n          code\n          type\n        }\n        type {\n          code\n          type\n        }\n        registrationNumbers {\n          companiesHouse\n          charityCommission\n        }\n        landConfirmed\n        dateStartedFarming\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createBusiness(input:{crn:\&quot;${extCrn}\&quot;,name:\&quot;AcmeFarmsLtd\&quot;,vat:\&quot;GB123456789\&quot;,traderNumber:\&quot;TR12345\&quot;,vendorNumber:\&quot;VN67890\&quot;,address:{withoutUprn:{line1:\&quot;1 Farm Lane\&quot;,line2:\&quot;Rural Area\&quot;,city:\&quot;Farmville\&quot;,postalCode:\&quot;FV1 2AB\&quot;,country:\&quot;UK\&quot;}},correspondenceAddress:{withoutUprn:{line1:\&quot;POBox123\&quot;,city:\&quot;Farmville\&quot;,postalCode:\&quot;FV12AB\&quot;,country:\&quot;UK\&quot;}},typeCode:2,email:{address:\&quot;info@acmefarms.co.uk\&quot;},correspondenceEmail:{address:\&quot;correspondence@acmefarms.co.uk\&quot;},phone:{landline:\&quot;+441234567890\&quot;,mobile:\&quot;+441234567891\&quot;},correspondencePhone:{landline:\&quot;+441234567892\&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:\&quot;12345678\&quot;,charityCommission:\&quot;87654321\&quot;},landConfirmed:true,dateStartedFarming:\&quot;2021-05-27T12:46:17.305Z\&quot;}\n  ){\n    success\n    business {\n      info {\n        address {\n          buildingName\n          buildingNumberRange\n          city\n          country\n          pafOrganisationName\n          line1\n          line2\n          line3\n          line4\n          line5\n          flatName\n          street\n          county\n          postalCode\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        correspondenceAddress {\n          line1\n          line2\n          line3\n          line4\n          pafOrganisationName\n          line5\n          buildingNumberRange\n          buildingName\n          flatName\n          street\n          city\n          county\n          postalCode\n          country\n          uprn\n          dependentLocality\n          doubleDependentLocality\n          typeId\n        }\n        name\n        reference\n        vat\n        traderNumber\n        vendorNumber\n        isCorrespondenceAsBusinessAddress\n        email {\n          address\n          validated\n        }\n        correspondenceEmail {\n          address\n          validated\n        }\n        phone {\n          mobile\n          landline\n        }\n        correspondencePhone {\n          mobile\n          landline\n        }\n        legalStatus {\n          code\n          type\n        }\n        type {\n          code\n          type\n        }\n        registrationNumbers {\n          companiesHouse\n          charityCommission\n        }\n        landConfirmed\n        dateStartedFarming\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  createBusiness(input:{crn:&quot;${crn}&quot;,name:&quot;AcmeFarmsLtd&quot;,vat:&quot;GB123456789&quot;,traderNumber:&quot;TR12345&quot;,vendorNumber:&quot;VN67890&quot;,address:{withoutUprn:{line1:&quot;1 Farm Lane&quot;,line2:&quot;Rural Area&quot;,city:&quot;Farmville&quot;,postalCode:&quot;FV1 2AB&quot;,country:&quot;UK&quot;}},correspondenceAddress:{withoutUprn:{line1:&quot;POBox123&quot;,city:&quot;Farmville&quot;,postalCode:&quot;FV12AB&quot;,country:&quot;UK&quot;}},typeCode:2,email:{address:&quot;info@acmefarms.co.uk&quot;},correspondenceEmail:{address:&quot;correspondence@acmefarms.co.uk&quot;},phone:{landline:&quot;+441234567890&quot;,mobile:&quot;+441234567891&quot;},correspondencePhone:{landline:&quot;+441234567892&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:&quot;12345678&quot;,charityCommission:&quot;87654321&quot;},landConfirmed:true,dateStartedFarming:&quot;2021-05-27T12:46:17.305Z&quot;}
+  createBusiness(input:{crn:&quot;${extCrn}&quot;,name:&quot;AcmeFarmsLtd&quot;,vat:&quot;GB123456789&quot;,traderNumber:&quot;TR12345&quot;,vendorNumber:&quot;VN67890&quot;,address:{withoutUprn:{line1:&quot;1 Farm Lane&quot;,line2:&quot;Rural Area&quot;,city:&quot;Farmville&quot;,postalCode:&quot;FV1 2AB&quot;,country:&quot;UK&quot;}},correspondenceAddress:{withoutUprn:{line1:&quot;POBox123&quot;,city:&quot;Farmville&quot;,postalCode:&quot;FV12AB&quot;,country:&quot;UK&quot;}},typeCode:2,email:{address:&quot;info@acmefarms.co.uk&quot;},correspondenceEmail:{address:&quot;correspondence@acmefarms.co.uk&quot;},phone:{landline:&quot;+441234567890&quot;,mobile:&quot;+441234567891&quot;},correspondencePhone:{landline:&quot;+441234567892&quot;},legalStatusCode:1,registrationNumbers:{companiesHouse:&quot;12345678&quot;,charityCommission:&quot;87654321&quot;},landConfirmed:true,dateStartedFarming:&quot;2021-05-27T12:46:17.305Z&quot;}
   ){
     success
     business {
@@ -3783,7 +3783,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdateBusiness" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdateBusiness">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -3801,7 +3801,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extUpdateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-date-started-farming" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-date-started-farming">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3814,14 +3814,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessDateStartedFarming(input: { sbi: \&quot;${sbi}\&quot;, dateStartedFarming: \&quot;01-01-2020\&quot; }) {\n          success\n            business {\n            info {\n              dateStartedFarming\n            }\n          }\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessDateStartedFarming(input: { sbi: \&quot;${extSbi}\&quot;, dateStartedFarming: \&quot;01-01-2020\&quot; }) {\n          success\n            business {\n            info {\n              dateStartedFarming\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-        updateBusinessDateStartedFarming(input: { sbi: &quot;${sbi}&quot;, dateStartedFarming: &quot;01-01-2020&quot; }) {
+        updateBusinessDateStartedFarming(input: { sbi: &quot;${extSbi}&quot;, dateStartedFarming: &quot;01-01-2020&quot; }) {
           success
             business {
             info {
@@ -3852,7 +3852,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-type" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-type">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3865,14 +3865,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessType(input: { sbi: \&quot;${sbi}\&quot;, typeCode: 123 }) {\n          success\n            business {\n            info {\n              type {\n                code\n                type\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessType(input: { sbi: \&quot;${extSbi}\&quot;, typeCode: 123 }) {\n          success\n            business {\n            info {\n              type {\n                code\n                type\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-        updateBusinessType(input: { sbi: &quot;${sbi}&quot;, typeCode: 123 }) {
+        updateBusinessType(input: { sbi: &quot;${extSbi}&quot;, typeCode: 123 }) {
           success
             business {
             info {
@@ -3906,7 +3906,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-registration-numbers" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-registration-numbers">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3919,14 +3919,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessRegistrationNumbers(input: { sbi: \&quot;${sbi}\&quot;, registrationNumbers: { charityCommission: \&quot;0123\&quot;, companiesHouse: \&quot;0456\&quot; } }) {\n          success\n            business {\n            info {\n              registrationNumbers {\n                charityCommission\n                companiesHouse\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessRegistrationNumbers(input: { sbi: \&quot;${extSbi}\&quot;, registrationNumbers: { charityCommission: \&quot;0123\&quot;, companiesHouse: \&quot;0456\&quot; } }) {\n          success\n            business {\n            info {\n              registrationNumbers {\n                charityCommission\n                companiesHouse\n              }\n            }\n          }\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-        updateBusinessRegistrationNumbers(input: { sbi: &quot;${sbi}&quot;, registrationNumbers: { charityCommission: &quot;0123&quot;, companiesHouse: &quot;0456&quot; } }) {
+        updateBusinessRegistrationNumbers(input: { sbi: &quot;${extSbi}&quot;, registrationNumbers: { charityCommission: &quot;0123&quot;, companiesHouse: &quot;0456&quot; } }) {
           success
             business {
             info {
@@ -3960,7 +3960,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-name" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-name">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -3973,14 +3973,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessName(input: {sbi: \&quot;${sbi}\&quot;,name: \&quot;newname\&quot;}) {\n    success\n    business {\n      sbi\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessName(input: {sbi: \&quot;${extSbi}\&quot;,name: \&quot;newname\&quot;}) {\n    success\n    business {\n      sbi\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateBusinessName(input: {sbi: &quot;${sbi}&quot;,name: &quot;newname&quot;}) {
+  updateBusinessName(input: {sbi: &quot;${extSbi}&quot;,name: &quot;newname&quot;}) {
     success
     business {
       sbi
@@ -4009,7 +4009,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-email" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-email">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4022,14 +4022,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessEmail(input: { sbi: \&quot;${sbi}\&quot;, email: { address: \&quot;newemail@test.com\&quot; } }) {\n    business {\n      info {\n        email {\n          address\n        }\n      }\n    }\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessEmail(input: { sbi: \&quot;${extSbi}\&quot;, email: { address: \&quot;newemail@test.com\&quot; } }) {\n    business {\n      info {\n        email {\n          address\n        }\n      }\n    }\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateBusinessEmail(input: { sbi: &quot;${sbi}&quot;, email: { address: &quot;newemail@test.com&quot; } }) {
+  updateBusinessEmail(input: { sbi: &quot;${extSbi}&quot;, email: { address: &quot;newemail@test.com&quot; } }) {
     business {
       info {
         email {
@@ -4062,7 +4062,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-phone" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-phone">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4075,7 +4075,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n\tupdateBusinessPhone(input: {\n\t  \t\t\t\t\t\tsbi: \&quot;${sbi}\&quot;,\n       \t\t\t\t\t\tphone: {\n         \t\t\t\t\t\t\tlandline: \&quot;new phone\&quot;,\n         \t\t\t\t\t\t\tmobile: \&quot;new mobile\&quot;\n       \t\t\t\t\t\t},\n       \t\t\t\t\t\tcorrespondencePhone: {\n         \t\t\t\t\t\t\tlandline: \&quot;new correspondence phone\&quot;,\n         \t\t\t\t\t\t\tmobile: \&quot;new correspondence mobile\&quot;\n       \t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t) \n\t{\n          business {\n            info {\n              phone {\n                landline\n                mobile\n              }\n              correspondencePhone {\n                landline\n                mobile\n              }\n            }\n          }\n     \tsuccess\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n\tupdateBusinessPhone(input: {\n\t  \t\t\t\t\t\tsbi: \&quot;${extSbi}\&quot;,\n       \t\t\t\t\t\tphone: {\n         \t\t\t\t\t\t\tlandline: \&quot;new phone\&quot;,\n         \t\t\t\t\t\t\tmobile: \&quot;new mobile\&quot;\n       \t\t\t\t\t\t},\n       \t\t\t\t\t\tcorrespondencePhone: {\n         \t\t\t\t\t\t\tlandline: \&quot;new correspondence phone\&quot;,\n         \t\t\t\t\t\t\tmobile: \&quot;new correspondence mobile\&quot;\n       \t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t) \n\t{\n          business {\n            info {\n              phone {\n                landline\n                mobile\n              }\n              correspondencePhone {\n                landline\n                mobile\n              }\n            }\n          }\n     \tsuccess\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -4083,7 +4083,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
 	updateBusinessPhone(input: {
-	  						sbi: &quot;${sbi}&quot;,
+	  						sbi: &quot;${extSbi}&quot;,
        						phone: {
          							landline: &quot;new phone&quot;,
          							mobile: &quot;new mobile&quot;
@@ -4132,7 +4132,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-address" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-address">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4145,14 +4145,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessAddress(input:{sbi:\&quot;${sbi}\&quot;,address:{buildingName:\&quot;new buildingName\&quot;,buildingNumberRange:\&quot;new buildingNumberRange\&quot;,city:\&quot;new city\&quot;,country:\&quot;new country\&quot;,county:\&quot;new county\&quot;,dependentLocality:\&quot;new dependentLocality\&quot;,doubleDependentLocality:\&quot;new doubleDependentLocality\&quot;,flatName:\&quot;new flatName\&quot;,line1:\&quot;new line1\&quot;,line2:\&quot;new line2\&quot;,line3:\&quot;new line3\&quot;,line4:\&quot;new line4\&quot;,line5:\&quot;new line5\&quot;,pafOrganisationName:\&quot;new pafOrganisationName\&quot;,postalCode:\&quot;new postalCode\&quot;,street:\&quot;new street\&quot;,uprn:\&quot;new uprn\&quot;},correspondenceAddress:{buildingName:\&quot;new buildingName\&quot;,buildingNumberRange:\&quot;new buildingNumberRange\&quot;,city:\&quot;new city\&quot;,country:\&quot;new country\&quot;,county:\&quot;new county\&quot;,dependentLocality:\&quot;new dependentLocality\&quot;,doubleDependentLocality:\&quot;new doubleDependentLocality\&quot;,flatName:\&quot;new flatName\&quot;,line1:\&quot;new line1\&quot;,line2:\&quot;new line2\&quot;,line3:\&quot;new line3\&quot;,line4:\&quot;new line4\&quot;,line5:\&quot;new line5\&quot;,pafOrganisationName:\&quot;new pafOrganisationName\&quot;,postalCode:\&quot;new postalCode\&quot;,street:\&quot;new street\&quot;,uprn:\&quot;new uprn\&quot;},isCorrespondenceAsBusinessAddress:true}) {\n          business {\n            info {\n              correspondenceAddress {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              address {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              isCorrespondenceAsBusinessAddress\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n        updateBusinessAddress(input:{sbi:\&quot;${extSbi}\&quot;,address:{buildingName:\&quot;new buildingName\&quot;,buildingNumberRange:\&quot;new buildingNumberRange\&quot;,city:\&quot;new city\&quot;,country:\&quot;new country\&quot;,county:\&quot;new county\&quot;,dependentLocality:\&quot;new dependentLocality\&quot;,doubleDependentLocality:\&quot;new doubleDependentLocality\&quot;,flatName:\&quot;new flatName\&quot;,line1:\&quot;new line1\&quot;,line2:\&quot;new line2\&quot;,line3:\&quot;new line3\&quot;,line4:\&quot;new line4\&quot;,line5:\&quot;new line5\&quot;,pafOrganisationName:\&quot;new pafOrganisationName\&quot;,postalCode:\&quot;new postalCode\&quot;,street:\&quot;new street\&quot;,uprn:\&quot;new uprn\&quot;},correspondenceAddress:{buildingName:\&quot;new buildingName\&quot;,buildingNumberRange:\&quot;new buildingNumberRange\&quot;,city:\&quot;new city\&quot;,country:\&quot;new country\&quot;,county:\&quot;new county\&quot;,dependentLocality:\&quot;new dependentLocality\&quot;,doubleDependentLocality:\&quot;new doubleDependentLocality\&quot;,flatName:\&quot;new flatName\&quot;,line1:\&quot;new line1\&quot;,line2:\&quot;new line2\&quot;,line3:\&quot;new line3\&quot;,line4:\&quot;new line4\&quot;,line5:\&quot;new line5\&quot;,pafOrganisationName:\&quot;new pafOrganisationName\&quot;,postalCode:\&quot;new postalCode\&quot;,street:\&quot;new street\&quot;,uprn:\&quot;new uprn\&quot;},isCorrespondenceAsBusinessAddress:true}) {\n          business {\n            info {\n              correspondenceAddress {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              address {\n                buildingName\n                buildingNumberRange\n                city\n                country\n                county\n                dependentLocality\n                doubleDependentLocality\n                flatName\n                line1\n                line2\n                line3\n                line4\n                line5\n                pafOrganisationName\n                postalCode\n                street\n                uprn\n              }\n              isCorrespondenceAsBusinessAddress\n            }\n          }\n          success\n        }\n      }&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-        updateBusinessAddress(input:{sbi:&quot;${sbi}&quot;,address:{buildingName:&quot;new buildingName&quot;,buildingNumberRange:&quot;new buildingNumberRange&quot;,city:&quot;new city&quot;,country:&quot;new country&quot;,county:&quot;new county&quot;,dependentLocality:&quot;new dependentLocality&quot;,doubleDependentLocality:&quot;new doubleDependentLocality&quot;,flatName:&quot;new flatName&quot;,line1:&quot;new line1&quot;,line2:&quot;new line2&quot;,line3:&quot;new line3&quot;,line4:&quot;new line4&quot;,line5:&quot;new line5&quot;,pafOrganisationName:&quot;new pafOrganisationName&quot;,postalCode:&quot;new postalCode&quot;,street:&quot;new street&quot;,uprn:&quot;new uprn&quot;},correspondenceAddress:{buildingName:&quot;new buildingName&quot;,buildingNumberRange:&quot;new buildingNumberRange&quot;,city:&quot;new city&quot;,country:&quot;new country&quot;,county:&quot;new county&quot;,dependentLocality:&quot;new dependentLocality&quot;,doubleDependentLocality:&quot;new doubleDependentLocality&quot;,flatName:&quot;new flatName&quot;,line1:&quot;new line1&quot;,line2:&quot;new line2&quot;,line3:&quot;new line3&quot;,line4:&quot;new line4&quot;,line5:&quot;new line5&quot;,pafOrganisationName:&quot;new pafOrganisationName&quot;,postalCode:&quot;new postalCode&quot;,street:&quot;new street&quot;,uprn:&quot;new uprn&quot;},isCorrespondenceAsBusinessAddress:true}) {
+        updateBusinessAddress(input:{sbi:&quot;${extSbi}&quot;,address:{buildingName:&quot;new buildingName&quot;,buildingNumberRange:&quot;new buildingNumberRange&quot;,city:&quot;new city&quot;,country:&quot;new country&quot;,county:&quot;new county&quot;,dependentLocality:&quot;new dependentLocality&quot;,doubleDependentLocality:&quot;new doubleDependentLocality&quot;,flatName:&quot;new flatName&quot;,line1:&quot;new line1&quot;,line2:&quot;new line2&quot;,line3:&quot;new line3&quot;,line4:&quot;new line4&quot;,line5:&quot;new line5&quot;,pafOrganisationName:&quot;new pafOrganisationName&quot;,postalCode:&quot;new postalCode&quot;,street:&quot;new street&quot;,uprn:&quot;new uprn&quot;},correspondenceAddress:{buildingName:&quot;new buildingName&quot;,buildingNumberRange:&quot;new buildingNumberRange&quot;,city:&quot;new city&quot;,country:&quot;new country&quot;,county:&quot;new county&quot;,dependentLocality:&quot;new dependentLocality&quot;,doubleDependentLocality:&quot;new doubleDependentLocality&quot;,flatName:&quot;new flatName&quot;,line1:&quot;new line1&quot;,line2:&quot;new line2&quot;,line3:&quot;new line3&quot;,line4:&quot;new line4&quot;,line5:&quot;new line5&quot;,pafOrganisationName:&quot;new pafOrganisationName&quot;,postalCode:&quot;new postalCode&quot;,street:&quot;new street&quot;,uprn:&quot;new uprn&quot;},isCorrespondenceAsBusinessAddress:true}) {
           business {
             info {
               correspondenceAddress {
@@ -4221,7 +4221,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-vat" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-vat">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4234,14 +4234,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessVAT(input: { sbi: \&quot;${sbi}\&quot;, vat: \&quot;123456789\&quot; }) {\n    business {\n      info {\n        vat\n      }\n    }\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessVAT(input: { sbi: \&quot;${extSbi}\&quot;, vat: \&quot;123456789\&quot; }) {\n    business {\n      info {\n        vat\n      }\n    }\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateBusinessVAT(input: { sbi: &quot;${sbi}&quot;, vat: &quot;123456789&quot; }) {
+  updateBusinessVAT(input: { sbi: &quot;${extSbi}&quot;, vat: &quot;123456789&quot; }) {
     business {
       info {
         vat
@@ -4274,7 +4274,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-legal-status" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-business-legal-status">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4287,14 +4287,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n\tupdateBusinessLegalStatus(input: { sbi: \&quot;${sbi}\&quot;, legalStatusCode: 123 }) {\n     \tsuccess\n          business {\n          \tinfo {\n              \t\tlegalStatus {\n                \t\tcode\n                \t\ttype\n              \t\t}\n          \t}\n    \t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n\tupdateBusinessLegalStatus(input: { sbi: \&quot;${extSbi}\&quot;, legalStatusCode: 123 }) {\n     \tsuccess\n          business {\n          \tinfo {\n              \t\tlegalStatus {\n                \t\tcode\n                \t\ttype\n              \t\t}\n          \t}\n    \t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-	updateBusinessLegalStatus(input: { sbi: &quot;${sbi}&quot;, legalStatusCode: 123 }) {
+	updateBusinessLegalStatus(input: { sbi: &quot;${extSbi}&quot;, legalStatusCode: 123 }) {
      	success
           business {
           	info {
@@ -4405,7 +4405,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdatePerson" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdatePerson">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4423,7 +4423,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extUpdatePersonRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-person" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-person">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4436,14 +4436,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerAddress(input: { crn: \&quot;${crn}\&quot;, address: { buildingName: \&quot;newBuildingName\&quot;} }) {\n    success\n    customer {\n      info {\n        address {\n          buildingName\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerAddress(input: { crn: \&quot;${extCrn}\&quot;, address: { buildingName: \&quot;newBuildingName\&quot;} }) {\n    success\n    customer {\n      info {\n        address {\n          buildingName\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateCustomerAddress(input: { crn: &quot;${crn}&quot;, address: { buildingName: &quot;newBuildingName&quot;} }) {
+  updateCustomerAddress(input: { crn: &quot;${extCrn}&quot;, address: { buildingName: &quot;newBuildingName&quot;} }) {
     success
     customer {
       info {
@@ -4771,7 +4771,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdateCustomerAllFields" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - UpdateCustomerAllFields">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4789,7 +4789,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extUpdateCustomerAllFieldsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-customer-all-fields" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-customer-all-fields">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4802,14 +4802,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerAllFields(input: { crn: \&quot;${pcrn}\&quot;, email: {address: \&quot;test@test.com\&quot;}} ) {\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerAllFields(input: { crn: \&quot;${extPCrn}\&quot;, email: {address: \&quot;test@test.com\&quot;}} ) {\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateCustomerAllFields(input: { crn: &quot;${pcrn}&quot;, email: {address: &quot;test@test.com&quot;}} ) {
+  updateCustomerAllFields(input: { crn: &quot;${extPCrn}&quot;, email: {address: &quot;test@test.com&quot;}} ) {
     success
   }
 }</stringProp>
@@ -4909,7 +4909,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - ToggleLockBusiness" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - ToggleLockBusiness">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -4927,7 +4927,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extToggleLockPersonRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-toggle-lock-business" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-toggle-lock-business">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -4940,14 +4940,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n\tupdateBusinessLock(input: { sbi: \&quot;${locksbi}\&quot;, reason: \&quot;test\&quot; }) {\n\t\tsuccess\n    \t\tbusiness {\n      \t\tsbi\n      \t\tinfo {\n        \t\t\tstatus {\n          \t\t\tlocked\n        \t\t\t}\n      \t\t}\n    \t\t}\n\t}\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n\tupdateBusinessLock(input: { sbi: \&quot;${extLockSbi}\&quot;, reason: \&quot;test\&quot; }) {\n\t\tsuccess\n    \t\tbusiness {\n      \t\tsbi\n      \t\tinfo {\n        \t\t\tstatus {\n          \t\t\tlocked\n        \t\t\t}\n      \t\t}\n    \t\t}\n\t}\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-	updateBusinessLock(input: { sbi: &quot;${locksbi}&quot;, reason: &quot;test&quot; }) {
+	updateBusinessLock(input: { sbi: &quot;${extLockSbi}&quot;, reason: &quot;test&quot; }) {
 		success
     		business {
       		sbi
@@ -5064,7 +5064,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - Payments" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - Payments">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5082,7 +5082,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetPaymentsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-payments-by-sbi" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-payments-by-sbi">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -5095,7 +5095,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetPayments&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${sbi}&quot;,&quot;userIp&quot;:&quot;192.168.1.1&quot;},&quot;query&quot;:&quot;query GetPayments($sbi: ID!, $userIp: String!) {\n  business(sbi: $sbi) {\n    payments(userIP: $userIp) {\n      onHold\n      payments {\n        reference\n        date\n        amount\n        currency\n        lineItems {\n          agreementNumber\n          amount\n          description\n          marketingYear\n          scheme\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;GetPayments&quot;,&quot;variables&quot;:{&quot;sbi&quot;:&quot;${extSbi}&quot;,&quot;userIp&quot;:&quot;192.168.1.1&quot;},&quot;query&quot;:&quot;query GetPayments($sbi: ID!, $userIp: String!) {\n  business(sbi: $sbi) {\n    payments(userIP: $userIp) {\n      onHold\n      payments {\n        reference\n        date\n        amount\n        currency\n        lineItems {\n          agreementNumber\n          amount\n          description\n          marketingYear\n          scheme\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5122,7 +5122,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }
 }</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${sbi}&quot;,&quot;userIp&quot;:&quot;192.168.1.1&quot;}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables">{&quot;sbi&quot;:&quot;${extSbi}&quot;,&quot;userIp&quot;:&quot;192.168.1.1&quot;}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
@@ -5269,7 +5269,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerSearch" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerSearch">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5287,7 +5287,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetCustomerSearchRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-customer-search-results" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-customer-search-results">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -5301,7 +5301,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;CustomerSearch&quot;,&quot;variables&quot;:{
-  &quot;searchString&quot;: &quot;${crn}&quot;,
+  &quot;searchString&quot;: &quot;${extCrn}&quot;,
   &quot;searchType&quot;: &quot;CRN&quot;,
   &quot;pagination&quot;: {
     &quot;page&quot;: 1,
@@ -5362,7 +5362,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables">{
-  &quot;searchString&quot;: &quot;${crn}&quot;,
+  &quot;searchString&quot;: &quot;${extCrn}&quot;,
   &quot;searchType&quot;: &quot;CRN&quot;,
   &quot;pagination&quot;: {
     &quot;page&quot;: 1,
@@ -5521,7 +5521,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - BusinessSearch" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - BusinessSearch">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5539,7 +5539,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extGetBusinessSearchRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-business-search-results" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-business-search-results">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -5553,7 +5553,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;BusinessSearch&quot;,&quot;variables&quot;:{
-  &quot;searchString&quot;: &quot;${sbi}&quot;,
+  &quot;searchString&quot;: &quot;${extSbi}&quot;,
   &quot;searchType&quot;: &quot;SBI&quot;,
   &quot;pagination&quot;: {
     &quot;page&quot;: 1,
@@ -5620,7 +5620,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
     }
   }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables">{
-  &quot;searchString&quot;: &quot;${sbi}&quot;,
+  &quot;searchString&quot;: &quot;${extSbi}&quot;,
   &quot;searchType&quot;: &quot;SBI&quot;,
   &quot;pagination&quot;: {
     &quot;page&quot;: 1,
@@ -5726,7 +5726,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - GetPermittedFunctions" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - GetPermittedFunctions">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5744,7 +5744,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${intGetPermittedFunctionsRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-permitted-functions" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-get-permitted-functions">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -5759,7 +5759,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;PermittedFunctions&quot;,&quot;variables&quot;:{
   &quot;functions&quot;: [&quot;viewLand&quot;, &quot;someUnknownFunction&quot;],
-  &quot;sbi&quot;: &quot;${sbi}&quot;
+  &quot;sbi&quot;: &quot;${extSbi}&quot;
 },&quot;query&quot;:&quot;query PermittedFunctions($functions: [String!]!, $sbi: ID!) {\n  business(sbi: $sbi) {\n    permittedFunctions(functions: $functions) {\n      name\n      permitted\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
@@ -5777,7 +5777,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
 }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables">{
   &quot;functions&quot;: [&quot;viewLand&quot;, &quot;someUnknownFunction&quot;],
-  &quot;sbi&quot;: &quot;${sbi}&quot;
+  &quot;sbi&quot;: &quot;${extSbi}&quot;
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
@@ -5913,7 +5913,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - EmailValidationAndChange" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - EmailValidationAndChange">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -5931,7 +5931,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extEmailValidationChangeRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-check-email" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-check-email">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -5977,7 +5977,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-change-email" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-change-email">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -5990,14 +5990,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerEmail(input: { crn: \&quot;${crn}\&quot;, email: { address: \&quot;skeleton@the-closet.net\&quot;} }) {\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateCustomerEmail(input: { crn: \&quot;${extCrn}\&quot;, email: { address: \&quot;skeleton@the-closet.net\&quot;} }) {\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateCustomerEmail(input: { crn: &quot;${crn}&quot;, email: { address: &quot;skeleton@the-closet.net&quot;} }) {
+  updateCustomerEmail(input: { crn: &quot;${extCrn}&quot;, email: { address: &quot;skeleton@the-closet.net&quot;} }) {
     success
   }
 }</stringProp>
@@ -6089,7 +6089,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerLock" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerLock">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -6107,7 +6107,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extUpdateCustomerLockRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-customer-lock" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-customer-lock">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -6120,14 +6120,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateLockCustomer(input: { crn: \&quot;${crn}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;}) {\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateLockCustomer(input: { crn: \&quot;${extCrn}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;}) {\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateLockCustomer(input: { crn: &quot;${crn}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;}) {
+  updateLockCustomer(input: { crn: &quot;${extCrn}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;}) {
     success
   }
 }</stringProp>
@@ -6219,7 +6219,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerUnlock" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - CustomerUnlock">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -6237,7 +6237,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extUpdateCustomerUnlockRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-customer-unlock" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-customer-unlock">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -6250,14 +6250,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateUnlockCustomer(input: { crn: \&quot;${crn}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;}) {\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateUnlockCustomer(input: { crn: \&quot;${extCrn}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;}) {\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateUnlockCustomer(input: { crn: &quot;${crn}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;}) {
+  updateUnlockCustomer(input: { crn: &quot;${extCrn}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;}) {
     success
   }
 }</stringProp>
@@ -6349,7 +6349,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - DeactivateCustomer" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - DeactivateCustomer">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -6367,7 +6367,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extUpdateCustomerDeactivateRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-customer-deactivate" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-update-customer-deactivate">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -6380,14 +6380,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateDeactivateCustomer(input: { crn: \&quot;${crn}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;}) {\n    success\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateDeactivateCustomer(input: { crn: \&quot;${extCrn}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;}) {\n    success\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateDeactivateCustomer(input: { crn: &quot;${crn}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;}) {
+  updateDeactivateCustomer(input: { crn: &quot;${extCrn}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;}) {
     success
   }
 }</stringProp>
@@ -6491,7 +6491,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - DeactivateBusiness" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="EXT - DeactivateBusiness">
         <stringProp name="ThreadGroup.num_threads">${__P(threadCount,10)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(rampUp,10)}</stringProp>
         <stringProp name="ThreadGroup.duration">${__P(testTimeInSeconds,10)}</stringProp>
@@ -6509,7 +6509,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extDeactivateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-deactivate-business" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-deactivate-business">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -6522,14 +6522,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessDeactivate(input: { sbi: \&quot;${sbi}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;})\n  {\n    success\n    business\n    {\n      sbi\n      info\n      {\n        status\n        {\n          deactivated\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessDeactivate(input: { sbi: \&quot;${extSbi}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;})\n  {\n    success\n    business\n    {\n      sbi\n      info\n      {\n        status\n        {\n          deactivated\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateBusinessDeactivate(input: { sbi: &quot;${sbi}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;})
+  updateBusinessDeactivate(input: { sbi: &quot;${extSbi}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;})
   {
     success
     business
@@ -6663,7 +6663,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
           <stringProp name="throughput">${extReactivateBusinessRrpm}</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-reactivate-business" enabled="true">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Ext-reactivate-business">
           <stringProp name="HTTPSampler.domain">fcp-dal-api.${__P(env)}.cdp-int.defra.cloud</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -6676,14 +6676,14 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessReactivate(input: { sbi: \&quot;${sbi}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;})\n  {\n    success\n    business\n    {\n      sbi\n      info\n      {\n        status\n        {\n          deactivated\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  updateBusinessReactivate(input: { sbi: \&quot;${extSbi}\&quot;, note: \&quot;mynote\&quot;, reason: \&quot;myreason\&quot;})\n  {\n    success\n    business\n    {\n      sbi\n      info\n      {\n        status\n        {\n          deactivated\n        }\n      }\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="GraphQLHTTPSampler.query">mutation {
-  updateBusinessReactivate(input: { sbi: &quot;${sbi}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;})
+  updateBusinessReactivate(input: { sbi: &quot;${extSbi}&quot;, note: &quot;mynote&quot;, reason: &quot;myreason&quot;})
   {
     success
     business
