@@ -50,7 +50,7 @@ if [ "${DEFRA_ID_PROVIDER}" = "stub" ] ; then
   DEFRA_ID_CLIENT_SECRET="${DEFRA_ID_CLIENT_SECRET:-stub}"
   DEFRA_ID_SERVICE_ID="${DEFRA_ID_SERVICE_ID:-fcp-dal-api-perf-test}"
   DEFRA_ID_REDIRECT_URL="${DEFRA_ID_REDIRECT_URL:-https://fcp-dal-upstream-mock.${ENVIRONMENT}.cdp-int.defra.cloud/auth/sign-in-oidc}"
-  DEFRA_ID_RELATIONSHIP_ID="${DEFRA_ID_RELATIONSHIP_ID:-810100101}" # Needs to be an SBI connected to the CRN
+  DEFRA_ID_RELATIONSHIP_ID="${DEFRA_ID_RELATIONSHIP_ID:-5900001}" # Needs to be a relationshipId with a business connected to the CRN
 fi
 defra_id_token=$(
   DEFRA_ID_PROVIDER="${DEFRA_ID_PROVIDER}" \
