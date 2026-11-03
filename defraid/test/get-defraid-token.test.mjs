@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url'
 import { describe, expect, inject, test } from 'vitest'
 
 const SCRIPT = fileURLToPath(new URL('../get-defraid-token.js', import.meta.url))
-const CRN = process.env.CRN || '9700001000'
+const CRN = process.env.CRN || '9100010101'
 const RELATIONSHIP_ID = process.env.RELATIONSHIP_ID || '5900001'
 
 const stubUrl = inject('stubUrl')

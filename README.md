@@ -30,7 +30,7 @@ The script is configured with environment variables. With `DEFRA_ID_PROVIDER=stu
 | --- | --- |
 | `DEFRA_ID_PROVIDER` | `stub` |
 | `DEFRA_ID_WELL_KNOWN_URL` | `https://fcp-defra-id-stub.${ENVIRONMENT}.cdp-int.defra.cloud/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration` |
-| `DEFRA_ID_CRN` | `9700001000` |
+| `DEFRA_ID_CRN` | `9100010101` |
 | `DEFRA_ID_PASSWORD` | `stub` |
 | `DEFRA_ID_CLIENT_ID` | `fcp-dal-api-perf-test` |
 | `DEFRA_ID_CLIENT_SECRET` | `stub` |
