@@ -4576,7 +4576,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;query&quot;: &quot;mutation CreateBusinessCustomerBankDetails($input: CreateBusinessCustomerBankDetailsInput!) { \n createBusinessCustomerBankDetails(input: $input) { \n ... on BankDetailsSubmitted { \n success } \n ... on BankDetailsValidationFailed { \n message \n attemptsRemaining \n } \n ... on BankDetailsLocked { \n message \n } \n ... on BankDetailsNotEditable { \n message \n submitted \n updatedRecently \n new \n } \n } \n }&quot;, &quot;variables&quot;:&quot;{ \n \&quot;input\&quot;: \n { \&quot;sbi\&quot;: \&quot;900000001\&quot;, \n \&quot;crn\&quot;: \&quot;1111112200\&quot;, \n \&quot;account\&quot;: { \n \&quot;ukBusiness\&quot;: { \n \&quot;accountHolderName\&quot;: \&quot;Acme Farms Ltd\&quot;, \n \&quot;accountNumber\&quot;: \&quot;11111100\&quot;, \n \&quot;bankName\&quot;: \&quot;Match Bank\&quot;, \n \&quot;sortCode\&quot;: \&quot;111111\&quot;, \n \&quot;currency\&quot;: \&quot;GBP\&quot; \n } \n } \n }&quot;}&#xd;
+                <stringProp name="Argument.value">{&quot;query&quot;: &quot;mutation CreateBusinessCustomerBankDetails($input: CreateBusinessCustomerBankDetailsInput!) { \n createBusinessCustomerBankDetails(input: $input) { \n ... on BankDetailsSubmitted { \n success } \n ... on BankDetailsValidationFailed { \n message \n attemptsRemaining \n } \n ... on BankDetailsLocked { \n message \n } \n ... on BankDetailsNotEditable { \n message \n submitted \n updatedRecently \n new \n } \n } \n }&quot;, &quot;variables&quot;:&quot;{ \n \&quot;input\&quot;: \n { \&quot;sbi\&quot;: \&quot;800000001\&quot;, \n \&quot;crn\&quot;: \&quot;9111112200\&quot;, \n \&quot;account\&quot;: { \n \&quot;ukBusiness\&quot;: { \n \&quot;accountHolderName\&quot;: \&quot;Acme Farms Ltd\&quot;, \n \&quot;accountNumber\&quot;: \&quot;11111100\&quot;, \n \&quot;bankName\&quot;: \&quot;Match Bank\&quot;, \n \&quot;sortCode\&quot;: \&quot;111111\&quot;, \n \&quot;currency\&quot;: \&quot;GBP\&quot; \n } \n } \n }&quot;}&#xd;
 &#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -4646,8 +4646,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         &quot;sortCode&quot;: &quot;111111&quot;
       }
     },
-    &quot;crn&quot;: &quot;1111112200&quot;,
-    &quot;sbi&quot;: &quot;900000001&quot;
+    &quot;crn&quot;: &quot;9111112200&quot;,
+    &quot;sbi&quot;: &quot;800000001&quot;
   }
 },&quot;query&quot;:&quot;mutation CreateBusinessCustomerBankDetails($input: CreateBusinessCustomerBankDetailsInput!) {\n  createBusinessCustomerBankDetails(input: $input) {\n    ... on BankDetailsSubmitted {\n      success\n    }\n    ... on BankDetailsValidationFailed {\n      message\n      attemptsRemaining\n    }\n    ... on BankDetailsLocked {\n      message\n    }\n    ... on BankDetailsNotEditable {\n      message\n      submitted\n      updatedRecently\n      new\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -4686,8 +4686,8 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         &quot;sortCode&quot;: &quot;111111&quot;
       }
     },
-    &quot;crn&quot;: &quot;1111112200&quot;,
-    &quot;sbi&quot;: &quot;900000001&quot;
+    &quot;crn&quot;: &quot;9111112200&quot;,
+    &quot;sbi&quot;: &quot;800000001&quot;
   }
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
