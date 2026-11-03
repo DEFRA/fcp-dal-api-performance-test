@@ -44,7 +44,7 @@ fi
 DEFRA_ID_PROVIDER="${DEFRA_ID_PROVIDER:-stub}"
 if [ "${DEFRA_ID_PROVIDER}" = "stub" ] ; then
   DEFRA_ID_WELL_KNOWN_URL="${DEFRA_ID_WELL_KNOWN_URL:-https://fcp-defra-id-stub.${ENVIRONMENT}.cdp-int.defra.cloud/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration}"
-  DEFRA_ID_CRN="${DEFRA_ID_CRN:-9100010101}"  # Originally 9700001000
+  DEFRA_ID_CRN="${DEFRA_ID_CRN:-9100010101}"
   DEFRA_ID_PASSWORD="${DEFRA_ID_PASSWORD:-stub}"
   DEFRA_ID_CLIENT_ID="${DEFRA_ID_CLIENT_ID:-fcp-dal-api-perf-test}"
   DEFRA_ID_CLIENT_SECRET="${DEFRA_ID_CLIENT_SECRET:-stub}"
