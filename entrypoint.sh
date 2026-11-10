@@ -43,7 +43,7 @@ fi
 # defaults; b2c needs every value set.
 DEFRA_ID_PROVIDER="${DEFRA_ID_PROVIDER:-stub}"
 if [ "${DEFRA_ID_PROVIDER}" = "stub" ] ; then
-  DEFRA_ID_WELL_KNOWN_URL="https://fcp-defra-id-stub.${ENVIRONMENT}.cdp-int.defra.cloud/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration}"
+  DEFRA_ID_WELL_KNOWN_URL="https://fcp-defra-id-stub.${ENVIRONMENT}.cdp-int.defra.cloud/idphub/b2c/b2c_1a_cui_cpdev_signupsigninsfi/.well-known/openid-configuration"
   DEFRA_ID_CRN="9100010101"
   DEFRA_ID_PASSWORD="stub"
   DEFRA_ID_CLIENT_ID="${DEFRA_ID_CLIENT_ID:-fcp-dal-api-perf-test}"
