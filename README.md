@@ -70,6 +70,38 @@ We make use of four CSV files in the tests which are read at the start of the te
 3. `jmeter.config.pairedtestdata.csv` - this stores test data where each row of data needs to align to a particular organisation and person. If there is no association between the data in a given row, errors may be seen in the tests.
 4. `jmeter.config.testmodel.csv` - this stores the request rate per minute (**rrpm**) for each of the tests. Using this, we can control the rate of each request type and model a load that is more realistic. The value needs to be referenced in the "Constant Throughput timer" for each type of thread.
 
+### Keeping real SBI and CRN numbers out of this repo
+
+Only mock data belongs in this repo. Mock CRNs are 10 digits starting with `9` and mock SBIs are 9 digits starting with `8`
+
+To run against other data, set `USE_SECRET_PERF_DATA=true`. Every `PERF_DATA_*` variable below must then be set, and if any are missing `entrypoint.sh` lists them and exits with code `2`. It copies the mock CSVs from `scenarios/data/${ENVIRONMENT}/` to a temporary folder and replaces each of these files. The `testmodel` files hold no IDs, so they always come from this repo. If `USE_SECRET_PERF_DATA` is anything other than `true`, the mock CSVs are used and the `PERF_DATA_*` variables are ignored. The log shows which data a run used.
+
+Each variable holds one CSV, header row included, with rows separated by `;` because `.env` files are one line per variable:
+
+```
+PERF_DATA_INTERNAL_TESTDATA=crn,sbi;9000000001,800000001;9000000002,800000002
+```
+
+| Variable | File |
+| --- | --- |
+| `PERF_DATA_INTERNAL_TESTDATA` | `jmeter.config.internalcalls.testdata.csv` |
+| `PERF_DATA_INTERNAL_PAIREDTESTDATA` | `jmeter.config.internalcalls.pairedtestdata.csv` |
+| `PERF_DATA_INTERNAL_LANDDATA` | `jmeter.config.internalcalls.landdata.csv` |
+| `PERF_DATA_INTERNAL_LOCKABLETESTDATA` | `jmeter.config.internalcalls.lockabletestdata.csv` |
+| `PERF_DATA_EXTERNAL_TESTDATA` | `jmeter.config.externalcalls.testdata.csv` |
+| `PERF_DATA_EXTERNAL_PAIREDTESTDATA` | `jmeter.config.externalcalls.pairedtestdata.csv` |
+| `PERF_DATA_EXTERNAL_LANDDATA` | `jmeter.config.externalcalls.landdata.csv` |
+| `PERF_DATA_EXTERNAL_LOCKABLETESTDATA` | `jmeter.config.externalcalls.lockabletestdata.csv` |
+| `PERF_DATA_BANK` | `jmeter.config.banktestdata.csv` |
+
+To build the values, put all 9 CSVs in a folder outside this repo and run the script below. It writes one file per secret to the output folder, which must also be outside this repo. Each file is named after its secret and holds only the value, so on a Mac `pbcopy < PERF_DATA_BANK` copies it ready to paste. Delete the folder when you have finished.
+
+```
+scripts/build-secret-values.sh /path/to/csv/folder /path/to/output/folder
+```
+
+Store each value as a CDP secret. `USE_SECRET_PERF_DATA` holds nothing sensitive, so set it in `cdp-app-config`.
+
 ## Build
 
 Test suites are built automatically by the [.github/workflows/publish.yml](.github/workflows/publish.yml) action whenever a change are committed to the `main` branch.
@@ -110,9 +142,9 @@ docker run \
 -e AWS_SECRET_KEY='test' \
 -e AWS_REGION='eu-west-2' \
 my-performance-tests
-```
 
 docker run -e S3_ENDPOINT='http://host.docker.internal:4566' -e RESULTS_OUTPUT_S3_PATH='s3://cdp-infra-dev-test-results/cdp-portal-perf-tests/95a01432-8f47-40d2-8233-76514da2236a' -e AWS_ACCESS_KEY_ID='test' -e AWS_SECRET_ACCESS_KEY='test' -e AWS_SECRET_KEY='test' -e AWS_REGION='eu-west-2' -e ENVIRONMENT='perf-test' my-performance-tests
+```
 
 ## Licence
 
