@@ -7695,7 +7695,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
         </hashTree>
       </hashTree>
       <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-        <stringProp name="JSON_PATH">$.error</stringProp>
+        <stringProp name="JSON_PATH">$.errors</stringProp>
         <stringProp name="EXPECTED_VALUE"></stringProp>
         <boolProp name="JSONVALIDATION">false</boolProp>
         <boolProp name="EXPECT_NULL">false</boolProp>
