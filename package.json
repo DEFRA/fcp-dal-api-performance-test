@@ -1,0 +1,15 @@
+{
+  "name": "fcp-dal-api-performance-test",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Dev tooling for the FCP DAL API performance tests. Not used by the test image.",
+  "scripts": {
+    "check:synthetic-ids": "sfd-id-check --staged",
+    "setup:husky": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module"
+  },
+  "license": "OGL-UK-3.0",
+  "devDependencies": {
+    "fcp-sfd-core": "github:DEFRA/fcp-sfd-core#95f58ade56b2d0dd0f15bdcba6a5f37a54bcc939",
+    "husky": "9.1.7"
+  }
+}
