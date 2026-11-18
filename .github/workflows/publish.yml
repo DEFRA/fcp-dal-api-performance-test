@@ -21,9 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Build the test suite
-        uses: DEFRA/cdp-build-action/build-test@main
+        uses: DEFRA/cdp-build-action/build-test@54ced5c5344c8b9620561a1628fe8f3d858e9871 # v1.5.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
