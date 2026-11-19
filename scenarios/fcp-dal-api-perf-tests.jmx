@@ -6298,20 +6298,21 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation createCustomer(input: {first: \&quot;Testy\&quot;, last: \&quot;${rndSurname}\&quot;}) {\n        success\n        customer {\n          personId\n          crn\n        }\n      }\n    }&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n  createCustomer(input: {first: \&quot;Testy\&quot;, last: \&quot;${rndSurname}\&quot;}) {\n    success\n    customer {\n      personId\n      crn\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="GraphQLHTTPSampler.query">mutation createCustomer(input: {first: &quot;Testy&quot;, last: &quot;${rndSurname}&quot;}) {
-        success
-        customer {
-          personId
-          crn
-        }
-      }
-    }</stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation {
+  createCustomer(input: {first: &quot;Testy&quot;, last: &quot;${rndSurname}&quot;}) {
+    success
+    customer {
+      personId
+      crn
+    }
+  }
+}</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
         </HTTPSamplerProxy>
