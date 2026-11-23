@@ -34,6 +34,7 @@ if [ "${USE_SECRET_PERF_DATA}" = "true" ] ; then
     PERF_DATA_EXTERNAL_PAIREDTESTDATA:externalcalls.pairedtestdata
     PERF_DATA_EXTERNAL_LANDDATA:externalcalls.landdata
     PERF_DATA_EXTERNAL_LOCKABLETESTDATA:externalcalls.lockabletestdata
+    PERF_DATA_EXTERNAL_REMOVEABLETESTDATA:externalcalls.removeabletestdata
     PERF_DATA_BANK:banktestdata
   "
 
@@ -124,11 +125,14 @@ internal_test_data_file_path="${data_dir}/jmeter.config.internalcalls.testdata.c
 internal_test_paireddata_file_path="${data_dir}/jmeter.config.internalcalls.pairedtestdata.csv"
 internal_land_data_file_path="${data_dir}/jmeter.config.internalcalls.landdata.csv"
 internal_lock_data_file_path="${data_dir}/jmeter.config.internalcalls.lockabletestdata.csv"
+internal_removeable_data_file_path="${data_dir}/jmeter.config.internalcalls.removeabletestdata.csv"
+internal_existing_customer_data_file_path="${data_dir}/jmeter.config.internalcalls.existingcustomerdata.csv"
 
 external_test_data_file_path="${data_dir}/jmeter.config.externalcalls.testdata.csv"
 external_test_paireddata_file_path="${data_dir}/jmeter.config.externalcalls.pairedtestdata.csv"
 external_land_data_file_path="${data_dir}/jmeter.config.externalcalls.landdata.csv"
 external_lock_data_file_path="${data_dir}/jmeter.config.externalcalls.lockabletestdata.csv"
+external_removeable_data_file_path="${data_dir}/jmeter.config.externalcalls.removeabletestdata.csv"
 
 internal_test_model_file_path="${data_dir}/jmeter.config.internalcalls.testmodel.csv"
 external_test_model_file_path="${data_dir}/jmeter.config.externalcalls.testmodel.csv"
@@ -136,7 +140,7 @@ external_test_model_file_path="${data_dir}/jmeter.config.externalcalls.testmodel
 bank_data_file_path="${data_dir}/jmeter.config.banktestdata.csv"
 
 # Run the test suite
-jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -q user.properties -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}" -JdefraIdToken="${defra_id_token}" -JinternalTestDataFilePath="${internal_test_data_file_path}" -JexternalTestDataFilePath="${external_test_data_file_path}" -JinternalTestPairedDataFilePath="${internal_test_paireddata_file_path}" -JexternalTestPairedDataFilePath="${external_test_paireddata_file_path}" -JinternalTestModelFilePath="${internal_test_model_file_path}" -JexternalTestModelFilePath="${external_test_model_file_path}" -JbankDataFilePath="${bank_data_file_path}" -JinternalLandDataFilePath="${internal_land_data_file_path}" -JexternalLandDataFilePath="${external_land_data_file_path}" -JinternalLockableTestDataFilePath="${internal_lock_data_file_path}" -JexternalLockableTestDataFilePath="${external_lock_data_file_path}"
+jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -q user.properties -o ${JM_REPORTS} -j ${LOGFILE} -f -Jenv="${ENVIRONMENT}" -JauthToken="${auth_token}" -JdefraIdToken="${defra_id_token}" -JinternalTestDataFilePath="${internal_test_data_file_path}" -JexternalTestDataFilePath="${external_test_data_file_path}" -JinternalTestPairedDataFilePath="${internal_test_paireddata_file_path}" -JexternalTestPairedDataFilePath="${external_test_paireddata_file_path}" -JinternalTestModelFilePath="${internal_test_model_file_path}" -JexternalTestModelFilePath="${external_test_model_file_path}" -JbankDataFilePath="${bank_data_file_path}" -JinternalLandDataFilePath="${internal_land_data_file_path}" -JexternalLandDataFilePath="${external_land_data_file_path}" -JinternalLockableTestDataFilePath="${internal_lock_data_file_path}" -JexternalLockableTestDataFilePath="${external_lock_data_file_path}" -JinternalRemoveableTestDataFilePath="${internal_removeable_data_file_path}" -JexternalRemoveableTestDataFilePath="${external_removeable_data_file_path} -JexternalExistingCustomerDataFilePath="${internal_existing_customer_data_file_path}"
 test_exit_code=$?
 
 # Publish the results into S3 so they can be displayed in the CDP Portal
