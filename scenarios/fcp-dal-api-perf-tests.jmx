@@ -94,7 +94,7 @@
       </CSVDataSet>
       <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Existing customer data - Internal - CSV Data Set Config">
-        <stringProp name="filename">${__P(JinternalExistingCustomerDataFilePath)}</stringProp>
+        <stringProp name="filename">${__P(internalExistingCustomerDataFilePath)}</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="variableNames"></stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
@@ -3215,7 +3215,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
          							mobile: &quot;07700 900002&quot;
        						}
 						}
-				) 
+				)
 	{
           business {
             info {
@@ -3761,7 +3761,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
          							mobile: &quot;07700 900002&quot;
        						}
 						}
-				) 
+				)
 	{
           business {
             info {
@@ -6519,7 +6519,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
   &quot;input&quot;: {
     &quot;first&quot;: ,
     &quot;last&quot;: ,
-    &quot;dateOfBirth&quot;: 
+    &quot;dateOfBirth&quot;:
   }
 },&quot;query&quot;:&quot;query {\n  customerDuplicate(input: {first: \&quot;${intCdFirstName}\&quot;, last: \&quot;${intCdLastName}\&quot;, dateOfBirth: \&quot;${intCdDob}\&quot;, phone: { mobile: \&quot;${intCdMobile}\&quot;, landline: \&quot;${intCdLandline}\&quot;}}) {\n    crn\n    first\n    last\n    dateOfBirth\n    personId\n    phone {\n      landline\n      mobile\n    }\n  }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -6545,7 +6545,7 @@ log.info(&quot;The CRN used is: ${sbi1}&quot;)</stringProp>
   &quot;input&quot;: {
     &quot;first&quot;: ,
     &quot;last&quot;: ,
-    &quot;dateOfBirth&quot;: 
+    &quot;dateOfBirth&quot;:
   }
 }</stringProp>
           <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
